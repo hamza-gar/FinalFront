@@ -10,6 +10,12 @@ import { ListSujetsComponent } from './components/list-sujets/list-sujets.compon
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { EnseignantComponentLog } from './components/login/enseignantLog/enseignant.component.log';
+import { EtudiantComponentLog } from './components/login/etudiantLog/etudiant.component.log';
+import {EnseignantComponent} from "./components/signup/enseignant/enseignant.component";
+import {EtudiantComponent} from "./components/signup/etudiant/etudiant.component";
+import { AdminComponent } from './components/login/admin/admin.component';
+import { VerificationComponent } from './components/verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,13 @@ import {HttpClientModule} from "@angular/common/http";
     NavbarComponent,
     PageNotFoundComponent,
     LoginSignUpPageComponent,
-    ListSujetsComponent
+    ListSujetsComponent,
+    EnseignantComponentLog,
+    EtudiantComponentLog,
+    EnseignantComponent,
+    EtudiantComponent,
+    AdminComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

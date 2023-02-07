@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav me-auto">
+      <ul *ngIf="currentUser" class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" routerLink="#">List Sujets
             <span class="visually-hidden">(current)</span>
@@ -16,8 +16,9 @@
         </li>
 
       </ul>
-    <ul class="navber-nav ml-auto">
-      <li class="nav-item"><a routerLink="/LoginSignUpPage"  class="nav-link" style="color: aliceblue">Login/SignUp</a></li>
+    <ul  class="navber-nav ml-auto">
+      <li *ngIf="!currentUser" class="nav-item"><a routerLink="/login"  class="nav-link" style="color: aliceblue">Login/SignUp</a></li>
+      <li *ngIf="currentUser" class="nav-item"><button (click)="logout()"  class="btn-logout" style="color: aliceblue">Logout</button></li>
     </ul>
     </div>
   </div>
