@@ -1,0 +1,42 @@
+<div class="container" style="margin-top: 100px; border-radius:5px; ">
+  <h3>Liste Des Sujets:</h3>
+  <table class="table table-bordered">
+    <thead>
+    <tr style="text-align: center">
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Taille Equipe</th>
+      <th scope="col">Voir les equipes</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <ng-container *ngFor="let sujet of subjects">
+      <tr style="text-align: center">
+        <td>{{sujet.nomSujet}}</td>
+        <td>{{sujet.descriptionSujet}}</td>
+        <td>{{sujet.tailleEquipe}}</td>
+        <td><button type="button" class="btn btn-info" routerLink="/LoginSignUpPage">Voir Equipes</button></td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of [0, 1, 2, 3]">
+        <a class="page-link" href="#" (click)="p = page; getSujets()">{{page}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+</div>
