@@ -18,4 +18,8 @@ export class SujetService{
     return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}?page=${page}&limit=${limit}`);
   }
 
+  public getSujetPages(): Observable<number> {
+    return this.http.get<number>(`${this.apiServiceUrl}/count`);
+  }
+
 }
