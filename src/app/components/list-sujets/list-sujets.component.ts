@@ -80,12 +80,14 @@ export class ListSujetsComponent implements OnInit {
         this.p = Math.ceil( this.counter/ 6) - 1;
       }
     }
+
   }
 
   ngOnInit() {
     if (this.p == undefined) {
       this.p = 0;
     }
+    this.getCount();
     this.getSujets(this.p);
     this.getSujetPages();
 
