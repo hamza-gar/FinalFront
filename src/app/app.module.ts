@@ -16,6 +16,9 @@ import {EnseignantComponent} from "./components/signup/enseignant/enseignant.com
 import {EtudiantComponent} from "./components/signup/etudiant/etudiant.component";
 import { AdminComponent } from './components/login/admin/admin.component';
 import { VerificationComponent } from './components/verification/verification.component';
+import { EmailVerificationComponent } from './components/passwordForgotton/email-verification/email-verification.component';
+import { KeyVerificationComponent } from './components/passwordForgotton/key-verification/key-verification.component';
+import { ResetPasswordComponent } from './components/passwordForgotton/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { VerificationComponent } from './components/verification/verification.co
     EnseignantComponent,
     EtudiantComponent,
     AdminComponent,
-    VerificationComponent
+    VerificationComponent,
+    EmailVerificationComponent,
+    KeyVerificationComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

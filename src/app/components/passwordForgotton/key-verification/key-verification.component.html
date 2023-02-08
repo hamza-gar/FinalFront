@@ -1,0 +1,16 @@
+<div class="container height-100 d-flex justify-content-center align-items-center">
+  <div class="position-relative">
+    <div class="card p-2 text-center">
+      <h6>Veuillez entrer le mot de passe unique<br> pour vérifier votre compte</h6>
+      <div> <span>Un code a été envoyé à votre courrier</span>
+      </div> <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="first" maxlength="1" />
+      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="second" maxlength="1" />
+      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="third" maxlength="1" />
+      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="fourth" maxlength="1" />
+      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="fifth" maxlength="1" />
+      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="sixth" maxlength="1" />
+    </div> <div class="mt-4"> <button class="btn btn-danger px-4 validate" (click)="onClick()">Valider</button>
+    </div> </div> <div class="card-2">  <div class="content d-flex justify-content-center align-items-center">
+    <span>Didn't get the code</span> <a href="#" class="text-decoration-none ms-3">Resend</a> </div> </div> </div>
+</div>

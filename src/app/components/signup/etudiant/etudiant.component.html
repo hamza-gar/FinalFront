@@ -1,0 +1,124 @@
+<main class="site-wrapper">
+  <div class="pt-table desktop-768">
+    <div class="pt-tablecell page-home relative" style="background-image: url(https://c0.wallpaperflare.com/path/534/41/125/school-books-young-adult-education-3c23f0ea26f92dd38c32e949214ee647.jpg);
+  background-position: center;
+  background-size: cover;
+  ">
+      <div class="overlay">
+        <div class="container">
+          <a class="back-button" routerLink="../">
+            <i class="fa fa-arrow-left"></i>
+          </a>
+          <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+              <div class="panel border bg-white">
+                <div class="panel-heading">
+                  <h3 class="pt-3 font-weight-bold">Inscription</h3>
+                </div>
+                <div class="panel-body p-3">
+                  <form (ngSubmit)="SignUpRegister()">
+
+                    <div class="form-group pt-3 d-flex">
+                      <div class="mr-3" style="margin-right: 10px">
+                        <label for="nom" class="form-label">Nom</label>
+                        <div class="input-field">
+                          <span class="fa fa-user p-2"></span>
+                          <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="signup.nom">
+                        </div>
+                      </div>
+
+                      <div style="margin-left: 10px">
+                        <label for="prenom" class="form-label">Prenom</label>
+                        <div class="input-field">
+                          <span class="fa fa-user p-2"></span>
+                          <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="signup.prenom">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group pt-3 d-flex">
+                      <div class="mr-3" style="margin-right: 10px">
+                        <label for="apogee" class="form-label">apogee</label>
+                        <div class="input-field">
+                          <span class="fa fa-address-card p-2"></span>
+                          <input type="text" class="form-control" id="apogee" name="apogee" [(ngModel)]="signup.apogee">
+                        </div>
+                      </div>
+
+                      <div style="margin-left: 10px">
+                        <label for="cne" class="form-label">cne</label>
+                        <div class="input-field">
+                          <span class="fa fa-address-card p-2"></span>
+                          <input type="text" class="form-control" id="cne" name="cne" [(ngModel)]="signup.cne">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group pt-3 d-flex">
+                      <div class="mr-3" style="margin-right: 10px">
+                        <label for="cin" class="form-label">cin</label>
+                        <div class="input-field">
+                          <span class="fa fa-address-card p-2"></span>
+                          <input type="text" class="form-control" id="cin" name="cin" [(ngModel)]="signup.cin">
+                        </div>
+                      </div>
+
+                      <div style="width:250px;margin-left: 10px">
+                        <label for="filiere" class="form-label">filiere</label>
+                        <div class="input-field">
+                          <span class="fa fa-book p-2"></span>
+                          <select class="form-control" id="filiere" name="filiere" [(ngModel)]="signup.nomFiliere" *ngFor="let fil of filieres">
+                            <option value="{{fil.nomFiliere}}">{{fil.nomFiliere}}</option>
+                            <!-- TODO: add for loop -->
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group pt-3">
+                      <label for="email" class="form-label">Email</label>
+                      <div class="input-field">
+                        <span class="fa fa-envelope p-2"></span>
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="signup.email">
+                      </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                      <label for="password1" class="form-label">Mot de passe</label>
+                      <div class="input-field">
+                        <span class="fa fa-lock p-2"></span>
+                        <input [type]="type" class="form-control" id="password1" name="password"
+                               [(ngModel)]="signup.password">
+                        <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                      </div>
+                    </div>
+
+                    <div class="form-inline fr mt-4">
+                      <a id="forget" class="font-weight-bold">Forget Password</a>
+                    </div>
+                    <button type="submit " class="btn btn-primary btn-block mt-4 w-100" (click)="SignUpRegister()" [disabled]="!locked">Sign Up</button>
+                    <div class="text-center pt-4 text-muted">Do you have account ? <a id="forget1"
+                                                                                      routerLink="/loginEtudiant">Login</a>
+                    </div>
+
+                    <div class="col-sm-2" *ngIf="!showDots">
+                      <div id="dots5" style="margin-left: 20px; margin-top: -115px;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

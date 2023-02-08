@@ -9,6 +9,11 @@ import {EtudiantComponentLog} from "./components/login/etudiantLog/etudiant.comp
 import {EtudiantComponent} from "./components/signup/etudiant/etudiant.component";
 import {AdminComponent} from "./components/login/admin/admin.component";
 import {VerificationComponent} from "./components/verification/verification.component";
+import {
+  EmailVerificationComponent
+} from "./components/passwordForgotton/email-verification/email-verification.component";
+import {KeyVerificationComponent} from "./components/passwordForgotton/key-verification/key-verification.component";
+import {ResetPasswordComponent} from "./components/passwordForgotton/reset-password/reset-password.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -25,6 +30,11 @@ const routes: Routes = [
       {path:'etudiantLog',component:EtudiantComponentLog},
       {path:'etudiantSignUp',component:EtudiantComponent},
       {path:'admin',component:AdminComponent}
+    ]},
+  {path:'forgetPassword',children:[
+      {path:'emailVerification',component: EmailVerificationComponent},
+      {path:'keyVerification',component: KeyVerificationComponent},
+      {path:'resetPassword',component: ResetPasswordComponent}
     ]},
   {path:'verification',component:VerificationComponent},
   {path:"**",component:PageNotFoundComponent},

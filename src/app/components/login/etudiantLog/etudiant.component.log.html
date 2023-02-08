@@ -1,0 +1,50 @@
+<main class="site-wrapper">
+  <div class="pt-table desktop-768">
+    <div class="pt-tablecell page-home relative" style="background-image: url(https://c0.wallpaperflare.com/path/534/41/125/school-books-young-adult-education-3c23f0ea26f92dd38c32e949214ee647.jpg);
+  background-position: center;
+  background-size: cover;">
+      <div class="overlay">
+        <div class="container">
+          <a class="back-button" routerLink="../">
+            <i class="fa fa-arrow-left"></i>
+          </a>
+          <div class="row">
+            <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+              <div class="panel border bg-white">
+                <div class="panel-heading">
+                  <h3 class="pt-3 font-weight-bold">Login</h3>
+                </div>
+                <div class="panel-body p-3">
+                  <form (ngSubmit)="LoginRegister()">
+                    <div class="form-group pt-3">
+                      <label for="email" class="form-label">Email</label>
+                      <div class="input-field">
+                        <span class="fa fa-envelope p-2"></span>
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="login.email">
+
+                      </div>
+                    </div>
+                    <div class="form-group pt-3">
+                      <label for="password1" class="form-label">Mot de passe</label>
+                      <div class="input-field">
+                        <span class="fa fa-lock p-2"></span>
+                        <input [type]="type" class="form-control" id="password1" name="password" [(ngModel)]="login.password">
+                        <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                      </div>
+                    </div>
+                    <div class="form-inline fr mt-4">
+                      <a id="forget" class="font-weight-bold" routerLink="/forgetPassword/emailVerification">Mot de passe oublié ?</a>
+
+                    </div>
+                    <button type="submit " class="btn btn-primary btn-block mt-4 w-100">Authentification</button>
+                    <div class="text-center pt-4 text-muted">Vous n'avez pas de compte ?<a id="forget1" routerLink="/login/etudiantSignUp"> Inscrivez-vous</a></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

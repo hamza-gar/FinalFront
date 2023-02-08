@@ -11,5 +11,5 @@ export class etudiantSignUp{
 
   cne!:string;
 
-  filiere!:string;
+  nomFiliere!:string;
 }
