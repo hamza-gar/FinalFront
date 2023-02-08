@@ -13,14 +13,14 @@ import {UserType} from "../../../classes/UserType";
 export class NavbarComponent implements OnInit{
 
   currentUser=null;
-
-
-  constructor(private accountService:AccountService,private tokenService:TokenService,private route:Router,private userType:UserType) {
+  etudiant=false;
+  constructor(private accountService:AccountService,private tokenService:TokenService,private route:Router) {
   }
 
   ngOnInit(): void {
-    this.accountService.authStatus.subscribe(res=>{this.currentUser=this.tokenService.getInfo();
-
+    this.accountService.authStatus.subscribe(res=>{
+      this.etudiant=this.tokenService.isEtudiant();
+      this.currentUser=this.tokenService.getInfo();
     })
   }
 
@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit{
     this.tokenService.remove();
     this.accountService.changeStatus(false);
     this.route.navigateByUrl("/");
+
   }
 
 }

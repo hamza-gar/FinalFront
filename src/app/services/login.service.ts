@@ -15,7 +15,7 @@ export class LoginService {
   enseignantUrl = "http://localhost:8080/enseignants/login"
 
   loginEnseignant(logs : { email:string,password:string }){
-    return this.httpClient.post(`${this.etudiantUrl}`,logs);
+    return this.httpClient.post(`${this.enseignantUrl}`,logs);
   }
 
 }

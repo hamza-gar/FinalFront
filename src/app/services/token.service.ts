@@ -9,6 +9,7 @@ export class TokenService {
   set (data:any){
     localStorage.setItem('token',data.token);
     localStorage.setItem('id',data.id);
+    localStorage.setItem('user',data.user);
   }
 
   handle(data:any){
@@ -22,9 +23,15 @@ export class TokenService {
   getId(){
     return localStorage.getItem('id');
   }
+
+  getUser(){
+    return localStorage.getItem('user');
+  }
+
   remove(){
     localStorage.removeItem('token');
     localStorage.removeItem('id');
+    localStorage.removeItem('user');
   }
   decode(payload:any){
     console.log('payload : ', payload)
@@ -54,6 +61,12 @@ export class TokenService {
     }
     return null
   }
+
+  isEtudiant(){
+    const user = this.getUser()
+    return user=='etudiant'
+  }
+
   loggedIn(){
     return this.isValid()
   }

@@ -38,6 +38,8 @@ export class EnseignantComponentLog {
     handleResponse(res:any){
     this.tokenService.handle(res)
     this.accountService.changeStatus(true);
+    // this.router.navigateByUrl("/dashboardEtudiant")
+      console.log(res);
     this.router.navigateByUrl("/dashboard/dashboardEnseignant")
   }
 }

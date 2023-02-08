@@ -5,6 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
+      <p *ngIf="currentUser" class="whitish" >{{etudiant}}</p>
       <ul *ngIf="currentUser" class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" routerLink="#">List Sujets
