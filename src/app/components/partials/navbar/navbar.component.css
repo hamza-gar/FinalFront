@@ -1,6 +1,18 @@
 .btn-logout{
-  background-color: black;
+  background-color: inherit;
   border: none;
+  position: fixed;
+  right: 20px;
+  top: 1vh;
+}
+
+.btn-login{
+  background-color: inherit;
+  border: none;
+  position: fixed;
+  right: 20px;
+  top: 0.5vh;
+  margin-bottom: 96vh;
 }
 
 .whitish{
@@ -9,4 +21,69 @@
 
 .navbar{
   height: 6vh;
+}
+
+/******************************************/
+
+
+
+
+.dropdown-toggle{
+  margin-top: 2vh;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  height: 5vh;
+  border: 2px solid #4d1259;
+  font-weight: 600;
+}
+
+.dropdown-toggle:focus{
+
+  box-shadow: none !important;
+
+}
+
+
+.dropdown-toggle::after {
+
+  display: none;
+}
+
+.dropdown-menu{
+  width: 200px;
+  border: 2px solid #4d1259;
+  padding: 0rem 0;
+  transform: translate3d(0px, 50px, 0px) !important;
+
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #ffffff;
+  background-color: #4d1259;
+  padding: 12px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 12px;
+
+}
+
+.fa-solid fa-user-graduate{
+  margin-right: 10px;
+}
+
+.noncliquable{
+  color: #ffffff;
+  background-color: #4d1259;
+  padding: 12px;
+}
+
+span{
+  margin-left: 15px;
+  margin-right: 2px;
 }

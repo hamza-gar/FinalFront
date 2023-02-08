@@ -10,21 +10,25 @@ import {UserType} from "../../../classes/UserType";
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
 
-  currentUser=null;
-  etudiant=false;
-  constructor(private accountService:AccountService,private tokenService:TokenService,private route:Router) {
+  currentUser = null;
+  etudiant = false;
+
+  mail: any;
+
+  constructor(private accountService: AccountService, private tokenService: TokenService, private route: Router) {
   }
 
   ngOnInit(): void {
-    this.accountService.authStatus.subscribe(res=>{
-      this.etudiant=this.tokenService.isEtudiant();
-      this.currentUser=this.tokenService.getInfo();
+    this.accountService.authStatus.subscribe(res => {
+      this.etudiant = this.tokenService.isEtudiant();
+      this.currentUser = this.tokenService.getInfo();
+      this.mail = this.tokenService.getMail();
     })
   }
 
-  logout(){
+  logout() {
     this.tokenService.remove();
     this.accountService.changeStatus(false);
     this.route.navigateByUrl("/");

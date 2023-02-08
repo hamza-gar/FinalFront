@@ -17,9 +17,27 @@
         </li>
       </ul>
     <ul class="navber-nav ml-auto">
-      <li *ngIf="!currentUser" class="nav-item"><a routerLink="/login" class="nav-link" style="color: aliceblue" >Login/SignUp</a></li>
-      <li *ngIf="currentUser" class="nav-item"><button (click)="logout()" class="btn-logout" style="color: aliceblue">Logout</button></li>
+      <li *ngIf="!currentUser" class="nav-item"><button routerLink="/login" class="btn-login" style="color: aliceblue" >Login/SignUp</button></li>
+      <li *ngIf="currentUser" class="nav-item">
+        <div class="container d-flex justify-content-center align-items-center">
+
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+              <span>Account</span>
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li class=" noncliquable"><i class="fa-solid fa-user-graduate"></i> <span>{{mail}}</span></li>
+              <li><a class="dropdown-item" href="#">settings</a></li>
+              <li><a (click)="logout()"  class="dropdown-item" href="#">LogOut</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
     </ul>
     </div>
   </div>
 </nav>
+
+
+<!--<button (click)="logout()" class="btn-logout" style="color: aliceblue">Logout<br/>{{mail}}</button>-->

@@ -10,6 +10,7 @@ export class TokenService {
     localStorage.setItem('token',data.token);
     localStorage.setItem('id',data.id);
     localStorage.setItem('user',data.user);
+    localStorage.setItem('mail',data.mail);
   }
 
   handle(data:any){
@@ -28,10 +29,15 @@ export class TokenService {
     return localStorage.getItem('user');
   }
 
+  getMail(){
+    return localStorage.getItem('mail');
+  }
+
   remove(){
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     localStorage.removeItem('user');
+    localStorage.removeItem('mail');
   }
   decode(payload:any){
     console.log('payload : ', payload)
