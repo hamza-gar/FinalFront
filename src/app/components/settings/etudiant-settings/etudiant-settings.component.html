@@ -14,17 +14,21 @@
           <h6 class="text-right">Edit Profile</h6>
         </div>
         <div class="row mt-2">
-          <div class="col-md-6"><label>Nom :</label><input type="text" class="form-control" placeholder="Nom" value="{{etudiantResponse.nom}}"></div>
+          <div class="col-md-6"><label>Nom :</label><input type="text" class="form-control" placeholder="Nom" value="{{etudiantResponse.nom}}" [(ngModel)]="Inputnom"></div>
 
-          <div class="col-md-6"><label>Prenom :</label><input type="text" class="form-control" value="{{etudiantResponse.prenom}}" placeholder="Prenom"></div>
+          <div class="col-md-6"><label>Prenom :</label><input type="text" class="form-control" value="{{etudiantResponse.prenom}}" placeholder="Prenom" [(ngModel)]="Inputprenom"></div>
 
 
         </div>
         <div class="row mt-3">
           <div class="col-md-12"><label>Password :</label></div>
-          <div class="col-md-12"><input type="password" class="form-control" placeholder="Nom" value="{{etudiantResponse.nom}}"></div>
+          <div class="col-md-12">
+            <input [type]="type" class="form-control" placeholder="Password" value="{{etudiantResponse.nom}}" [(ngModel)]="Inputpassword">
+            <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+          </div>
+
         </div>
-        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Save Profile</button>
+        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button" (click)="updateEtudiant()" >Save Profile</button>
           <button class="btn btn-light " style="margin-left: 30px;" type="button">Cancel</button>
         </div>
       </div>

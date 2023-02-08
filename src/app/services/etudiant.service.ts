@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {sujetRequirement} from "../classes/sujetRequirement";
 import {EtudiantResponse} from "../classes/EtudiantResponse";
 
 @Injectable({
@@ -16,7 +15,8 @@ export class EtudiantService {
     return this.httpClient.get<EtudiantResponse>(`${this.etudiantUrl}/${id}`);
   }
 
-  // public updateEtudiant(id:any):Observable<EtudiantResponse>{
-  //   return this.httpClient.put<EtudiantResponse>(`${this.etudiantUrl}/${id}`,);
-  // }
+  public updateEtudiant(up:any,id:any):Observable<EtudiantResponse>{
+    return this.httpClient.put<EtudiantResponse>(`${this.etudiantUrl}/${id}`,up);
+  }
+
 }

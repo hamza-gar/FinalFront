@@ -8,4 +8,5 @@ export interface EtudiantResponse{
   email : string;
   emailVerificationStatus:Boolean;
   nomFiliere:string;
+  password:string;
 }

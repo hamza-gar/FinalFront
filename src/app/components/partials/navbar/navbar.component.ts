@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
 
   settingsLink!:string;
 
+  faString!:string;
+
   constructor(private accountService: AccountService, private tokenService: TokenService, private route: Router) {
   }
 
@@ -27,8 +29,10 @@ export class NavbarComponent implements OnInit {
       this.etudiant = this.tokenService.isEtudiant();
       if(this.etudiant){
         this.settingsLink="/settings/etudiantSettings";
+        this.faString="fa-solid fa-user-graduate"
       }else{
         this.settingsLink="/settings/enseignantSettings"
+        this.faString="fa-solid fa-chalkboard-user"
       }
       this.currentUser = this.tokenService.getInfo();
       this.mail = this.tokenService.getMail();
