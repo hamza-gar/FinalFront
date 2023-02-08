@@ -7,4 +7,5 @@ export interface EtudiantResponse{
   prenom : string;
   email : string;
   emailVerificationStatus:Boolean;
+  nomFiliere:string;
 }

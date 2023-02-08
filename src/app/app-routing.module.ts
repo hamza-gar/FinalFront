@@ -17,8 +17,10 @@ import {ResetPasswordComponent} from "./components/passwordForgotton/reset-passw
 import {DashboardEtudiantComponent} from "./components/dashboard/dashboard-etudiant/dashboard-etudiant.component";
 import {DashboardEneignantComponent} from "./components/dashboard/dashboard-eneignant/dashboard-eneignant.component";
 import {DashboardAdminComponent} from "./components/dashboard/dashboard-admin/dashboard-admin.component";
-import {AuthGuard} from "./guards/auth.guard";
-import {AfterAuthGuard} from "./guards/after-auth.guard";
+
+import {EtudiantSettingsComponent} from "./components/settings/etudiant-settings/etudiant-settings.component";
+import {EnseignantSettingsComponent} from "./components/settings/enseignant-settings/enseignant-settings.component";
+import {AdminSettingsComponent} from "./components/settings/admin-settings/admin-settings.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -44,7 +46,12 @@ const routes: Routes = [
   {path:'dashboard',children:[
       {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
       {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
-      {path: 'dashboardAdmin',component: DashboardAdminComponent}
+      {path: 'dashboardAdmin',component: DashboardAdminComponent},
+    ]},
+  {path:'settings',children:[
+      {path:'etudiantSettings',component: EtudiantSettingsComponent},
+      {path:'enseignantSettings',component: EnseignantSettingsComponent},
+      {path:'adminSettings',component: AdminSettingsComponent}
     ]},
   {path:'verification',component:VerificationComponent},
   {path:"**",component:PageNotFoundComponent},

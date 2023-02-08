@@ -1,0 +1,33 @@
+<div class="container rounded bg-white mt-5">
+  <div class="row">
+    <div class="col-md-4 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5" style="margin-top: 10%">
+        <span class="font-weight-bold">{{etudiantResponse.nom.charAt(0).toUpperCase()+etudiantResponse.nom.slice(1)}} {{etudiantResponse.prenom}}</span><span class="text-black-50">{{etudiantResponse.email}}</span>
+        <span>Filiere : {{etudiantResponse.nomFiliere}}</span></div>
+    </div>
+    <div class="col-md-8">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+            <h6><a routerLink="../" style="text-decoration: none">Back to home</a></h6>
+          </div>
+          <h6 class="text-right">Edit Profile</h6>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6"><label>Nom :</label><input type="text" class="form-control" placeholder="Nom" value="{{etudiantResponse.nom}}"></div>
+
+          <div class="col-md-6"><label>Prenom :</label><input type="text" class="form-control" value="{{etudiantResponse.prenom}}" placeholder="Prenom"></div>
+
+
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"><label>Password :</label></div>
+          <div class="col-md-12"><input type="password" class="form-control" placeholder="Nom" value="{{etudiantResponse.nom}}"></div>
+        </div>
+        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Save Profile</button>
+          <button class="btn btn-light " style="margin-left: 30px;" type="button">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

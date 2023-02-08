@@ -28,8 +28,8 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li class=" noncliquable"><i class="fa-solid fa-user-graduate"></i> <span>{{mail}}</span></li>
-              <li><a class="dropdown-item" href="#">settings</a></li>
-              <li><a (click)="logout()"  class="dropdown-item" href="#">LogOut</a></li>
+              <li><a class="dropdown-item" routerLink="{{settingsLink}}">settings</a></li>
+              <li><button (click)="logout()" class="dropdown-item">LogOut</button></li>
             </ul>
           </div>
         </div>

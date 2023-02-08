@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 import {enseignantSignUp} from "../classes/enseignantSignUp";
 import {etudiantSignUp} from "../classes/etudiantSignUp";
 import {FiliereResponse} from "../classes/FiliereResponse";
-import {sujetRequirement} from "../classes/sujetRequirement";
 
 @Injectable({
   providedIn: 'root'

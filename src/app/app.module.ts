@@ -22,7 +22,10 @@ import { ResetPasswordComponent } from './components/passwordForgotton/reset-pas
 import { DashboardEtudiantComponent } from './components/dashboard/dashboard-etudiant/dashboard-etudiant.component';
 import { DashboardEneignantComponent } from './components/dashboard/dashboard-eneignant/dashboard-eneignant.component';
 import { DashboardAdminComponent } from './components/dashboard/dashboard-admin/dashboard-admin.component';
-//import {JwtInterceptor} from "./services/jwt.interceptor";
+import { EtudiantSettingsComponent } from './components/settings/etudiant-settings/etudiant-settings.component';
+import { EnseignantSettingsComponent } from './components/settings/enseignant-settings/enseignant-settings.component';
+import { AdminSettingsComponent } from './components/settings/admin-settings/admin-settings.component';
+import {JwtInterceptor} from "./services/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { DashboardAdminComponent } from './components/dashboard/dashboard-admin/
     ResetPasswordComponent,
     DashboardEtudiantComponent,
     DashboardEneignantComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    EtudiantSettingsComponent,
+    EnseignantSettingsComponent,
+    AdminSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,10 +59,10 @@ import { DashboardAdminComponent } from './components/dashboard/dashboard-admin/
 
   ],
   providers: [
-    // {provide:HTTP_INTERCEPTORS,
-    // useClass:JwtInterceptor,
-    // multi:true
-    // }
+    {provide:HTTP_INTERCEPTORS,
+    useClass:JwtInterceptor,
+    multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })
