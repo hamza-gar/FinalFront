@@ -21,13 +21,19 @@
 
         </div>
         <div class="row mt-3">
-          <div class="col-md-12"><label>Password :</label></div>
           <div class="col-md-12">
-            <input [type]="type" class="form-control" placeholder="Password" value="{{etudiantResponse.nom}}" [(ngModel)]="Inputpassword">
-            <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+            <label>Password :</label>
           </div>
-
+          <div class="col-md-12">
+            <div class="input-group">
+              <input [type]="type" class="form-control" placeholder="Password" value="{{etudiantResponse.nom}}" [(ngModel)]="Inputpassword">
+              <div class="input-group-append">
+                <span (click)="hideShowPass()" class="input-group-text fa {{eyeIcon}}"></span>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button" (click)="updateEtudiant()" >Save Profile</button>
           <button class="btn btn-light " style="margin-left: 30px;" type="button">Cancel</button>
         </div>

@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
 import {sujetRequirement} from "../../classes/sujetRequirement";
 import {SujetService} from "../../services/sujet.service";
+import {TokenService} from "../../services/token.service";
+import {AccountService} from "../../services/account.service";
+import {Router} from "@angular/router";
+import {EquipeRequirement} from "../../classes/EquipeRequirement";
+import {GroupsServiceService} from "../../services/groups-service.service";
 
 @Component({
   selector: 'app-list-sujets',
@@ -11,19 +16,29 @@ import {SujetService} from "../../services/sujet.service";
 export class ListSujetsComponent implements OnInit {
 
   public subjects!: sujetRequirement[];
+  public equipeRequirement !: EquipeRequirement[];
 
   public pages!: number[];
 
   public counter: number = 0;
 
-  constructor(private sujetService: SujetService) {
+
+  constructor(private sujetService: SujetService ,
+              private groupeService:GroupsServiceService,
+              private tokenService:TokenService,
+              private router:Router) {
   }
 
+  public selectedItem!:sujetRequirement ;
 
   public p: number = 0;
   pagination!: number;
 
-
+  public isConnected(){
+    if(this.tokenService.isValid())
+      return true;
+    return false;
+  }
   public getSujets(p: number): void {
     console.log(this.subjects)
     this.p = p;
@@ -35,6 +50,24 @@ export class ListSujetsComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+      }
+    );
+  }
+  myIndex(index:number){
+    this.selectedItem = this.subjects[index];
+    console.log(this.selectedItem.idSujet);
+    this.getEquipes();
+  }
+  public getEquipes() {
+
+    this.groupeService.getEquipesOfSujet(this.selectedItem.idSujet, this.p, 10).subscribe(
+      (response: EquipeRequirement[]) => {
+        console.log(response);
+        this.equipeRequirement = response;
+
+      },
+      (error: HttpErrorResponse) => {
+        alert("error");
       }
     );
   }
@@ -80,7 +113,6 @@ export class ListSujetsComponent implements OnInit {
         this.p = Math.ceil( this.counter/ 6) - 1;
       }
     }
-
   }
 
   ngOnInit() {
@@ -90,7 +122,9 @@ export class ListSujetsComponent implements OnInit {
     this.getCount();
     this.getSujets(this.p);
     this.getSujetPages();
-
+    this.getEquipes();
   }
+
+
 
 }
