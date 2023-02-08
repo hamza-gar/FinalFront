@@ -46,7 +46,6 @@ export class TokenService {
     }
     return false;
   }
-
   getInfo(){
     const token = this.getToken()
     if(token){

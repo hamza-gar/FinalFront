@@ -14,6 +14,11 @@ import {
 } from "./components/passwordForgotton/email-verification/email-verification.component";
 import {KeyVerificationComponent} from "./components/passwordForgotton/key-verification/key-verification.component";
 import {ResetPasswordComponent} from "./components/passwordForgotton/reset-password/reset-password.component";
+import {DashboardEtudiantComponent} from "./components/dashboard/dashboard-etudiant/dashboard-etudiant.component";
+import {DashboardEneignantComponent} from "./components/dashboard/dashboard-eneignant/dashboard-eneignant.component";
+import {DashboardAdminComponent} from "./components/dashboard/dashboard-admin/dashboard-admin.component";
+import {AuthGuard} from "./guards/auth.guard";
+import {AfterAuthGuard} from "./guards/after-auth.guard";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -35,6 +40,11 @@ const routes: Routes = [
       {path:'emailVerification',component: EmailVerificationComponent},
       {path:'keyVerification',component: KeyVerificationComponent},
       {path:'resetPassword',component: ResetPasswordComponent}
+    ] },
+  {path:'dashboard',children:[
+      {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
+      {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
+      {path: 'dashboardAdmin',component: DashboardAdminComponent}
     ]},
   {path:'verification',component:VerificationComponent},
   {path:"**",component:PageNotFoundComponent},

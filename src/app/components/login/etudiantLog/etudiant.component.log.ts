@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LoginService} from "../../../services/login.service";
 import {Login} from "../../../classes/login";
+import {UserType} from "../../../classes/UserType";
 
 @Component({
   selector: 'app-etudiantLog',
@@ -29,15 +30,15 @@ export class EtudiantComponentLog {
 
     this.loginService.loginEtudiant(this.login).subscribe(data=>{
       this.handleResponse(data)
-
     },error=>alert("you should sign up"));
   }
 
   handleResponse(res:any){
     this.tokenService.handle(res)
     this.accountService.changeStatus(true);
-    // this.router.navigateByUrl("/dashboardEtudiant")
-    alert("all good");
+    this.router.navigateByUrl("/dashboard/dashboardEtudiant")
+
+
   }
 
 }

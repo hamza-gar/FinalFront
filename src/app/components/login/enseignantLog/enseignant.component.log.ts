@@ -4,6 +4,7 @@ import {TokenService} from "../../../services/token.service";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LoginService} from "../../../services/login.service";
+import {UserType} from "../../../classes/UserType";
 
 @Component({
   selector: 'app-enseignantLog',
@@ -37,7 +38,6 @@ export class EnseignantComponentLog {
     handleResponse(res:any){
     this.tokenService.handle(res)
     this.accountService.changeStatus(true);
-    // this.router.navigateByUrl("/dashboardEtudiant")
-      alert("all good");
+    this.router.navigateByUrl("/dashboard/dashboardEnseignant")
   }
 }

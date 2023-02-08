@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
 import {sujetRequirement} from "../../classes/sujetRequirement";
 import {SujetService} from "../../services/sujet.service";
@@ -8,14 +8,13 @@ import {SujetService} from "../../services/sujet.service";
   templateUrl: './list-sujets.component.html',
   styleUrls: ['./list-sujets.component.css']
 })
-export class ListSujetsComponent {
+export class ListSujetsComponent implements OnInit{
 
   public subjects!:sujetRequirement[];
 
   constructor(private sujetService:SujetService) {}
   p: number = 0;
   pagination!:number;
-
 
 
   public getSujets(): void {

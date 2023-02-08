@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AccountService} from "../../../services/account.service";
 import {TokenService} from "../../../services/token.service";
 import {Router} from "@angular/router";
+import {UserType} from "../../../classes/UserType";
 
 
 @Component({
@@ -12,18 +13,21 @@ import {Router} from "@angular/router";
 export class NavbarComponent implements OnInit{
 
   currentUser=null;
-  constructor(private accountService:AccountService,private tokenService:TokenService,private route:Router) {
+
+
+  constructor(private accountService:AccountService,private tokenService:TokenService,private route:Router,private userType:UserType) {
   }
 
   ngOnInit(): void {
-    this.accountService.authStatus.subscribe(res=>{this.currentUser=this.tokenService.getInfo();})
+    this.accountService.authStatus.subscribe(res=>{this.currentUser=this.tokenService.getInfo();
 
+    })
   }
+
   logout(){
     this.tokenService.remove();
     this.accountService.changeStatus(false);
     this.route.navigateByUrl("/");
-
   }
 
 }
