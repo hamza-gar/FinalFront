@@ -38,11 +38,11 @@ export class MesSujetComponent implements OnInit{
   public selectedItem!:sujetRequirement ;
 
   myIndex(index:number){
-
     this.selectedItem = this.lisSubjects[index];
     console.log(this.selectedItem.idSujet);
     this.getFullEquipes();
   }
+
   public addSujet(){
     console.log(this.nomSujet)
     console.log(this.tailleEquipe)
@@ -52,7 +52,6 @@ export class MesSujetComponent implements OnInit{
     this.subjects.tailleEquipe=this.tailleEquipe
     this.sujetService.addSujet(this.subjects).subscribe(operation=>{
       console.log(operation)
-
     }, error=>{
       console.log('error')
     })

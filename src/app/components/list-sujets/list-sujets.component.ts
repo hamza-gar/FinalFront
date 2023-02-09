@@ -3,7 +3,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {sujetRequirement} from "../../classes/sujetRequirement";
 import {SujetService} from "../../services/sujet.service";
 import {TokenService} from "../../services/token.service";
-import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
 import {EquipeRequirement} from "../../classes/EquipeRequirement";
 import {GroupsServiceService} from "../../services/groups-service.service";

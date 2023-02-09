@@ -92,7 +92,7 @@
           <ng-container *ngFor="let group of fullEquipe;index as j">
             <tr style="text-align: center">
               <td>{{j}}</td>
-              <button type="button" class="btn btn-warning"  style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers"  (click)="getMemebersOfEquipe();getEquipeIndex(j)">Voir Etudiant</button>
+              <button type="button" class="btn btn-warning"  style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers"  (click)="getEquipeIndex(j); getMemebersOfEquipe();">Voir Etudiant</button>
               <button class="btn btn-warning" > Accepter </button>
             </tr>
           </ng-container>
