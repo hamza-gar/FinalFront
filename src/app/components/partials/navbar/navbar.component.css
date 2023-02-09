@@ -19,17 +19,26 @@
   color: white;
 }
 
+.account-container{
+  top: 1vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 4.5vw;
+}
+
 .navbar{
   height: 6vh;
 }
 
 /******************************************/
-
-
+.mll{
+  margin-left: 76%;
+}
 
 .dropdown-toggle{
   margin-top: 2vh;
-  width: 200px;
+  width: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,9 +51,14 @@
 .dropdown-toggle:focus{
 
   box-shadow: none !important;
-
+  color: #891c9f;
 }
 
+.dropdown-item unclickable{
+  color: #ffffff;
+  background-color: #4d1259;
+  padding: 12px;
+}
 
 .dropdown-toggle::after {
 
@@ -55,7 +69,7 @@
   margin-right: 4.5vw;
 }
 .dropdown-menu{
-  width: 300px;
+  width: 16vw;
   border: 2px solid #4d1259;
   padding: 0rem 0;
   transform: translate3d(0px, 50px, 0px) !important;
