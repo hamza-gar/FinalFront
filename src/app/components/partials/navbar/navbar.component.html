@@ -1,61 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">Gestion Pfe</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarColor02">
-
-      <ul *ngIf="currentUser" class="navbar-nav me-auto">
-        <li class="nav-item">
-          <div class="btn-group">
-            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 2px;">
-              Sujets
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" routerLink="/sujets/ListSujets">Mes Sujets</a>
-              <a class="dropdown-item" href="#">Tous les sujets</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false" style="margin-top: 2px;">
+            Sujets
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/sujets/ListSujets">Mes Sujets</a>
+            <a class="dropdown-item" href="#">Tous les sujets</a>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">A </a>
-        </li>
-      </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="#">A </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mll">
+      <li *ngIf="!currentUser" class="nav-item">
+        <button routerLink="/login" class="btn-login" style="color: aliceblue">Login/SignUp</button>
+      </li>
+      <li *ngIf="currentUser" class="nav-item account-container">
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false" style="margin-top: 2px;">
 
-      <ul *ngIf="!currentUser" class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="#">List Sujets
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">A propos</a>
-        </li>
-      </ul>
-    <ul class="navber-nav ml-auto">
-      <li *ngIf="!currentUser" class="nav-item"><button routerLink="/login" class="btn-login" style="color: aliceblue" >Login/SignUp</button></li>
-      <li *ngIf="currentUser" class="nav-item">
-        <div class="container d-flex justify-content-center align-items-center">
-
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-              <span>Account</span>
-              <i class="fa fa-caret-down"></i>
+            <span class="buttonAcc">Account</span>
+          </button>
+          <div class="dropdown-menu">
+            <div class="dropdown-item noncliquable"><i class="{{faString}}"></i> <span>{{mail}}</span></div>
+            <a class="dropdown-item" routerLink="{{settingsLink}}"><i class="fa fa-cog" aria-hidden="true"></i><span>settings</span></a>
+            <button (click)="logout()" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i><span>LogOut</span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li class=" noncliquable"><i class="{{faString}}"></i> <span>{{mail}}</span></li>
-              <li><a class="dropdown-item" routerLink="{{settingsLink}}">settings</a></li>
-              <li><button (click)="logout()" class="dropdown-item">LogOut</button></li>
-            </ul>
           </div>
         </div>
       </li>
     </ul>
-    </div>
+  </div>
   </div>
 </nav>
-
 
 <!--<button (click)="logout()" class="btn-logout" style="color: aliceblue">Logout<br/>{{mail}}</button>-->
