@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {enseignantSignUp} from "../../../classes/enseignantSignUp";
 import {SignupService} from "../../../services/signup.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-enseignantLog',
@@ -16,7 +17,7 @@ export class EnseignantComponent implements OnInit{
   type:string = "password";
   isText:boolean=false;
   eyeIcon:string="fa-eye-slash";
-  constructor(private signupEnseignant : SignupService) {
+  constructor(private signupEnseignant : SignupService, private routerLink:Router) {
   }
   hideShowPass(){
     this.isText = !this.isText;
@@ -28,11 +29,12 @@ export class EnseignantComponent implements OnInit{
     this.showDots=false;
     this.locked=false;
     this.signupEnseignant.signupEnseignant(this.signup).subscribe(data=>{
-      alert("Successfully enseignant is register")
+      this.routerLink.navigate(['/login']);
     },error=>{alert("sorry User not register")
       this.locked=true;
       this.showDots=true;
     });
+
   }
 
   ngOnInit(): void {
