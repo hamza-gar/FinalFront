@@ -33,7 +33,7 @@
 
 /******************************************/
 .mll{
-  margin-left: 62vw;
+  margin-left: 76%;
 }
 
 .dropdown-toggle{
@@ -51,7 +51,7 @@
 .dropdown-toggle:focus{
 
   box-shadow: none !important;
-
+  color: #891c9f;
 }
 
 .dropdown-item unclickable{
