@@ -55,8 +55,8 @@
                 <td>{{j}}</td>
                 <!-- todo : nombre des etudiant dans l'equipe -->
                 <td>{{group.tailleEquipe}}</td>
-                <td><button type="button" class="btn btn-warning" data-dismiss="modal" style="margin-right:2px;">Voir Etudiant</button>
-                  <button type="button" class="btn btn-info" style="margin-left:2px;">Join Equipe</button></td>
+                <td><button type="button" class="btn btn-warning"  style="margin-right:2px;">Voir Etudiant</button>
+                  <button type="button" class="btn btn-info" *ngIf="!equipe.isPrivate" data-toggle="modal" data-target="#joinGroup" (click)="joinGroupe(j)" style="margin-left:2px;">Join Equipe</button></td>
               </tr>
             </ng-container>
             </tbody>
@@ -64,11 +64,72 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create Groupe</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createModal" style="margin-left:2px;">create Equipe</button>
         </div>
       </div>
     </div>
   </div>
+
+<!--  modal for add group to subject-->
+  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createModalLabel">Create Group</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+
+            <div class="form-check" (click)="checkButton()" >
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">groue Prive ?</label>
+            </div>
+            <div *ngIf="isChecked" class="form-group">
+              <label for="exampleInputPassword1">Mot De Passe du Groupe :</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" *ngIf="isChecked" [(ngModel)]="GroupPassword" name="password">
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="createGroupe()">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ***************************************** -->
+
+  <!--  modal for join group if there is a password -->
+  <div class="modal fade" id="joinGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="joinGroupLabel">Create Group</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div *ngIf="equipe.isPrivate" class="form-group">
+              <label for="passwordJoining">Mot De Passe du Groupe :</label>
+              <input type="password" class="form-control" id="passwordJoining" placeholder="Password" [(ngModel)]="GroupPassword" name="password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***************************************** -->
 
   <nav aria-label="Page navigation example">
     <ul class="pagination">

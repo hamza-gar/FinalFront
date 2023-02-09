@@ -16,4 +16,12 @@ export class GroupsServiceService {
     return this.http.get<EquipeRequirement[]>(`${this.equipeUrl}/sujets/${id}?page=${page}&limit=${limit}`);
   }
 
+  public joinEquipe(Equipe:EquipeRequirement):Observable<EquipeRequirement>{
+      return this.http.put<EquipeRequirement>(`${this.equipeUrl}/join`,Equipe);
+  }
+
+  public createGroup(equipe:EquipeRequirement):Observable<EquipeRequirement>{
+    return this.http.post<EquipeRequirement>(`${this.equipeUrl}`,equipe);
+  }
+
 }

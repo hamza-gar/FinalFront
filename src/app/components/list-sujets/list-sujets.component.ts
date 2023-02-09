@@ -18,10 +18,15 @@ export class ListSujetsComponent implements OnInit {
   public subjects!: sujetRequirement[];
   public equipeRequirement !: EquipeRequirement[];
 
+  public equipe:EquipeRequirement=new EquipeRequirement();
+
   public pages!: number[];
 
   public counter: number = 0;
 
+  public isChecked=false;
+
+  public GroupPassword!:string;
 
   constructor(private sujetService: SujetService ,
               private groupeService:GroupsServiceService,
@@ -30,6 +35,7 @@ export class ListSujetsComponent implements OnInit {
   }
 
   public selectedItem!:sujetRequirement ;
+  public selectedGroup!:EquipeRequirement;
 
   public p: number = 0;
   pagination!: number;
@@ -53,6 +59,9 @@ export class ListSujetsComponent implements OnInit {
       }
     );
   }
+  checkButton(){
+    this.isChecked=!this.isChecked;
+  }
   myIndex(index:number){
     this.selectedItem = this.subjects[index];
     console.log(this.selectedItem.idSujet);
@@ -72,6 +81,38 @@ export class ListSujetsComponent implements OnInit {
     );
   }
 
+  public createGroupe(){
+    if(this.isChecked){
+      this.equipe.isPrivate=true
+      this.equipe.cryptedPassword=this.GroupPassword;
+    }else {
+      this.equipe.isPrivate=false
+      this.equipe.cryptedPassword=''
+    }
+    this.equipe.sujetId=this.selectedItem.idSujet;
+    this.groupeService.createGroup(this.equipe).subscribe(
+      (response:EquipeRequirement)=>{
+        console.log(response)
+      },(error:HttpErrorResponse)=>
+      {alert(error);}
+    );
+  }
+
+  public joinGroupe(index:any){
+    this.selectedGroup = this.equipeRequirement[index]
+    if(this.equipe.isPrivate){
+      this.equipe.cryptedPassword=this.GroupPassword;
+    }else {
+      this.equipe.cryptedPassword=''
+    }
+    console.log("group id :", this.selectedGroup.idEquipe)
+    this.equipe.idEquipe=this.selectedGroup.idEquipe
+    this.groupeService.joinEquipe(this.equipe).subscribe(
+      (response:EquipeRequirement)=>{
+        console.log(response);
+      },(error:HttpErrorResponse)=>
+      {alert(error);});
+  }
   public getSujetPages(): void {
     this.sujetService.getSujetPages().subscribe(
       (response: number) => {
