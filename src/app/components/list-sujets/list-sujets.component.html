@@ -56,7 +56,8 @@
                 <!-- todo : nombre des etudiant dans l'equipe -->
                 <td>{{group.tailleEquipe}}</td>
                 <td><button type="button" class="btn btn-warning"  style="margin-right:2px;">Voir Etudiant</button>
-                  <button type="button" class="btn btn-info" *ngIf="!equipe.isPrivate" data-toggle="modal" data-target="#joinGroup" (click)="joinGroupe(j)" style="margin-left:2px;">Join Equipe</button></td>
+                  <button type="button" class="btn btn-info" *ngIf="isGroupPrive(j)" data-toggle="modal" data-target="#joinGroup"  style="margin-left:2px;">Join Equipe</button>
+                  <button type="button" class="btn btn-info" *ngIf="!isGroupPrive(j)" (click)="getEquipeIndex(j)" style="margin-left:2px;">Join Equipe</button></td>
               </tr>
             </ng-container>
             </tbody>
@@ -116,14 +117,15 @@
         </div>
         <div class="modal-body">
           <form>
-            <div *ngIf="equipe.isPrivate" class="form-group">
+            <div class="form-group">
               <label for="passwordJoining">Mot De Passe du Groupe :</label>
-              <input type="password" class="form-control" id="passwordJoining" placeholder="Password" [(ngModel)]="GroupPassword" name="password">
+              <input type="password" class="form-control" id="passwordJoining" placeholder="Password" [(ngModel)]="JoinGroupPassword" name="password" >
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success"  (click)="joinGroupe(selectedGroup.idEquipe)" >Join</button>
         </div>
       </div>
     </div>

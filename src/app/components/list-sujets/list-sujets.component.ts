@@ -40,6 +40,7 @@ export class ListSujetsComponent implements OnInit {
   public p: number = 0;
   pagination!: number;
 
+  JoinGroupPassword!:string;
   public isConnected(){
     if(this.tokenService.isValid())
       return true;
@@ -97,21 +98,34 @@ export class ListSujetsComponent implements OnInit {
       {alert(error);}
     );
   }
-
-  public joinGroupe(index:any){
+  getEquipeIndex(index:any){
     this.selectedGroup = this.equipeRequirement[index]
-    if(this.equipe.isPrivate){
-      this.equipe.cryptedPassword=this.GroupPassword;
-    }else {
-      this.equipe.cryptedPassword=''
+    if (this.selectedGroup.isPrivate)
+    {
+      this.selectedGroup.cryptedPassword=this.JoinGroupPassword;
     }
-    console.log("group id :", this.selectedGroup.idEquipe)
-    this.equipe.idEquipe=this.selectedGroup.idEquipe
-    this.groupeService.joinEquipe(this.equipe).subscribe(
+    else {
+      this.selectedGroup.cryptedPassword=''
+    }
+    console.log(this.selectedGroup.cryptedPassword)
+    this.joinGroupe(this.selectedGroup.idEquipe);
+  }
+  public joinGroupe(idEquipe:any){
+    this.equipe.idEquipe=idEquipe
+    this.groupeService.joinEquipe(this.selectedGroup).subscribe(
       (response:EquipeRequirement)=>{
         console.log(response);
       },(error:HttpErrorResponse)=>
       {alert(error);});
+  }
+  isGroupPrive(index:any){
+    this.selectedGroup = this.equipeRequirement[index]
+    if(this.selectedGroup.isPrivate){
+      console.log(this.selectedGroup.isPrivate)
+      return true
+    }
+    console.log(this.selectedGroup.isPrivate)
+    return false
   }
   public getSujetPages(): void {
     this.sujetService.getSujetPages().subscribe(
