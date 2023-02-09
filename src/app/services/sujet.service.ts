@@ -22,9 +22,11 @@ export class SujetService{
     return this.http.get<number>(`${this.apiServiceUrl}/count`);
   }
 
-  addSujetUrl = "http://localhost:8080/sujets"
   public addSujet(sujet:sujetRequirement):Observable<sujetRequirement>{
-  return this.http.post<sujetRequirement>(`${this.addSujetUrl}`,sujet);
+  return this.http.post<sujetRequirement>(`${this.apiServiceUrl}`,sujet);
   }
 
+  getMeSujet(page: number, limit: number):Observable<sujetRequirement[]>{
+    return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/posted?page=${page}&limit=${limit}`);
+  }
 }

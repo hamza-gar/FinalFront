@@ -29,4 +29,7 @@ export class GroupsServiceService {
     return this.http.get<Members[][]>(`${this.equipeUrl}/get-members?idEquipe=${idEquipe}`)
   }
 
+  public getAllFullEquipes( id:any,page: number, limit: number): Observable<EquipeRequirement[]>{
+    return this.http.get<EquipeRequirement[]>(`${this.equipeUrl}/sujets/${id}?page=${page}&limit=${limit}`);
+  }
 }

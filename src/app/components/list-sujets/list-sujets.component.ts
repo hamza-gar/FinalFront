@@ -92,7 +92,7 @@ export class ListSujetsComponent implements OnInit {
   }
   public getEquipes() {
 
-    this.groupeService.getEquipesOfSujet(this.selectedItem.idSujet, this.p, 10).subscribe(
+    this.groupeService.getEquipesOfSujet(this.selectedItem.idSujet, this.p, 6).subscribe(
       (response: EquipeRequirement[]) => {
         console.log(response);
         this.equipeRequirement = response;
