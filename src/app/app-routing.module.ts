@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
   {path:'sujets',children:
       [
-        {path: 'ListSujets',component: ListSujetsComponent}
+        {path: 'ListSujets',component: ListSujetsComponent},
     ]
   },
 

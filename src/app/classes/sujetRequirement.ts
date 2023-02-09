@@ -1,8 +1,9 @@
-export interface sujetRequirement{
-  idSujet : string;
-  nomSujet: string;
-  descriptionSujet:string;
-  tailleEquipe:number;
-
+export class sujetRequirement{
+  idSujet!: string;
+  nomSujet!: string;
+  descriptionSujet!:string;
+  tailleEquipe!:number;
+  nomEnseignant!:string
+  emailEnseignant!:string;
 
 }

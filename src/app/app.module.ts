@@ -26,6 +26,7 @@ import { EtudiantSettingsComponent } from './components/settings/etudiant-settin
 import { EnseignantSettingsComponent } from './components/settings/enseignant-settings/enseignant-settings.component';
 import { AdminSettingsComponent } from './components/settings/admin-settings/admin-settings.component';
 import {JwtInterceptor} from "./services/jwt.interceptor";
+import { SidebarComponent } from './components/partials/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {JwtInterceptor} from "./services/jwt.interceptor";
     DashboardAdminComponent,
     EtudiantSettingsComponent,
     EnseignantSettingsComponent,
-    AdminSettingsComponent
+    AdminSettingsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col">Taille Equipe</th>
+      <th scope="col">Enseignant</th>
       <th scope="col">Voir les equipes</th>
     </tr>
     </thead>
@@ -16,6 +17,11 @@
         <td>{{sujet.nomSujet}}</td>
         <td>{{sujet.descriptionSujet}}</td>
         <td>{{sujet.tailleEquipe}}</td>
+        <td>{{sujet.nomEnseignant}}<br/>
+          <span style="color: #0057e7">{{sujet.emailEnseignant}}</span>
+
+        </td>
+
         <td><button  *ngIf="isConnected()" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" >Voir Equipes</button>
           <button  *ngIf="!isConnected()" type="button" class="btn btn-info" routerLink="/login" >Voir Equipes</button>
         </td>

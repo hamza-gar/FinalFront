@@ -45,7 +45,7 @@ export class ListSujetsComponent implements OnInit {
     this.sujetService.getSujets(p, 6).subscribe(
       (response: sujetRequirement[]) => {
         this.subjects = response;
-        console.log(this.subjects)
+        console.log("enseignant :",this.subjects[p].nomEnseignant)
         console.log(this.p)
       },
       (error: HttpErrorResponse) => {
@@ -124,6 +124,7 @@ export class ListSujetsComponent implements OnInit {
     this.getSujetPages();
     this.getEquipes();
   }
+
 
 
 
