@@ -54,8 +54,8 @@
               <tr style="text-align: center">
                 <td>{{j}}</td>
                 <!-- todo : nombre des etudiant dans l'equipe -->
-                <td>{{group.tailleEquipe}}</td>
-                <td><button type="button" class="btn btn-warning"  style="margin-right:2px;">Voir Etudiant</button>
+                <td>{{countEtudiantInGroup}}/{{group.tailleEquipe}}</td>
+                <td><button type="button" class="btn btn-warning"  style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers"  (click)="getMemebersOfEquipe();">Voir Etudiant</button>
                   <button type="button" class="btn btn-info" *ngIf="isGroupPrive(j)" data-toggle="modal" data-target="#joinGroup"  style="margin-left:2px;">Join Equipe</button>
                   <button type="button" class="btn btn-info" *ngIf="!isGroupPrive(j)" (click)="getEquipeIndex(j)" style="margin-left:2px;">Join Equipe</button></td>
               </tr>
@@ -132,6 +132,45 @@
   </div>
 
   <!-- ***************************************** -->
+
+
+<!--  modal for getting the element of the group -->
+  <div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="groupMembersLabel">Members Du Groupe :</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered" >
+            <thead>
+            <tr style="text-align: center">
+              <th scope="col">Etudiant</th>
+              <th scope="col">Nom Complete</th>
+              <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <ng-container *ngFor="let membe of member;index as j">
+              <tr style="text-align: center">
+                <td>{{j}}</td>
+                <td>{{membe[0]}}</td>
+                <td>{{membe[1]}}</td>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  *********************************************** -->
 
   <nav aria-label="Page navigation example">
     <ul class="pagination">

@@ -21,6 +21,7 @@ import {DashboardAdminComponent} from "./components/dashboard/dashboard-admin/da
 import {EtudiantSettingsComponent} from "./components/settings/etudiant-settings/etudiant-settings.component";
 import {EnseignantSettingsComponent} from "./components/settings/enseignant-settings/enseignant-settings.component";
 import {AdminSettingsComponent} from "./components/settings/admin-settings/admin-settings.component";
+import {MesSujetComponent} from "./components/list-sujets/mes-sujet/mes-sujet.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -45,7 +46,11 @@ const routes: Routes = [
     ] },
   {path:'dashboard',children:[
       {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
-      {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
+      {path: 'home',children:[
+        {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
+          {path:'mesSujets',component:MesSujetComponent}
+        ]
+      },
       {path: 'dashboardAdmin',component: DashboardAdminComponent},
     ]},
   {path:'settings',children:[

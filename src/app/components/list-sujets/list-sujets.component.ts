@@ -7,6 +7,7 @@ import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
 import {EquipeRequirement} from "../../classes/EquipeRequirement";
 import {GroupsServiceService} from "../../services/groups-service.service";
+import {Members} from "../../classes/members";
 
 @Component({
   selector: 'app-list-sujets',
@@ -18,6 +19,8 @@ export class ListSujetsComponent implements OnInit {
   public subjects!: sujetRequirement[];
   public equipeRequirement !: EquipeRequirement[];
 
+  public  member!:Members[][];
+
   public equipe:EquipeRequirement=new EquipeRequirement();
 
   public pages!: number[];
@@ -28,9 +31,12 @@ export class ListSujetsComponent implements OnInit {
 
   public GroupPassword!:string;
 
+  public countEtudiantInGroup=0;
+
   constructor(private sujetService: SujetService ,
               private groupeService:GroupsServiceService,
               private tokenService:TokenService,
+
               private router:Router) {
   }
 
@@ -64,9 +70,25 @@ export class ListSujetsComponent implements OnInit {
     this.isChecked=!this.isChecked;
   }
   myIndex(index:number){
+
     this.selectedItem = this.subjects[index];
     console.log(this.selectedItem.idSujet);
     this.getEquipes();
+    this.getCountEtudiant();
+  }
+
+  /*todo:fix the number of element in team*/
+  getCountEtudiant(){
+    this.groupeService.getMembersOfEquipe(this.selectedGroup.idEquipe,this.member).subscribe(
+      (operation:Members[][])=>{
+        if(operation.length==0){
+          this.countEtudiantInGroup=0
+        }
+        this.countEtudiantInGroup=operation.length
+
+      },error => {
+        console.log(error);
+      });
   }
   public getEquipes() {
 
@@ -80,6 +102,8 @@ export class ListSujetsComponent implements OnInit {
         alert("error");
       }
     );
+
+
   }
 
   public createGroupe(){
@@ -98,6 +122,17 @@ export class ListSujetsComponent implements OnInit {
       {alert(error);}
     );
   }
+
+  getMemebersOfEquipe(){
+    console.log("this equipe id :" ,this.selectedGroup.idEquipe)
+    this.groupeService.getMembersOfEquipe(this.selectedGroup.idEquipe,this.member).subscribe(
+      (operation:Members[][])=>{
+      this.member=operation
+    },error => {
+      console.log(error);
+    })
+  }
+
   getEquipeIndex(index:any){
     this.selectedGroup = this.equipeRequirement[index]
     if (this.selectedGroup.isPrivate)
@@ -178,6 +213,7 @@ export class ListSujetsComponent implements OnInit {
     this.getSujets(this.p);
     this.getSujetPages();
     this.getEquipes();
+
   }
 
 

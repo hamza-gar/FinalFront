@@ -1,0 +1,131 @@
+header nav {
+  background-color: lightgray;
+  padding: 1em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn{
+  margin-top:10px;
+  border-radius:15px ;
+}
+.panel{
+  background-color: #e1e2ca;
+  min-height: 180px;
+  box-shadow: 20px 20px 80px rgb(218,218,218);
+  border-radius: 12px;
+  margin-top: 10px;
+
+}
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+#bounds{
+  word-wrap: break-word;
+}
+
+#btnLeft {
+  position: absolute;
+  left: 15px;
+}
+/*************/
+
+
+#dots5 {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+#dots5 span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  -webkit-animation: dots5 1s infinite ease-in-out;
+  animation: dots5 1s infinite ease-in-out;
+}
+
+#dots5 span:nth-child(1) {
+  left: 0px;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+#dots5 span:nth-child(2) {
+  left: 15px;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+#dots5 span:nth-child(3) {
+  left: 30px;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+#dots5 span:nth-child(4) {
+  left: 45px;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+@keyframes dots5 {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: #d62d20;
+  }
+  25% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: #ffa700;
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: #008744;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: #0057e7;
+  }
+}
+@-webkit-keyframes dots5 {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: #d62d20;
+  }
+  25% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: #ffa700;
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: #008744;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: #0057e7;
+  }
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EquipeRequirement} from "../classes/EquipeRequirement";
 import { Observable } from 'rxjs';
+import {Members} from "../classes/members";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class GroupsServiceService {
 
   public createGroup(equipe:EquipeRequirement):Observable<EquipeRequirement>{
     return this.http.post<EquipeRequirement>(`${this.equipeUrl}`,equipe);
+  }
+
+  public getMembersOfEquipe(idEquipe:string,member:Members[][]):Observable<Members[][]>{
+    return this.http.get<Members[][]>(`${this.equipeUrl}/get-members?idEquipe=${idEquipe}`)
   }
 
 }

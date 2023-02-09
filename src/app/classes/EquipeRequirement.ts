@@ -5,4 +5,6 @@ export class EquipeRequirement{
   isPrivate !: boolean;
   cryptedPassword !: string;
   driveLink !: string;
+
+  numberEtudiantInGroup!:number;
 }
