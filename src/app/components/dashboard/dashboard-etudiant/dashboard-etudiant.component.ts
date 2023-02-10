@@ -48,7 +48,7 @@ export class DashboardEtudiantComponent implements OnInit{
     this.rendesVous.getRendezvousBySelf().subscribe(res=>{
       this.rendezvousResponse=res
       this.rendezVouId=res.idRendezvous
-      this.equipeId=res.idEquipe
+
       console.log(this.equipeId)
     },error=>{
       console.log(error.message)
@@ -60,6 +60,15 @@ export class DashboardEtudiantComponent implements OnInit{
     this.group.addDriveLink(this.equipeRequire).subscribe((res:EquipeRequirement)=>{
 
     },error=>{console.log(error)})
+  }
+
+  public getEquipeBySelf(){
+    this.group.getSelfEquipe().subscribe(res=>{
+      this.equipeId=res.idEquipe
+      console.log(this.equipeId)
+    },error=>{
+      console.log(error.message)
+    })
   }
   ngOnInit(): void {
   }

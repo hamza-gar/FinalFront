@@ -39,4 +39,8 @@ export class GroupsServiceService {
   public addDriveLink(Equipe:EquipeRequirement):Observable<EquipeRequirement>{
     return this.http.put<EquipeRequirement>(`${this.equipeUrl}/drive-link`,Equipe);
   }
+
+  public getSelfEquipe():Observable<EquipeRequirement>{
+    return this.http.get<EquipeRequirement>(`${this.equipeUrl}/self`);
+  }
 }
