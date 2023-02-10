@@ -1,5 +1,7 @@
-export interface RendezvousResponse{
-  idRendezvous : string;
-  dateRendezvous : Date;
-  fixed : boolean;
+export class RendezvousResponse{
+  idRendezvous !: string;
+  dateRendezvous !: Date;
+  fixed !: boolean;
+  idEquipe!:string;
+  nomSujet !:string;
 }

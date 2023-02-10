@@ -32,4 +32,8 @@ export class GroupsServiceService {
   public getAllFullEquipes( id:any,page: number, limit: number): Observable<EquipeRequirement[]>{
     return this.http.get<EquipeRequirement[]>(`${this.equipeUrl}/sujets/${id}?page=${page}&limit=${limit}`);
   }
+
+  public getEquipeById(id:string):Observable<EquipeRequirement>{
+    return this.http.get<EquipeRequirement>(`${this.equipeUrl}/${id}`);
+  }
 }

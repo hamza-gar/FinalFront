@@ -1,6 +1,6 @@
-export interface DomaineResponse{
-  nomDomaine : string;
-  etablissement: string;
-  etudiant:Boolean;
+export class DomaineResponse{
+  nomDomaine !: string;
+  etablissement!: string;
+  etudiant!:Boolean;
 
 }

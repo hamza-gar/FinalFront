@@ -1,6 +1,6 @@
-export interface DepartementResponse{
-  nomDepartement : string;
-  enseignants: any[];
-  filieres:any[];
+export class DepartementResponse{
+  nomDepartement !: string;
+  enseignants!: any[];
+  filieres!:any[];
 
 }

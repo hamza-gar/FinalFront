@@ -17,7 +17,6 @@ export class DashboardEtudiantComponent implements OnInit{
   public priseRendesVous(){
     this.rendesVous.priseRendesVous(0).subscribe(operation=>{
       // this.rendezvousResponse = operation
-      alert("done");
     },
       error => {
       alert("error");
