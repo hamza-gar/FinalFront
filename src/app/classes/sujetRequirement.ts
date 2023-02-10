@@ -5,5 +5,5 @@ export class sujetRequirement{
   tailleEquipe!:number;
   nomEnseignant!:string
   emailEnseignant!:string;
-
+  done!:boolean;
 }

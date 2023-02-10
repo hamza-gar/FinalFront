@@ -70,6 +70,9 @@ export class MesSujetComponent implements OnInit{
     if (this.p == undefined) {
       this.p = 0;
     }
+    this.nomSujet = '';
+    this.descriptionSujet = '';
+    this.tailleEquipe = 0;
     this.getCount();
     this.getMySujets(this.p);
     this.getSujetPages();
@@ -142,6 +145,15 @@ export class MesSujetComponent implements OnInit{
     this.selectedGroup = this.fullEquipe[index]
     console.log(this.selectedGroup.idEquipe);
     console.log(this.fullEquipe[index].idEquipe);
+  }
+
+  lockSujet(){
+    this.sujetService.lockSujet(0,this.selectedItem.idSujet,this.selectedGroup.idEquipe).subscribe(respone=>{
+
+      console.log(respone);
+    },error=>{
+      console.log("error");
+    })
   }
 
 }

@@ -29,4 +29,7 @@ export class SujetService{
   getMeSujet(page: number, limit: number):Observable<sujetRequirement[]>{
     return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/posted?page=${page}&limit=${limit}`);
   }
+  lockSujet(id:any,idSujet:any,idEquipe:any):Observable<any>{
+    return this.http.put(`${this.apiServiceUrl}/lock?idSujet=${idSujet}&idEquipe=${idEquipe}`,id);
+  }
 }

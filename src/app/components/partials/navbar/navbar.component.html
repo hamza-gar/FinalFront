@@ -13,10 +13,13 @@
                   aria-expanded="false" style="margin-top: 2px;">
             Sujets
           </button>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu" *ngIf="!etudiant">
             <a class="dropdown-item" routerLink="/dashboard/home/mesSujets">Mes Sujets</a>
             <a class="dropdown-item" href="#">Tous les sujets</a>
             <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+          <div class="dropdown-menu" *ngIf="etudiant">
+            <a class="dropdown-item" routerLink="/sujets/ListSujets">Mon Sujet</a>
           </div>
         </div>
       </li>

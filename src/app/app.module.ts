@@ -28,6 +28,9 @@ import { AdminSettingsComponent } from './components/settings/admin-settings/adm
 import {JwtInterceptor} from "./services/jwt.interceptor";
 import { SidebarComponent } from './components/partials/sidebar/sidebar.component';
 import { MesSujetComponent } from './components/list-sujets/mes-sujet/mes-sujet.component';
+import { CalendarComponent } from './components/partials/calendar/calendar.component';
+import { RendesVousComponent } from './components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { MesSujetComponent } from './components/list-sujets/mes-sujet/mes-sujet.
     EnseignantSettingsComponent,
     AdminSettingsComponent,
     SidebarComponent,
-    MesSujetComponent
+    MesSujetComponent,
+    CalendarComponent,
+    RendesVousComponent,
   ],
   imports: [
     BrowserModule,
