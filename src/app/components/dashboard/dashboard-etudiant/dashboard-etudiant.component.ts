@@ -3,6 +3,8 @@ import {RendesVousService} from "../../../services/rendes-vous.service";
 import {RendezvousResponse} from "../../../classes/RendezvousResponse";
 import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {GroupsServiceService} from "../../../services/groups-service.service";
+import {EquipeRequirement} from "../../../classes/EquipeRequirement";
 
 @Component({
   selector: 'app-dashboard-etudiant',
@@ -11,11 +13,15 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 })
 export class DashboardEtudiantComponent implements OnInit{
 
-  selectedDate!:Date;
 
-  rendezVouId!:string
+  rendezVouId!:string;
+
+  equipeId!:string;
+  driveLink!:string;
   public rendezvousResponse:RendezvousResponse=new RendezvousResponse();
-  constructor(private rendesVous:RendesVousService) {
+  public equipeRequire:EquipeRequirement=new EquipeRequirement();
+
+  constructor(private rendesVous:RendesVousService,private group:GroupsServiceService) {
   }
 
   public priseRendesVous(){
@@ -42,9 +48,18 @@ export class DashboardEtudiantComponent implements OnInit{
     this.rendesVous.getRendezvousBySelf().subscribe(res=>{
       this.rendezvousResponse=res
       this.rendezVouId=res.idRendezvous
+      this.equipeId=res.idEquipe
+      console.log(this.equipeId)
     },error=>{
       console.log(error.message)
     })
+  }
+  public addDriveLink(){
+    this.equipeRequire.idEquipe=this.equipeId
+    this.equipeRequire.driveLink =this.driveLink
+    this.group.addDriveLink(this.equipeRequire).subscribe((res:EquipeRequirement)=>{
+
+    },error=>{console.log(error)})
   }
   ngOnInit(): void {
   }

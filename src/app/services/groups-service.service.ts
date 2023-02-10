@@ -36,4 +36,7 @@ export class GroupsServiceService {
   public getEquipeById(id:string):Observable<EquipeRequirement>{
     return this.http.get<EquipeRequirement>(`${this.equipeUrl}/${id}`);
   }
+  public addDriveLink(Equipe:EquipeRequirement):Observable<EquipeRequirement>{
+    return this.http.put<EquipeRequirement>(`${this.equipeUrl}/drive-link`,Equipe);
+  }
 }
