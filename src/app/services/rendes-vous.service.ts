@@ -22,4 +22,10 @@ export class RendesVousService {
     return this.httpClient.get<RendezvousResponse[]>(`${this.rendesVousUrl}?page=${page}&limit=${limit}`);
   }
 
+  public voteRendezvous(id:any):Observable<RendezvousResponse>{
+    return this.httpClient.put<RendezvousResponse>(`${this.rendesVousUrl}/vote`,id);
+  }
+  public getRendezvousBySelf():Observable<RendezvousResponse>{
+    return this.httpClient.get<RendezvousResponse>(`${this.rendesVousUrl}/self`);
+  }
 }

@@ -4,4 +4,5 @@ export class RendezvousResponse{
   fixed !: boolean;
   idEquipe!:string;
   nomSujet !:string;
+  vote!:number;
 }
