@@ -1,4 +1,12 @@
 <main class="site-wrapper">
+  <div *ngIf="!showDots; else notLocked" class="loading-bar">
+    <div class="progress-bar3" >
+    </div>
+  </div>
+  <ng-template #notLocked>
+    <div class="static-bar3">
+    </div>
+  </ng-template>
   <div class="pt-table desktop-768">
     <div class="pt-tablecell page-home relative" style="background-image: url(https://c0.wallpaperflare.com/path/534/41/125/school-books-young-adult-education-3c23f0ea26f92dd38c32e949214ee647.jpg);
   background-position: center;
@@ -92,19 +100,11 @@
                             [disabled]="!locked">S'enregistrer
                     </button>
                     <div class="text-center pt-4 text-muted">
-                      <div *ngIf="showDots">Vous avez deja un compte ? <a id="forget1"
+                      <div>Vous avez deja un compte ? <a id="forget1"
                                                                      routerLink="/loginEnseignant">Connectez-vous</a>
 
                       </div>
-                      <div *ngIf="!showDots" id="dots5">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
                     </div>
-
-
                   </form>
                 </div>
               </div>

@@ -33,6 +33,7 @@ export class EnseignantComponentLog {
 
     this.loginService.loginEnseignant(this.login).subscribe(data=>{
       this.handleResponse(data)
+      this.router.navigate(['/dashboard/home/mesSujets'])
     },error=>alert("you should sign up"));
   }
     handleResponse(res:any){
