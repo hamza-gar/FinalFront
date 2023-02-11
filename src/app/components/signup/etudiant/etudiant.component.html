@@ -73,11 +73,10 @@
 
                       <div style="width:250px;margin-left: 10px">
                         <label for="filiere" class="form-label">filiere</label>
-                        <div class="input-field">
+                        <div class="form-select">
                           <span class="fa fa-book p-2"></span>
                           <select class="form-control" id="filiere" name="filiere" [(ngModel)]="signup.nomFiliere" *ngFor="let fil of filieres">
                             <option value="{{fil.nomFiliere}}">{{fil.nomFiliere}}</option>
-                            <!-- TODO: add for loop -->
                           </select>
                         </div>
                       </div>

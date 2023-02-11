@@ -188,7 +188,15 @@ a:hover{
   border: 1px solid #ddd;
   color : #4343ff
 }
-
+.form-select{
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  color : #4343ff;
+}
 .input-field.error{
   border: 1px solid red;
   color : red;

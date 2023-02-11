@@ -33,8 +33,11 @@
 
 /******************************************/
 .mll {
-  margin-left: 76%;
+  right: 6vw;
+  position: absolute;
+  /*margin-left: 76%;*/
 }
+
 
 .dropdown-toggle {
   margin-top: 2vh;
