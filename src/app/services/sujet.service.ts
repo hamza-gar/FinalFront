@@ -32,4 +32,11 @@ export class SujetService{
   lockSujet(id:any,idSujet:any,idEquipe:any):Observable<any>{
     return this.http.put(`${this.apiServiceUrl}/lock?idSujet=${idSujet}&idEquipe=${idEquipe}`,id);
   }
+  validateSujet(sujet:sujetRequirement):Observable<sujetRequirement>{
+    return this.http.put<sujetRequirement>(`${this.apiServiceUrl}/validate`,sujet);
+  }
+  getMyLockedSujets(page: number, limit: number):Observable<sujetRequirement[]>{
+    return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/mylocked?page=${page}&limit=${limit}`)
+  }
+
 }

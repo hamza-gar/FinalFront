@@ -43,4 +43,5 @@ export class GroupsServiceService {
   public getSelfEquipe():Observable<EquipeRequirement>{
     return this.http.get<EquipeRequirement>(`${this.equipeUrl}/self`);
   }
+
 }

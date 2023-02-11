@@ -1,4 +1,5 @@
 export class enseignantSignUp{
+  idEnseignant !: string;
   nom!:string;
   prenom!:string;
   cin!:string;
@@ -9,5 +10,6 @@ export class enseignantSignUp{
   email!:string;
 
   password!:string;
+
 }
 

@@ -20,4 +20,8 @@ export class EnseignantService {
   public updateEnseignant(up:any,id:any):Observable<enseignantSignUp>{
     return this.httpClient.put<enseignantSignUp>(`${this.enseignantUrl}/${id}`,up);
   }
+  public getAllEnseignant(page: number, limit: number):Observable<enseignantSignUp[]>{
+    return this.httpClient.get<enseignantSignUp[]>(`${this.enseignantUrl}?page=${page}&limit=${limit}`);
+  }
+
 }

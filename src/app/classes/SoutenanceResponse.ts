@@ -1,5 +1,5 @@
 export class SoutenanceResponse{
   idSoutenance !: string;
-  dateSoutenance!: string;
+  dateSoutenance!: Date;
   idSujet!:string;
 }
