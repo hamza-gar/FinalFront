@@ -54,7 +54,6 @@ export class EnseignantComponent implements OnInit {
     this.signupEnseignant.getEtablissement().subscribe(
       (response: EtablissementResponse[]) => {
         this.etablissements = response;
-
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
