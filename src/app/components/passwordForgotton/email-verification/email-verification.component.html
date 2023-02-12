@@ -1,43 +1,47 @@
-<div class="outer">
-  <a class="back-button" routerLink="/secondPage">
-    <i class="fa fa-arrow-left"></i>
-  </a>
-  <div class="container">
-    <div class="row">
-      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-        <div class="panel border bg-white">
-          <div class="panel-heading">
-            <h3 class="pt-3 font-weight-bold">Reset Password</h3>
-          </div>
-          <div class="panel-body p-3">
-            <form>
-              <div class="form-group pt-3">
-                <label for="email" class="form-label" >Email</label>
-                <div class="input-field">
-                  <span class="fa fa-envelope p-2"></span>
-                  <input type="email" class="form-control" id="email" name="email" (input)="onGetMail($event)" >
+<main class="site-wrapper">
+  <div *ngIf="!showDots; else notLocked" class="loading-bar">
+    <div class="progress-bar3">
+    </div>
+  </div>
+  <ng-template #notLocked>
+    <div class="static-bar3">
+    </div>
+  </ng-template>
+  <div class="pt-table desktop-768">
+    <div class="pt-tablecell page-home relative" style="background-image: url(https://c0.wallpaperflare.com/path/534/41/125/school-books-young-adult-education-3c23f0ea26f92dd38c32e949214ee647.jpg);
+  background-position: center;
+  background-size: cover;">
+      <div class="overlay">
+        <div class="container mt-5">
+          <a class="back-button" routerLink="../">
+            <i class="fa fa-arrow-left"></i>
+          </a>
+          <div class="row mt-5">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 mt-5" >
+              <div class="panel border bg-white mt-5">
+                <div class="panel-heading">
+                  <h3 class="pt-3 font-weight-bold">Reset Password</h3>
+                </div>
+                <div class="panel-body p-3">
+                  <form>
+                    <div class="form-group pt-3">
+                      <label for="email" class="form-label">Email</label>
+                      <div class="input-field">
+                        <span class="fa fa-envelope p-2"></span>
+                        <input type="email" class="form-control" id="email" name="email" (input)="onGetMail($event)">
+                      </div>
+                    </div>
+
+                    <button type="submit " class="btn btn-primary btn-block mt-4 w-100" (click)="onClick() "
+                            [disabled]="!locked">Send Mail
+                    </button>
+                  </form>
                 </div>
               </div>
-
-              <button type="submit " class="btn btn-primary btn-block mt-4 w-100" (click)="onClick() " [disabled]="!locked" >Send Mail</button>
-
-              <div class="col-sm-2" *ngIf="!showDots">
-                <div id="dots5" style="margin-left: 20px; margin-top: -115px;">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-
-
-
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-
+</main>

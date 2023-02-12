@@ -7,6 +7,9 @@
   padding-top: 60px;
 }
 
+.back-button:hover {
+  color: #d0c3c3;
+}
 .page-home {
   background-position: center center;
   background-repeat: no-repeat;

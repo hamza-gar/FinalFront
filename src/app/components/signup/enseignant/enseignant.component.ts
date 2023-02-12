@@ -1,4 +1,4 @@
-import {Component, OnInit,EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {enseignantSignUp} from "../../../classes/enseignantSignUp";
 import {SignupService} from "../../../services/signup.service";
 import {Router} from "@angular/router";
@@ -25,7 +25,7 @@ export class EnseignantComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = "fa-eye-slash";
 
-  value!:number;
+  value!: number;
 
   constructor(private signupEnseignant: SignupService, private routerLink: Router) {
   }
@@ -37,42 +37,45 @@ export class EnseignantComponent implements OnInit {
   }
 
   SignUpRegister() {
-    console.log(this.signup);
     this.showDots = false;
     this.locked = false;
+    console.log(this.signup.idDepartement);
     this.signupEnseignant.signupEnseignant(this.signup).subscribe(data => {
-      this.routerLink.navigate(['/login']);
-    }, error => {
-      alert("sorry User not register")
-      this.locked = true;
-      this.showDots = true;
-    });
+        this.routerLink.navigate(['/login']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        this.locked = true;
+        this.showDots = true;
+      });
   }
 
   getEtablissement() {
     this.signupEnseignant.getEtablissement().subscribe(
       (response: EtablissementResponse[]) => {
         this.etablissements = response;
-
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       })
   }
 
-  getDepartement(nomEtablissement:string) {
-      console.log("this is the :", nomEtablissement);
+  getDepartement(nomEtablissement: string) {
+    console.log("this is the :", nomEtablissement);
     this.signupEnseignant.getDepartementsByEtablissement(nomEtablissement).subscribe(
       (response: DepartementResponse[]) => {
         this.departements = response;
-        console.log("this is the departement :",this.departements);
-      },error => {console.log(error)}
+        console.log("this is the departement :", this.departements);
+      }, error => {
+        console.log(error)
+      }
     )
   }
 
-  test(){
+  test() {
     console.log()
   }
+
   // setIndex(index: number) {
   //   this.selectedEtablissement = this.etablissements[index];
   //
@@ -80,16 +83,17 @@ export class EnseignantComponent implements OnInit {
   //  // this.getDepartement();
   // }
 
-  setValue(nomEtablissement:number){
+  setValue(nomEtablissement: number) {
     console.log(nomEtablissement)
   }
+
   ngOnInit(): void {
     this.getEtablissement();
 
     this.showDots = true;
   }
 
-  onEtablissementSelected(etablissement :EtablissementResponse) {
+  onEtablissementSelected(etablissement: EtablissementResponse) {
     console.log(etablissement)
     console.log(etablissement.toString())
     this.getDepartement(etablissement.toString())

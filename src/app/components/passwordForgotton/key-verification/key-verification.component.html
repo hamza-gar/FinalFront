@@ -1,16 +1,59 @@
-<div class="container height-100 d-flex justify-content-center align-items-center">
-  <div class="position-relative">
-    <div class="card p-2 text-center">
-      <h6>Veuillez entrer le mot de passe unique<br> pour vérifier votre compte</h6>
-      <div> <span>Un code a été envoyé à votre courrier</span>
-      </div> <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="first" maxlength="1" />
-      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="second" maxlength="1" />
-      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="third" maxlength="1" />
-      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="fourth" maxlength="1" />
-      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="fifth" maxlength="1" />
-      <input class="m-2 text-center form-control rounded" type="text" [(ngModel)]="sixth" maxlength="1" />
-    </div> <div class="mt-4"> <button class="btn btn-danger px-4 validate" (click)="onClick()">Valider</button>
-    </div> </div> <div class="card-2">  <div class="content d-flex justify-content-center align-items-center">
-    <span>Didn't get the code</span> <a href="#" class="text-decoration-none ms-3">Resend</a> </div> </div> </div>
-</div>
+<main class="site-wrapper">
+  <div class="loading-bar">
+    <div class="progress-bar3">
+    </div>
+  </div>
+  <ng-template #notLocked>
+    <div class="static-bar3">
+    </div>
+  </ng-template>
+  <div class="pt-table desktop-768">
+    <div class="pt-tablecell page-home relative" style="background-image: url(https://c0.wallpaperflare.com/path/534/41/125/school-books-young-adult-education-3c23f0ea26f92dd38c32e949214ee647.jpg);
+  background-position: center;
+  background-size: cover;">
+      <div class="overlay">
+        <div class="container mt-5">
+          <a class="back-button" routerLink="../">
+            <i class="fa fa-arrow-left"></i>
+          </a>
+          <div class="row mt-5">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 mt-5">
+
+
+              <div class="card p-2 text-center">
+                <h6>Veuillez entrer le mot de passe unique<br> pour vérifier votre compte</h6>
+                <div><span>Un code a été envoyé à votre courrier</span>
+                </div>
+                <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                  <input class="m-2 text-center form-control rounded" style="border: 1px solid #09455b" type="text"
+                         [(ngModel)]="first"
+                         maxlength="1"/>
+                  <input class="m-2 text-center form-control rounded" style="border: 1px solid #09455b" type="text"
+                         [(ngModel)]="second"
+                         maxlength="1"/>
+                  <input class="m-2 text-center form-control rounded" style="border: 1px solid #09455b" type="text"
+                         [(ngModel)]="third"
+                         maxlength="1"/>
+                  <input class="m-2 text-center form-control rounded" style="border: 1px solid #09455b" type="text"
+                         [(ngModel)]="fourth"
+                         maxlength="1"/>
+                  <input class="m-2 text-center form-control rounded" style="border: 1px solid #09455b" type="text"
+                         [(ngModel)]="fifth"
+                         maxlength="1"/>
+                  <input class="m-2 text-center form-control rounded" style="border: 1px solid #09455b" type="text"
+                         [(ngModel)]="sixth"
+                         maxlength="1"/>
+                </div>
+                <div class="mt-4">
+                  <button class="btn btn-danger px-4 validate" (click)="onClick()">Valider</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

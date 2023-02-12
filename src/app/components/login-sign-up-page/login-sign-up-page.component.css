@@ -13,7 +13,9 @@ body {
   background-color: #F5F5F5;
 
 }
-
+.back-button:hover {
+  color: #d0c3c3;
+}
 ::-webkit-scrollbar-thumb {
   background-color: #f90a23;
   background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
