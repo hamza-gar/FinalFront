@@ -39,6 +39,7 @@ export class RendesVousComponent implements OnInit{
   }
   public fixRendesVous(){
     console.log("date time :",this.renedsVousDate.dateRendezvous);
+    this.renedsVousDate.dateRendezvous= new Date(this.renedsVousDate.dateRendezvous)
     this.rendesVousService.fixRendezvous(this.renedsVousDate).subscribe((response:RendezvousResponse)=>{
       this.renedsVousDate=response;
       console.log("id equipe :",this.renedsVousDate.idEquipe)

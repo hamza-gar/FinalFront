@@ -25,6 +25,8 @@ export class EnseignantComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = "fa-eye-slash";
 
+  value!:number;
+
   constructor(private signupEnseignant: SignupService, private routerLink: Router) {
   }
 
@@ -51,34 +53,46 @@ export class EnseignantComponent implements OnInit {
     this.signupEnseignant.getEtablissement().subscribe(
       (response: EtablissementResponse[]) => {
         this.etablissements = response;
-        this.selectedEtablissement = this.etablissements[0];
-        console.log(this.etablissements);
-        this.getDepartement();
+
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       })
   }
 
-  getDepartement() {
-    this.signupEnseignant.getDepartements(this.selectedEtablissement.idEtablissement).subscribe(
+  getDepartement(nomEtablissement:string) {
+      console.log("this is the :", nomEtablissement);
+    this.signupEnseignant.getDepartementsByEtablissement(nomEtablissement).subscribe(
       (response: DepartementResponse[]) => {
         this.departements = response;
-        console.log(this.departements);
-      }
+        console.log("this is the departement :",this.departements);
+      },error => {console.log(error)}
     )
   }
 
-  setIndex(index: number) {
-    this.selectedEtablissement = this.etablissements[index];
-    console.log(this.selectedEtablissement);
-    this.getDepartement();
+  test(){
+    console.log()
   }
+  // setIndex(index: number) {
+  //   this.selectedEtablissement = this.etablissements[index];
+  //
+  //   console.log("console :", this.selectedEtablissement)
+  //  // this.getDepartement();
+  // }
 
+  setValue(nomEtablissement:number){
+    console.log(nomEtablissement)
+  }
   ngOnInit(): void {
     this.getEtablissement();
 
     this.showDots = true;
+  }
+
+  onEtablissementSelected(etablissement :EtablissementResponse) {
+    console.log(etablissement)
+    console.log(etablissement.toString())
+    this.getDepartement(etablissement.toString())
   }
 
 }

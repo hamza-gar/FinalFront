@@ -23,4 +23,11 @@ export class SoutenanceService {
     return this.http.put<boolean>(`${this.apiServiceUrl}/invite`, soutenanceResponse, { params });
   }
 
+  public updateDateSoutenance(soutenanceResponse:SoutenanceResponse):Observable<SoutenanceResponse>{
+    return this.http.put<SoutenanceResponse>(`${this.apiServiceUrl}/date-update`,soutenanceResponse);
+  }
+
+  public getSoutenanceByIdSujet(idSujet:string):Observable<SoutenanceResponse>{
+    return this.http.get<SoutenanceResponse>(`${this.apiServiceUrl}/ofsujet?idSujet=${idSujet}`);
+  }
 }

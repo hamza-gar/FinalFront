@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {EnseignantResponse} from "../classes/RemarqueResponse";
 import {enseignantSignUp} from "../classes/enseignantSignUp";
+import {JuryResponse} from "../classes/JuryResponse";
 
 
 @Injectable({
@@ -23,5 +24,12 @@ export class EnseignantService {
   public getAllEnseignant(page: number, limit: number):Observable<enseignantSignUp[]>{
     return this.httpClient.get<enseignantSignUp[]>(`${this.enseignantUrl}?page=${page}&limit=${limit}`);
   }
+  juryUrl = "http://localhost:8080/jurys"
+
+  getInvitedJurys(idSujet: string, page: number, limit: number): Observable<JuryResponse[]> {
+    return this.httpClient.get<JuryResponse[]>(`${this.juryUrl}/invites/${idSujet}?page=${page}&limit=${limit}`);
+  }
+
+
 
 }

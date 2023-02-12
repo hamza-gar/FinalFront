@@ -19,10 +19,11 @@
       <tr style="text-align: center">
         <td>{{sujet.nomSujet}}</td>
         <td>{{sujet.descriptionSujet}}</td>
-        <td><button  type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="myIndex(i)" style="margin-right: 3px;">Voir Equipe</button></td>
+        <td><button  type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="myIndex(i);getEquipeOfSujet(sujet.idSujet)" style="margin-right: 3px;">Voir Equipe</button></td>
         <td><button  type="button" class="btn btn-info" (click)="myIndex(i);validateSujet()" style="margin-right: 3px;">Validate Sujet</button>
         <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" style="margin-left: 3px;">fix date Soutenenace</button>
           <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListJury" (click)="myIndex(i);getAllEnseignant()" style="margin-left: 3px;">Invite Membres Jury</button>
+          <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListInvitedJury" (click)="myIndex(i);getInvitedJury()" style="margin-left: 3px;">Invited Jury</button>
           </td>
     </ng-container>
     </tbody>
@@ -76,12 +77,12 @@
           </thead>
           <tbody>
 
-<!--          <ng-container *ngFor="let membe of member;index as j">-->
-<!--            <tr style="text-align: center">-->
-<!--              <td>{{j}}</td>-->
-<!--              <td>{{membe[0]}}</td>-->
-<!--              <td>{{membe[1]}}</td>-->
-<!--          </ng-container>-->
+          <ng-container *ngFor="let membe of member;index as j">
+            <tr style="text-align: center">
+              <td>{{j}}</td>
+              <td>{{membe[0]}}</td>
+              <td>{{membe[1]}}</td>
+          </ng-container>
           </tbody>
         </table>
       </div>
@@ -154,7 +155,50 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary" (click)="invite()">Invite</button>
+        <button type="button" class="btn btn-secondary" (click)="getSoutenanceByIdSujet()">Invite</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--**********************************************************-->
+
+
+<!--List Jury  -->
+<div class="modal fade " id="ListInvitedJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" >
+  <div class="modal-dialog pos" role="document">
+    <div class="modal-content sizeModale">
+      <div class="modal-header">
+        <h5 class="modal-title" id="listInvitedJuryLabel">List des Enseignant :</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered" >
+          <thead>
+          <tr style="text-align: center">
+            <th scope="col">Enseignant</th>
+            <th scope="col">Nom Complete</th>
+            <th scope="col">Email</th>
+            <th scope="col">Type</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <ng-container *ngFor="let jur of Jury;index as j">
+            <tr style="text-align: center">
+              <td>{{j}}</td>
+              <td>{{jur.nomJury}}</td>
+              <td>{{jur.mailJury}}</td>
+              <td>{{jur.typeJury}}</td>
+
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" (click)="shareDriveLink()">Publie Lien Drive</button>
       </div>
     </div>
   </div>

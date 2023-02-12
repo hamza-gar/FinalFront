@@ -11,6 +11,7 @@ import {EnseignantService} from "../../../services/enseignant.service";
 import {EnseignantResponse} from "../../../classes/RemarqueResponse";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {enseignantSignUp} from "../../../classes/enseignantSignUp";
+import {JuryResponse} from "../../../classes/JuryResponse";
 
 @Component({
   selector: 'app-dashboard-eneignant',
@@ -23,6 +24,9 @@ export class DashboardEneignantComponent implements OnInit{
   public lisSubjects!:sujetRequirement[];
   public fullEquipe!:EquipeRequirement[];
   public enseignant!:enseignantSignUp[];
+  public Jury!:JuryResponse[];
+
+  public IdSoutenance:SoutenanceResponse=new SoutenanceResponse();
 
   enseignantSelected:enseignantSignUp=new enseignantSignUp();
   public equipeRequirement:EquipeRequirement=new EquipeRequirement();
@@ -51,14 +55,7 @@ export class DashboardEneignantComponent implements OnInit{
     )
   }
 
-  // public getEquipeOfSujet(p:number){
-  //   this.p=p
-  //   this.groupService.getEquipesOfSujet(this.subjects.idSujet,this.p,0).subscribe((response:EquipeRequirement[])=>{
-  //     this.fullEquipe = response;
-  //   },error=>{
-  //     alert(error);
-  //   })
-  // }
+
 
   public validateSujet(){
     this.subjects.done=true;
@@ -71,8 +68,6 @@ export class DashboardEneignantComponent implements OnInit{
   myIndex(index:number){
     this.subjects=this.lisSubjects[index]
     this.soutenanceResponse.idSujet=this.subjects.idSujet;
-   // this.equipeRequirement=this.fullEquipe[index]
-    //this.getEquipeOfSujet(this.lisSubjects[index].idSujet,this.p);
   }
   public addSoutenance(){
     this.soutenanceService.addSoutenance(this.soutenanceResponse,this.subjects.idSujet).subscribe((response:SoutenanceResponse)=>{
@@ -81,22 +76,16 @@ export class DashboardEneignantComponent implements OnInit{
       console.log("error")
     })
   }
-  // public getEquipeById(id:string){
-  //   this.groupService.getEquipeById(id).subscribe(
-  //     (res:EquipeRequirement)=>{
-  //       this.equipeRequirement=res
-  //     },error => {alert(error.message)}
-  //   )
-  // }
-  // getMemebersOfEquipe(index:number){
-  //   this.getEquipeById(this.fullEquipe[index].idEquipe)
-  //   this.groupService.getMembersOfEquipe(this.fullEquipe[index].idEquipe,this.member).subscribe(
-  //     (operation:Members[][])=>{
-  //       this.member=operation
-  //     },error => {
-  //       console.log(error);
-  //     })
-  // }
+
+  getMemebersOfEquipe(){
+
+    this.groupService.getMembersOfEquipe(this.equipeRequirement.idEquipe,this.member).subscribe(
+      (operation:Members[][])=>{
+        this.member=operation
+      },error => {
+        console.log(error);
+      })
+  }
 
   public getAllEnseignant(){
     console.log("hello")
@@ -112,10 +101,54 @@ export class DashboardEneignantComponent implements OnInit{
   }
   invite(){
     console.log("soutenance :",this.soutenanceResponse)
-    this.soutenanceResponse.idSoutenance="335bqUvxy66K9qbZJhiTtpZgPWx6hLDu"
+    console.log("this is soutenance ID :" ,this.soutenanceResponse.idSoutenance)
+    this.soutenanceResponse.dateSoutenance = new Date(this.soutenanceResponse.dateSoutenance)
     this.soutenanceService.inviteJury(this.soutenanceResponse,this.enseignantSelected.email,this.typeJury).subscribe(
       res=>{console.log("hello")}
     );
+  }
+
+  public getSoutenanceByIdSujet(){
+    this.soutenanceService.getSoutenanceByIdSujet(this.subjects.idSujet).subscribe((response:SoutenanceResponse)=>{
+      this.soutenanceResponse=response;
+      this.invite()
+      console.log("this is the soutenance id :",response.idSoutenance);
+    },error=>{console.log(error)})
+  }
+
+  public getInvitedJury(){
+    console.log("hello")
+    console.log(this.subjects.idSujet)
+    this.enseignantService.getInvitedJurys(this.subjects.idSujet,0,6).subscribe((res:JuryResponse[])=>{
+      console.log(res)
+
+      this.getEquipeOfSujet(this.subjects.idSujet);
+      this.Jury=res;
+    },error=>{
+      console.log("error");
+    });
+  }
+  public getEquipeOfSujet(id:string){
+    this.groupService.getEquipesOfSujet(id,0,10).subscribe((response:EquipeRequirement[])=>{
+      this.fullEquipe = response;
+      this.equipeRequirement=this.fullEquipe[0]
+      console.log(this.equipeRequirement.idEquipe)
+      console.log("testing :",response[0]);
+      this.getMemebersOfEquipe()
+    },error=>{
+      alert(error);
+    })
+  }
+
+
+
+  shareDriveLink(){
+
+    this.groupService.shareDriveLink(this.fullEquipe[0]).subscribe((res:Boolean)=>{
+      console.log(res);
+    },error=>{
+      console.log(error)
+    })
   }
   ngOnInit(): void {
     this.getMyLockedSujets(this.p);

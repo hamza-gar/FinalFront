@@ -44,4 +44,12 @@ export class GroupsServiceService {
     return this.http.get<EquipeRequirement>(`${this.equipeUrl}/self`);
   }
 
+  public shareDriveLink(equipe:EquipeRequirement):Observable<Boolean>{
+    return this.http.post<Boolean>(`${this.equipeUrl}/share-drive`,equipe);
+  }
+
+  public getEquipeByIdSujet(idSujet:string):Observable<EquipeRequirement>{
+    return this.http.get<EquipeRequirement>(`${this.equipeUrl}/getbysujet?idSujet=${idSujet}`);
+  }
+
 }

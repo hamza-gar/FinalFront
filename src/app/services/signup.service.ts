@@ -35,8 +35,10 @@ export class SignupService {
     return this.httpClient.get<FiliereResponse[]>(`${this.filierUrl}?page=${page}&limit=${limit}`);
   }
 
-  public getDepartements(idEtablissement: String): Observable<DepartementResponse[]> {
-    return this.httpClient.get<DepartementResponse[]>(`http://localhost:8080/etablissements/${idEtablissement}`);
+  public getDepartementsByEtablissement(nomEtablissement: string): Observable<DepartementResponse[]> {
+    const departement : DepartementResponse = new DepartementResponse();
+    departement.nomEtablissement=nomEtablissement;
+    return this.httpClient.post<DepartementResponse[]>(`http://localhost:8080/etablissements`,departement);
   }
 
   public getEtablissement(): Observable<EtablissementResponse[]> {

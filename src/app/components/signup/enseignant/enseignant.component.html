@@ -59,13 +59,9 @@
                         <label for="etablissement" class="form-label">Etablissement</label>
                         <div class="input-field">
                           <span class="fa fa-building p-2"></span>
-                          <select class="form-control" id="etablissement" name="etablissement">
-                            <option [(ngModel)]="signup.nomEtablissement" *ngFor="let fil of etablissements;index as i"
-                                    (click)="setIndex(i)"
-                                    value="{{fil.nomEtablissement}}">{{fil.nomEtablissement}}</option>
+                          <select class="form-control" id="etablissement" name="etablissement" [(ngModel)]="selectedEtablissement" (change)="onEtablissementSelected(selectedEtablissement)">
+                            <option *ngFor="let etab of etablissements" value="{{etab.nomEtablissement}}" >{{etab.nomEtablissement}}</option>
                           </select>
-                          <!--                          <input type="text" class="form-control" id="etablissement" name="etablissement"-->
-                          <!--                                 [(ngModel)]="signup.nomEtablissement">-->
                         </div>
                       </div>
                     </div>
@@ -74,12 +70,11 @@
                         <label for="email" class="form-label">Departement</label>
                         <div class="input-field">
                           <span class="fa fa-briefcase p-2"></span>
-                          <select class="form-control" id="departement" name="departement">
-                            <option *ngFor="let fil of departements;index as i" [(ngModel)]="signup.nomDepartement"
-                                    value="{{fil.nomDepartement}}">{{fil.nomDepartement}}</option>
-                          </select>
-                          <!--                          <input type="text" class="form-control" id="departement" name="departement"-->
-                          <!--                                 [(ngModel)]="signup.nomDepartement">-->
+                          <div class="form-select">
+                            <select class="form-control" id="etabl" name="etablissement" [(ngModel)]="signup.nomDepartement" >
+                              <option *ngFor="let fil of departements" value="{{fil.nomDepartement}}">{{fil.nomDepartement}}</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
 
