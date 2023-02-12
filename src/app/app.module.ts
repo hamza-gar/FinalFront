@@ -30,6 +30,8 @@ import { SidebarComponent } from './components/partials/sidebar/sidebar.componen
 import { MesSujetComponent } from './components/list-sujets/mes-sujet/mes-sujet.component';
 import { CalendarComponent } from './components/partials/calendar/calendar.component';
 import { RendesVousComponent } from './components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component';
+import { JuryEspaceComponent } from './components/dashboard/dashboard/jury-espace/jury-espace.component';
+
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import { RendesVousComponent } from './components/dashboard/dashboard-eneignant/
     MesSujetComponent,
     CalendarComponent,
     RendesVousComponent,
+    JuryEspaceComponent,
   ],
   imports: [
     BrowserModule,

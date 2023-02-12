@@ -19,4 +19,7 @@ export class EtudiantService {
     return this.httpClient.put<EtudiantResponse>(`${this.etudiantUrl}/${id}`,up);
   }
 
+  public getEtudiantByEmail(email:string):Observable<EtudiantResponse>{
+    return this.httpClient.get<EtudiantResponse>(`${this.etudiantUrl}/byEmail/${email}`);
+  }
 }

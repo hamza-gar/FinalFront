@@ -38,5 +38,8 @@ export class SujetService{
   getMyLockedSujets(page: number, limit: number):Observable<sujetRequirement[]>{
     return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/mylocked?page=${page}&limit=${limit}`)
   }
+  getSujetByIdSujet(idSujet:string):Observable<sujetRequirement>{
+    return this.http.get<sujetRequirement>(`${this.apiServiceUrl}/${idSujet}`)
+  }
 
 }

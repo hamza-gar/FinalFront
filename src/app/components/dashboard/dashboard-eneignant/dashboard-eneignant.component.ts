@@ -8,7 +8,6 @@ import {SoutenanceService} from "../../../services/soutenance.service";
 import {SoutenanceResponse} from "../../../classes/SoutenanceResponse";
 import {Members} from "../../../classes/members";
 import {EnseignantService} from "../../../services/enseignant.service";
-import {EnseignantResponse} from "../../../classes/RemarqueResponse";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {enseignantSignUp} from "../../../classes/enseignantSignUp";
 import {JuryResponse} from "../../../classes/JuryResponse";
@@ -128,12 +127,16 @@ export class DashboardEneignantComponent implements OnInit{
       console.log("error");
     });
   }
+
   public getEquipeOfSujet(id:string){
     this.groupService.getEquipesOfSujet(id,0,10).subscribe((response:EquipeRequirement[])=>{
       this.fullEquipe = response;
-      this.equipeRequirement=this.fullEquipe[0]
-      console.log(this.equipeRequirement.idEquipe)
-      console.log("testing :",response[0]);
+      if(response.length!=0){
+        this.equipeRequirement=response[0]
+      }else {
+        this.equipeRequirement={} as EquipeRequirement;
+      }
+
       this.getMemebersOfEquipe()
     },error=>{
       alert(error);
@@ -152,6 +155,7 @@ export class DashboardEneignantComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getMyLockedSujets(this.p);
+
   }
 
 

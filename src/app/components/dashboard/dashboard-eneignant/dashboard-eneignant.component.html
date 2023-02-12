@@ -8,7 +8,6 @@
     <thead>
     <tr style="text-align: center">
       <th scope="col">Name</th>
-      <th scope="col">Description</th>
       <th scope="col">Equipe</th>
       <th scope="col">Action</th>
 
@@ -18,7 +17,6 @@
     <ng-container *ngFor="let sujet of lisSubjects;index as i ">
       <tr style="text-align: center">
         <td>{{sujet.nomSujet}}</td>
-        <td>{{sujet.descriptionSujet}}</td>
         <td><button  type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="myIndex(i);getEquipeOfSujet(sujet.idSujet)" style="margin-right: 3px;">Voir Equipe</button></td>
         <td><button  type="button" class="btn btn-info" (click)="myIndex(i);validateSujet()" style="margin-right: 3px;">Validate Sujet</button>
         <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" style="margin-left: 3px;">fix date Soutenenace</button>

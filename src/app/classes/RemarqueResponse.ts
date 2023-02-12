@@ -1,4 +1,4 @@
-export class EnseignantResponse{
+export class RemarqueResponse{
   idRemarque !: string;
   remarque !: string;
   note !: number;

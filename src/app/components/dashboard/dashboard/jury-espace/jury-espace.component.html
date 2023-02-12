@@ -1,0 +1,108 @@
+<div class="container">
+  <h3>Mes Soutenance :</h3>
+  <table class="table table-bordered">
+  <thead>
+  <th>Soutenance</th>
+  <th>Date Soutenance</th>
+  <th>Sujet</th>
+  <th>Etudiant</th>
+
+  </thead>
+    <tbody>
+<ng-container *ngFor="let sout of soutenance;index as i" >
+    <tr>
+      <td>{{i+1}}</td>
+      <td>{{sout.dateSoutenance}}</td>
+      <td>{{sout.nomSujet}}</td>
+      <td><button class="btn btn-success" style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers" (click)="getMemebersOfEquipe(sout.idEquipe)">Click</button></td>
+    </tr>
+
+
+</ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+<!--  modal for getting the element of the group -->
+<div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="groupMembersLabel">Members Du Groupe :</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered" >
+          <thead>
+          <tr style="text-align: center">
+            <th scope="col">Etudiant</th>
+            <th scope="col">Nom Complete</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <ng-container *ngFor="let membe of member;index as j">
+            <tr style="text-align: center">
+              <td>{{j+1}}</td>
+              <td>{{membe[0]}}</td>
+              <td>{{membe[1]}}</td>
+              <td><button class="btn btn-success" style="margin-right:2px;" data-toggle="modal" data-target="#remarqueEtudiants" (click)="myIndex(j)">Ajouter Remarque</button></td>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  *********************************************** -->
+<!--  modal for add group to subject-->
+<div class="modal fade" id="remarqueEtudiants" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="remarqueEtudiantsLabel">Create Group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="form-group">
+            <label for="notePresentation">Note de présentation :</label>
+            <input type="text" class="form-control" id="notePresentation" placeholder="note de présentation"  name="note" [(ngModel)]="note1">
+          </div>
+          <div class="form-group">
+            <label for="remarquePresentation">remarque de présentation :</label>
+            <input type="text" class="form-control" id="remarquePresentation" placeholder="remarque de présentation"  name="remarque" [(ngModel)]="remarque1">
+          </div>
+
+          <div class="form-group">
+            <label for="noteRapport">Note de rapport :</label>
+            <input type="text" class="form-control" id="noteRapport" placeholder="note de rapport"  name="note" [(ngModel)]="note2">
+          </div>
+
+          <div class="form-group">
+            <label for="remarqueRapport">remarque de rapport :</label>
+            <input type="text" class="form-control" id="remarqueRapport" placeholder="remarque de rapport"  name="remarque" [(ngModel)]="remarque2">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" (click)="addReamarque()">Add remarque </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ***************************************** -->

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {SoutenanceResponse} from "../classes/SoutenanceResponse";
 import {Observable} from "rxjs";
+import {RemarqueResponse} from "../classes/RemarqueResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,13 @@ export class SoutenanceService {
   public getSoutenanceByIdSujet(idSujet:string):Observable<SoutenanceResponse>{
     return this.http.get<SoutenanceResponse>(`${this.apiServiceUrl}/ofsujet?idSujet=${idSujet}`);
   }
+
+  public getAllMineSoutenance(page: number, limit: number):Observable<SoutenanceResponse[]>{
+    return this.http.get<SoutenanceResponse[]>(`${this.apiServiceUrl}/mine?page=${page}&limit=${limit}`);
+  }
+
+  public addRemarque(remarqueResponse:RemarqueResponse):Observable<boolean>{
+    return this.http.post<boolean>(`http://localhost:8080/jurys/add-remarque`,remarqueResponse);
+  }
+
 }

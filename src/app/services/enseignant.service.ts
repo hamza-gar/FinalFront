@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {EnseignantResponse} from "../classes/RemarqueResponse";
 import {enseignantSignUp} from "../classes/enseignantSignUp";
 import {JuryResponse} from "../classes/JuryResponse";
 

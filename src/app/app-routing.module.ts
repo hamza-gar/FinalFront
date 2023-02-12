@@ -23,6 +23,7 @@ import {EnseignantSettingsComponent} from "./components/settings/enseignant-sett
 import {AdminSettingsComponent} from "./components/settings/admin-settings/admin-settings.component";
 import {MesSujetComponent} from "./components/list-sujets/mes-sujet/mes-sujet.component";
 import {RendesVousComponent} from "./components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component";
+import {JuryEspaceComponent} from "./components/dashboard/dashboard/jury-espace/jury-espace.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -50,7 +51,8 @@ const routes: Routes = [
       {path: 'home',children:[
         {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
           {path:'mesSujets',component:MesSujetComponent},
-          {path:'rendesVous',component:RendesVousComponent}
+          {path:'rendesVous',component:RendesVousComponent},
+          {path:'juryEspace',component:JuryEspaceComponent}
         ]
       },
       {path: 'dashboardAdmin',component: DashboardAdminComponent},
