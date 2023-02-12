@@ -17,7 +17,7 @@
     <ng-container *ngFor="let sujet of lisSubjects;index as i ">
       <tr style="text-align: center">
         <td>{{sujet.nomSujet}}</td>
-        <td><button  type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="myIndex(i);getEquipeOfSujet(sujet.idSujet)" style="margin-right: 3px;">Voir Equipe</button></td>
+        <td><button  type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="myIndex(i);getEquipeOfSujet()" style="margin-right: 3px;">Voir Equipe</button></td>
         <td><button  type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" style="margin-right: 3px;">Validate Sujet</button>
           <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListJury" (click)="myIndex(i);getAllEnseignant()" style="margin-left: 3px;">Invite Membres Jury</button>
           <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListInvitedJury" (click)="myIndex(i);getInvitedJury()" style="margin-left: 3px;">Invited Jury</button>

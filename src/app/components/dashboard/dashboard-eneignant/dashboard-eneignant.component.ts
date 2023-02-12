@@ -78,7 +78,7 @@ export class DashboardEneignantComponent implements OnInit{
   }
 
   getMemebersOfEquipe(){
-
+      this.member=[];
     this.groupService.getMembersOfEquipe(this.equipeRequirement.idEquipe,this.member).subscribe(
       (operation:Members[][])=>{
         this.member=operation
@@ -122,15 +122,16 @@ export class DashboardEneignantComponent implements OnInit{
     this.enseignantService.getInvitedJurys(this.subjects.idSujet,0,6).subscribe((res:JuryResponse[])=>{
       console.log(res)
 
-      this.getEquipeOfSujet(this.subjects.idSujet);
+      this.getEquipeOfSujet();
       this.Jury=res;
     },error=>{
       console.log("error");
     });
   }
 
-  public getEquipeOfSujet(id:string){
-    this.groupService.getEquipesOfSujet(id,0,10).subscribe((response:EquipeRequirement[])=>{
+  public getEquipeOfSujet(){
+
+    this.groupService.getEquipesOfSujet(this.subjects.idSujet,0,10).subscribe((response:EquipeRequirement[])=>{
       this.fullEquipe = response;
       if(response.length!=0){
         this.equipeRequirement=response[0]
