@@ -88,7 +88,7 @@ export class DashboardEneignantComponent implements OnInit{
 
   public getAllEnseignant(){
     console.log("hello")
-    this.enseignantService.getAllEnseignant(0,6).subscribe((res:enseignantSignUp[])=>{
+    this.enseignantService.getAllEnseignantToInvite(0,6).subscribe((res:enseignantSignUp[])=>{
       this.enseignant=res
       console.log("enseignants :",res)
     },error=>{

@@ -31,4 +31,8 @@ export class EnseignantService {
 
 
 
+  public getAllEnseignantToInvite(page: number, limit: number):Observable<enseignantSignUp[]>{
+    return this.httpClient.get<enseignantSignUp[]>(`http://localhost:8080/jurys/jurys?page=${page}&limit=${limit}`);
+  }
+
 }
