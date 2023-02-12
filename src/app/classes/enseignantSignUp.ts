@@ -5,6 +5,8 @@ export class enseignantSignUp{
   cin!:string;
   nomDepartement!:string;
 
+  idDepartement!:string;
+
   nomEtablissement!:string;
 
   email!:string;
