@@ -41,8 +41,10 @@ export class JuryEspaceComponent {
 
   public remarque1!:string;
   public remarque2!:string;
+  public remarque3!:string;
   public note1!:number;
   public note2!:number;
+  public note3!:number;
 
   email!:string;
 
@@ -90,6 +92,14 @@ export class JuryEspaceComponent {
     this.remarqueResponse.remarque= this.remarque2
     this.remarqueResponse.idEtudiant=this.etudiantResponse.idEtudiant;
     this.remarqueResponse.target="projet"
+    this.soutenanceService.addRemarque(this.remarqueResponse).subscribe((response:boolean)=>{
+      console.log(response);
+    })
+
+    this.remarqueResponse.note=this.note3;
+    this.remarqueResponse.remarque= this.remarque3
+    this.remarqueResponse.idEtudiant=this.etudiantResponse.idEtudiant;
+    this.remarqueResponse.target="presentation"
     this.soutenanceService.addRemarque(this.remarqueResponse).subscribe((response:boolean)=>{
       console.log(response);
     })

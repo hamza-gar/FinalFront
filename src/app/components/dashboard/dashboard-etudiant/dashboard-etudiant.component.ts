@@ -5,6 +5,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {GroupsServiceService} from "../../../services/groups-service.service";
 import {EquipeRequirement} from "../../../classes/EquipeRequirement";
+import {EtudiantService} from "../../../services/etudiant.service";
+import {RemarqueResponse} from "../../../classes/RemarqueResponse";
 
 @Component({
   selector: 'app-dashboard-etudiant',
@@ -21,7 +23,10 @@ export class DashboardEtudiantComponent implements OnInit{
   public rendezvousResponse:RendezvousResponse=new RendezvousResponse();
   public equipeRequire:EquipeRequirement=new EquipeRequirement();
 
-  constructor(private rendesVous:RendesVousService,private group:GroupsServiceService) {
+  public remarqueResponse!:RemarqueResponse[];
+  constructor(private rendesVous:RendesVousService,
+              private etudiantService:EtudiantService,
+              private group:GroupsServiceService) {
   }
 
   public priseRendesVous(){
@@ -69,6 +74,11 @@ export class DashboardEtudiantComponent implements OnInit{
     },error=>{
       console.log(error.message)
     })
+  }
+  public getMyRemarque(){
+    this.etudiantService.voiRemarque().subscribe((res:RemarqueResponse[])=>{
+      this.remarqueResponse=res
+    },error=>{(console.log(error))})
   }
   ngOnInit(): void {
   }

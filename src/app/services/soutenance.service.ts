@@ -40,4 +40,8 @@ export class SoutenanceService {
     return this.http.post<boolean>(`http://localhost:8080/jurys/add-remarque`,remarqueResponse);
   }
 
+  public updateSoutenance(soutenanceResponse:SoutenanceResponse):Observable<SoutenanceResponse>{
+    return this.http.put<SoutenanceResponse>(`${this.apiServiceUrl}/date-update`,soutenanceResponse);
+  }
+
 }

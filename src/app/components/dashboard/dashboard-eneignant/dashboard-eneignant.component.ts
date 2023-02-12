@@ -36,6 +36,7 @@ export class DashboardEneignantComponent implements OnInit{
 
   public typeJury!:string;
 
+  public UpdateDate!:Date;
 
   public p: number = 0;
   constructor(private sujet:SujetService,
@@ -142,8 +143,22 @@ export class DashboardEneignantComponent implements OnInit{
       alert(error);
     })
   }
-
-
+  public Update(){
+    this.soutenanceService.getSoutenanceByIdSujet(this.subjects.idSujet).subscribe((response:SoutenanceResponse)=>{
+      this.soutenanceResponse=response;
+      this.UpdateDateSoutenance()
+      console.log("this is the soutenance id :",response.idSoutenance);
+    },error=>{console.log(error)})
+  }
+  public UpdateDateSoutenance(){
+    this.soutenanceResponse.dateSoutenance=this.UpdateDate
+    console.log(this.soutenanceResponse.idSoutenance)
+    console.log(this.soutenanceResponse.dateSoutenance)
+    this.soutenanceService.updateSoutenance(this.soutenanceResponse).subscribe((res)=>{
+      console.log("it okey")
+    },
+      error=>{console.log(error)})
+  }
 
   shareDriveLink(){
 

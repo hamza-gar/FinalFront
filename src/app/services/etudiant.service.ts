@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {EtudiantResponse} from "../classes/EtudiantResponse";
+import {RemarqueResponse} from "../classes/RemarqueResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,8 @@ export class EtudiantService {
 
   public getEtudiantByEmail(email:string):Observable<EtudiantResponse>{
     return this.httpClient.get<EtudiantResponse>(`${this.etudiantUrl}/byEmail/${email}`);
+  }
+  public voiRemarque():Observable<RemarqueResponse[]>{
+    return this.httpClient.get<RemarqueResponse[]>(`${this.etudiantUrl}/voirremarque`);
   }
 }

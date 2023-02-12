@@ -21,11 +21,38 @@
         <td><button  type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" style="margin-right: 3px;">Validate Sujet</button>
           <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListJury" (click)="myIndex(i);getAllEnseignant()" style="margin-left: 3px;">Invite Membres Jury</button>
           <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListInvitedJury" (click)="myIndex(i);getInvitedJury()" style="margin-left: 3px;">Invited Jury</button>
+          <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ChangerDateSoutenance" (click)="myIndex(i);" style="margin-left: 3px;">Changer Date Soutenance</button>
           </td>
     </ng-container>
     </tbody>
   </table>
 </div>
+
+<!--modal fix date -->
+<div class="modal fade" id="ChangerDateSoutenance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ChangerDateSoutenanceLabel">Veuiller Changer la date :</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form >
+          <label>
+            <input type="datetime-local" name="party" value="timeRendesVous" [(ngModel)]="UpdateDate"/>
+          </label>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" (click)="Update()">Changer Date</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--**********************************************************-->
 
 <!--modal fix date -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
