@@ -31,6 +31,7 @@ import { MesSujetComponent } from './components/list-sujets/mes-sujet/mes-sujet.
 import { CalendarComponent } from './components/partials/calendar/calendar.component';
 import { RendesVousComponent } from './components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component';
 import { JuryEspaceComponent } from './components/dashboard/dashboard/jury-espace/jury-espace.component';
+import { WaitingforverificationComponent } from './components/signup/waitingforverification/waitingforverification.component';
 
 
 
@@ -61,6 +62,7 @@ import { JuryEspaceComponent } from './components/dashboard/dashboard/jury-espac
     CalendarComponent,
     RendesVousComponent,
     JuryEspaceComponent,
+    WaitingforverificationComponent,
   ],
   imports: [
     BrowserModule,

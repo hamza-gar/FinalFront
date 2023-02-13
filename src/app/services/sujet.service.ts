@@ -49,8 +49,6 @@ export class SujetService{
   }
 
   public getAllEtablissementByIdUniversity(university:UniversityResponse):Observable<EtablissementResponse[]>{
-    console.log(university.nomUniversite)
-    console.log(university.idUniversite)
     return this.http.post<EtablissementResponse[]>(`http://localhost:8080/etablissements/byUniversite`,university)
   }
 

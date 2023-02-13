@@ -4,6 +4,7 @@ import {SignupService} from "../../../services/signup.service";
 import {FiliereResponse} from "../../../classes/FiliereResponse";
 import {sujetRequirement} from "../../../classes/sujetRequirement";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-etudiantLog',
@@ -21,7 +22,7 @@ export class EtudiantComponent  implements OnInit{
   type:string = "password";
   isText:boolean=false;
   eyeIcon:string="fa-eye-slash";
-  constructor(private signupEtudiant : SignupService) {
+  constructor(private signupEtudiant : SignupService, private route: Router) {
   }
   hideShowPass(){
     this.isText = !this.isText;
@@ -34,7 +35,8 @@ export class EtudiantComponent  implements OnInit{
     this.showDots=false;
     this.locked=false;
     this.signupEtudiant.signupEtudiant(this.signup).subscribe(data=>{
-      alert("Successfully etudiant is register")
+
+      this.route.navigate(['/login']);
     },error=>{
       alert("sorry User not register")
       this.locked=true;

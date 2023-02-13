@@ -238,12 +238,13 @@ export class ListSujetsComponent implements OnInit {
     })
   }
   onUniversitySelected(university:UniversityResponse){
-    console.log(university)
-    const u:UniversityResponse = new UniversityResponse();
-    //u=this.selectedUniverSity;
+    let u:UniversityResponse = new UniversityResponse();
+    u.nomUniversite=this.selectedUniverSity.toString();
+    u.idUniversite="";
+    u.adresse="";
 
     console.log(u);
-    //this.getEtablissementByIdUniversity(university)
+    this.getEtablissementByIdUniversity(u)
 
   }
 

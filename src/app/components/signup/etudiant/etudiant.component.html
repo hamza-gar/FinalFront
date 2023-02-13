@@ -100,14 +100,8 @@
                         <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
                       </div>
                     </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="SignUpRegister()" [disabled]="!locked">Sign Up</button>
 
-                    <div class="form-inline fr mt-4">
-                      <a id="forget" class="font-weight-bold">Forget Password</a>
-                    </div>
-                    <button type="submit " class="btn btn-primary btn-block mt-4 w-100" (click)="SignUpRegister()" [disabled]="!locked">Sign Up</button>
-                    <div class="text-center pt-4 text-muted">Do you have account ? <a id="forget1"
-                                                                                      routerLink="/loginEtudiant">Login</a>
-                    </div>
                   </form>
                 </div>
               </div>

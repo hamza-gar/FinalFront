@@ -24,6 +24,7 @@ import {AdminSettingsComponent} from "./components/settings/admin-settings/admin
 import {MesSujetComponent} from "./components/list-sujets/mes-sujet/mes-sujet.component";
 import {RendesVousComponent} from "./components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component";
 import {JuryEspaceComponent} from "./components/dashboard/dashboard/jury-espace/jury-espace.component";
+import {WaitingforverificationComponent} from "./components/signup/waitingforverification/waitingforverification.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -39,7 +40,8 @@ const routes: Routes = [
       {path:'enseignantSignUp',component: EnseignantComponent},
       {path:'etudiantLog',component:EtudiantComponentLog},
       {path:'etudiantSignUp',component:EtudiantComponent},
-      {path:'admin',component:AdminComponent}
+      {path:'admin',component:AdminComponent},
+      {path:'pleaseVerify',component:WaitingforverificationComponent}
     ]},
   {path:'forgetPassword',children:[
       {path:'emailVerification',component: EmailVerificationComponent},
