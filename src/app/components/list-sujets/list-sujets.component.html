@@ -9,7 +9,7 @@
     <label for="Universite" class="form-label" style="display: inline-block; margin-right: 10px;">Universite filter:</label>
     <div class="input-field" style="display: inline-block;">
       <select class="form-select" id="Universite" name="Universite" [(ngModel)]="selectedUniverSity" (change)="onUniversitySelected(selectedUniverSity)">
-        <option value="">selectionne une university</option>
+        <option value="" >selectionne Universite :</option>
         <option *ngFor="let uni of university" value="{{uni.nomUniversite}}" >{{uni.nomUniversite}}</option>
       </select>
     </div>
@@ -18,9 +18,9 @@
   <div style="display: inline-block; margin-left: 10px;" >
     <label for="Etablissement" class="form-label" style="display: inline-block; margin-right: 10px;">Etablissement filter:</label>
     <div class="input-field" style="display: inline-block;">
-      <select class="form-select" id="Etablissement" name="Etablissement">
-        <option value="">selectionne une etablissement</option>
-
+      <select class="form-select" id="Etablissement" name="Etablissement" [(ngModel)]="selectedEtablissement" (change)="onEtablissementSelected(selectedEtablissement)">
+        <option value="">selectionne etablissement :</option>
+        <option *ngFor="let eta of etablissement" value="{{eta.nomEtablissement}}" >{{eta.nomEtablissement}}</option>
       </select>
     </div>
   </div>
@@ -29,19 +29,17 @@
   <div style="display: inline-block; margin-left: 10px;">
     <label for="Departement" class="form-label" style="display: inline-block; margin-right: 10px;">Departement filter:</label>
     <div class="input-field" style="display: inline-block;">
-      <select class="form-select" id="Departement" name="Departement">
-        <option value="">Selectionne une departement</option>
-        <option value="value1">value1</option>
-        <option value="value2">value2</option>
-        <option value="value3">value3</option>
+      <select class="form-select" id="Departement" name="Departement" [(ngModel)]="selecetedDepartement" (change)="onDepartementSelected(selecetedDepartement)">
+        <option value="">selectionne departement :</option>
+        <option *ngFor="let fil of departements" value="{{fil.nomDepartement}}">{{fil.nomDepartement}}</option>
       </select>
     </div>
   </div>
 
 
-<!--  <div style="display: inline-block; margin-left: 26vw; margin-bottom: 5px">-->
-<!--  <button href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"><i class="fa-solid fa-magnifying-glass"></i></button>-->
-<!--    </div>-->
+  <div style="display: inline-block; margin-left: 26vw; margin-bottom: 5px">
+  <button href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" (click)="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
 
 
   <table class="table table-bordered">

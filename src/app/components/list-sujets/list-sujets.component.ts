@@ -9,6 +9,8 @@ import {GroupsServiceService} from "../../services/groups-service.service";
 import {Members} from "../../classes/members";
 import {UniversityResponse} from "../../classes/UniversityResponse";
 import {EtablissementResponse} from "../../classes/EtablissementResponse";
+import {DepartementResponse} from "../../classes/DepartementResponse";
+import {SignupService} from "../../services/signup.service";
 
 @Component({
   selector: 'app-list-sujets',
@@ -24,6 +26,7 @@ export class ListSujetsComponent implements OnInit {
 
   public equipe:EquipeRequirement=new EquipeRequirement();
 
+  departements!: DepartementResponse[];
   public pages!: number[];
 
   public counter: number = 0;
@@ -31,6 +34,8 @@ export class ListSujetsComponent implements OnInit {
   public isChecked=false;
 
   public GroupPassword!:string;
+
+  selectedEtablissement!: EtablissementResponse;
 
   public countEtudiantInGroup=0;
   public university!:UniversityResponse[];
@@ -40,13 +45,14 @@ export class ListSujetsComponent implements OnInit {
   constructor(private sujetService: SujetService ,
               private groupeService:GroupsServiceService,
               private tokenService:TokenService,
+              private signup:SignupService,
 
               private router:Router) {
   }
 
   public selectedItem!:sujetRequirement ;
   public selectedGroup!:EquipeRequirement;
-
+  public selecetedDepartement!:DepartementResponse;
   public p: number = 0;
   pagination!: number;
 
@@ -131,10 +137,10 @@ export class ListSujetsComponent implements OnInit {
     console.log("this equipe id :" ,this.selectedGroup.idEquipe)
     this.groupeService.getMembersOfEquipe(this.selectedGroup.idEquipe,this.member).subscribe(
       (operation:Members[][])=>{
-      this.member=operation
-    },error => {
-      console.log(error);
-    })
+        this.member=operation
+      },error => {
+        console.log(error);
+      })
   }
 
   getEquipeIndex(index:any){
@@ -242,12 +248,51 @@ export class ListSujetsComponent implements OnInit {
     u.nomUniversite=this.selectedUniverSity.toString();
     u.idUniversite="";
     u.adresse="";
-
+    this.selectedEtablissement= {}as EtablissementResponse;
+    this.selecetedDepartement = {}as DepartementResponse;
+    this.departements=[];
+    console.log(this.selectedUniverSity.toString().replaceAll(" ","~"))
     console.log(u);
+
+
     this.getEtablissementByIdUniversity(u)
 
   }
 
+  onEtablissementSelected(etablissement: EtablissementResponse) {
+    console.log(etablissement)
+    console.log(etablissement.toString())
 
 
+    this.selecetedDepartement = new DepartementResponse();
+    console.log(this.selectedEtablissement.toString().replaceAll(" ", "~"))
+    this.getDepartement(etablissement.toString())
+  }
+
+  onDepartementSelected(departement: DepartementResponse) {
+    console.log(this.selecetedDepartement.toString().replaceAll(" ", "~"))
+
+
+  }
+
+  getDepartement(nomEtablissement: string) {
+    console.log("this is the :", nomEtablissement);
+    this.signup.getDepartementsByEtablissement(nomEtablissement).subscribe(
+      (response: DepartementResponse[]) => {
+        this.departements = response;
+        console.log("this is the departement :", this.departements);
+      }, error => {
+        console.log(error)
+      }
+    )
+  }
+
+    search(){
+      this.sujetService.getAllSujetsFiltered(0, 6,this.selectedUniverSity.toString().replaceAll(" ","~"),this.selectedEtablissement.toString().replaceAll(" ","~"),this.selecetedDepartement.toString().replaceAll(" ", "~"))
+        .subscribe(data => {
+          console.log(data);
+          this.subjects = data
+        });
+
+    }
 }

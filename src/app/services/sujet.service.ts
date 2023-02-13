@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {sujetRequirement} from "../classes/sujetRequirement";
 import {UniversityResponse} from "../classes/UniversityResponse";
@@ -50,6 +50,25 @@ export class SujetService{
 
   public getAllEtablissementByIdUniversity(university:UniversityResponse):Observable<EtablissementResponse[]>{
     return this.http.post<EtablissementResponse[]>(`http://localhost:8080/etablissements/byUniversite`,university)
+  }
+  getAllSujetsFiltered(page: number, limit: number, universite?: string, etablissement?: string, departement?: string) {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('limit', limit.toString());
+
+    if (universite) {
+      params = params.set('universite', universite);
+    }
+
+    if (etablissement) {
+      params = params.set('etablissement', etablissement);
+    }
+
+    if (departement) {
+      params = params.set('departement', departement);
+    }
+
+    return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/filtered`, { params });
   }
 
 }
