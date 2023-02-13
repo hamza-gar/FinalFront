@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {sujetRequirement} from "../classes/sujetRequirement";
+import {UniversityResponse} from "../classes/UniversityResponse";
+import {EtablissementResponse} from "../classes/EtablissementResponse";
 
 
 @Injectable({
@@ -40,6 +42,16 @@ export class SujetService{
   }
   getSujetByIdSujet(idSujet:string):Observable<sujetRequirement>{
     return this.http.get<sujetRequirement>(`${this.apiServiceUrl}/${idSujet}`)
+  }
+
+  public getUniversity():Observable<UniversityResponse[]>{
+    return this.http.get<UniversityResponse[]>(`http://localhost:8080/etablissements/universites`);
+  }
+
+  public getAllEtablissementByIdUniversity(university:UniversityResponse):Observable<EtablissementResponse[]>{
+    console.log(university.nomUniversite)
+    console.log(university.idUniversite)
+    return this.http.post<EtablissementResponse[]>(`http://localhost:8080/etablissements/byUniversite`,university)
   }
 
 }

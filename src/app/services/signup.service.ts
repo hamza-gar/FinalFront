@@ -6,6 +6,7 @@ import {etudiantSignUp} from "../classes/etudiantSignUp";
 import {FiliereResponse} from "../classes/FiliereResponse";
 import {DepartementResponse} from "../classes/DepartementResponse";
 import {EtablissementResponse} from "../classes/EtablissementResponse";
+import {UniversityResponse} from "../classes/UniversityResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,6 @@ export class SignupService {
   public getEtablissement(): Observable<EtablissementResponse[]> {
     return this.httpClient.get<EtablissementResponse[]>(`http://localhost:8080/etablissements/all`);
   }
+
 
 }

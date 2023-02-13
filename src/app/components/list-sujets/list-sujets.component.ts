@@ -7,6 +7,8 @@ import {Router} from "@angular/router";
 import {EquipeRequirement} from "../../classes/EquipeRequirement";
 import {GroupsServiceService} from "../../services/groups-service.service";
 import {Members} from "../../classes/members";
+import {UniversityResponse} from "../../classes/UniversityResponse";
+import {EtablissementResponse} from "../../classes/EtablissementResponse";
 
 @Component({
   selector: 'app-list-sujets',
@@ -31,6 +33,9 @@ export class ListSujetsComponent implements OnInit {
   public GroupPassword!:string;
 
   public countEtudiantInGroup=0;
+  public university!:UniversityResponse[];
+  public etablissement!:EtablissementResponse[];
+  selectedUniverSity!: UniversityResponse;
 
   constructor(private sujetService: SujetService ,
               private groupeService:GroupsServiceService,
@@ -205,6 +210,7 @@ export class ListSujetsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUniversity()
     if (this.p == undefined) {
       this.p = 0;
     }
@@ -215,6 +221,31 @@ export class ListSujetsComponent implements OnInit {
 
   }
 
+  public getUniversity(){
+    this.sujetService.getUniversity().subscribe((res:UniversityResponse[])=>{
+      this.university=res
+      console.log("university :",res)
+    },(error:HttpErrorResponse)=>{
+      alert(error.error.message)
+    })
+  }
+
+  public getEtablissementByIdUniversity(university:UniversityResponse){
+    this.sujetService.getAllEtablissementByIdUniversity(university).subscribe((res:EtablissementResponse[])=>{
+      this.etablissement = res;
+    },(error:HttpErrorResponse)=>{
+      alert(error.error.message)
+    })
+  }
+  onUniversitySelected(university:UniversityResponse){
+    console.log(university)
+    const u:UniversityResponse = new UniversityResponse();
+    //u=this.selectedUniverSity;
+
+    console.log(u);
+    //this.getEtablissementByIdUniversity(university)
+
+  }
 
 
 

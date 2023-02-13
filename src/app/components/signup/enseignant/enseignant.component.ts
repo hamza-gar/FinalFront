@@ -39,15 +39,15 @@ export class EnseignantComponent implements OnInit {
   SignUpRegister() {
     this.showDots = false;
     this.locked = false;
-    console.log(this.signup.idDepartement);
+
     this.signupEnseignant.signupEnseignant(this.signup).subscribe(data => {
         this.routerLink.navigate(['/login']);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+      }, (error:HttpErrorResponse)=>{
+      alert(error.error.message)
         this.locked = true;
         this.showDots = true;
-      });
+      }
+      );
   }
 
   getEtablissement() {
@@ -70,21 +70,6 @@ export class EnseignantComponent implements OnInit {
         console.log(error)
       }
     )
-  }
-
-  test() {
-    console.log()
-  }
-
-  // setIndex(index: number) {
-  //   this.selectedEtablissement = this.etablissements[index];
-  //
-  //   console.log("console :", this.selectedEtablissement)
-  //  // this.getDepartement();
-  // }
-
-  setValue(nomEtablissement: number) {
-    console.log(nomEtablissement)
   }
 
   ngOnInit(): void {
