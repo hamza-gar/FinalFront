@@ -31,7 +31,6 @@ export class DashboardEtudiantComponent implements OnInit{
 
   public priseRendesVous(){
     this.rendesVous.priseRendesVous(0).subscribe(operation=>{
-
     },
       error => {
       alert("error");
