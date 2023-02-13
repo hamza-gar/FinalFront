@@ -32,6 +32,7 @@ import { CalendarComponent } from './components/partials/calendar/calendar.compo
 import { RendesVousComponent } from './components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component';
 import { JuryEspaceComponent } from './components/dashboard/dashboard/jury-espace/jury-espace.component';
 import { WaitingforverificationComponent } from './components/signup/waitingforverification/waitingforverification.component';
+import { MonSujetComponent } from './components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component';
 
 
 
@@ -63,6 +64,7 @@ import { WaitingforverificationComponent } from './components/signup/waitingforv
     RendesVousComponent,
     JuryEspaceComponent,
     WaitingforverificationComponent,
+    MonSujetComponent,
   ],
   imports: [
     BrowserModule,

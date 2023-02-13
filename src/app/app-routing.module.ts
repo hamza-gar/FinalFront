@@ -25,6 +25,7 @@ import {MesSujetComponent} from "./components/list-sujets/mes-sujet/mes-sujet.co
 import {RendesVousComponent} from "./components/dashboard/dashboard-eneignant/rendes-vous/rendes-vous.component";
 import {JuryEspaceComponent} from "./components/dashboard/dashboard/jury-espace/jury-espace.component";
 import {WaitingforverificationComponent} from "./components/signup/waitingforverification/waitingforverification.component";
+import {MonSujetComponent} from "./components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -49,7 +50,10 @@ const routes: Routes = [
       {path:'resetPassword',component: ResetPasswordComponent}
     ] },
   {path:'dashboard',children:[
-      {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
+      {path: 'etudiant',children:[
+          {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
+          {path: 'monSujet',component: MonSujetComponent}
+        ]},
       {path: 'home',children:[
           {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
           {path:'mesSujets',component:MesSujetComponent},
