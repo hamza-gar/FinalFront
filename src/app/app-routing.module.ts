@@ -51,7 +51,7 @@ const routes: Routes = [
   {path:'dashboard',children:[
       {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
       {path: 'home',children:[
-        {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
+          {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
           {path:'mesSujets',component:MesSujetComponent},
           {path:'rendesVous',component:RendesVousComponent},
           {path:'juryEspace',component:JuryEspaceComponent}

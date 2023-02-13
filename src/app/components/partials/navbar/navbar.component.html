@@ -7,6 +7,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul *ngIf="currentUser" class="navbar-nav mr-auto">
+        <li class="nav-item" style="margin-left: 1vw">
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" style="margin-top: 2px;">
+              Sujets
+            </button>
+            <div class="dropdown-menu" *ngIf="!etudiant">
+              <a class="dropdown-item" routerLink="/dashboard/home/mesSujets">Mes Sujets</a>
+              <a class="dropdown-item" routerLink="/">Tous les sujets</a>
+            </div>
+            <div class="dropdown-menu" *ngIf="etudiant">
+              <a class="dropdown-item" routerLink="/sujets/ListSujets">Mon Sujet</a>
+            </div>
+          </div>
+        </li>
         <li class="nav-item" style="margin-left: 1vw" *ngIf="!etudiant">
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -17,35 +32,18 @@
         </li>
         <li class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
-            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" style="margin-top: 2px;">
-              Sujets
+            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/rendesVous">
+              Rendez-vous
             </button>
-            <div class="dropdown-menu" *ngIf="!etudiant">
-              <a class="dropdown-item" routerLink="/dashboard/home/mesSujets">Mes Sujets</a>
-              <a class="dropdown-item" href="#">Tous les sujets</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-
-            <div class="dropdown-menu" *ngIf="etudiant">
-              <a class="dropdown-item" routerLink="/sujets/ListSujets">Mon Sujet</a>
-            </div>
+            <!-- todo:rendez vous pour les etudiant -->
           </div>
-
+        </li>
+        <li class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
-            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" style="margin-top: 2px;">
-              Rendez vous
+            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/juryEspace">
+              Soutenances
             </button>
-            <div class="dropdown-menu" *ngIf="!etudiant">
-              <a class="dropdown-item" routerLink="/dashboard/home/rendesVous">Mes Rendez Vous</a>
-              <a class="dropdown-item" href="#">Tous les sujets</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-
-          <!-- todo:rendes vous pour les etudiant -->
           </div>
-
         </li>
 
       </ul>

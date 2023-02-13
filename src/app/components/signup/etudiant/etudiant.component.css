@@ -234,7 +234,8 @@ input[type='password']{
 .progress-bar3 {
   width: 100%;
   height: 0.4vh;
-  background: linear-gradient(to right, #741f79, #811875, #8c1070, #97046a, #a10064, #aa005c, #b10055, #b8004d, #bd0044 ,#c10c3b);
+  background: linear-gradient(to right, #741f79, #811875, #8c1070, #97046a, #a10064,
+  #aa005c, #b10055, #b8004d, #bd0044 ,#c10c3b);
   background-size: 200% auto;
   animation: rainbow 3s ease infinite;
 }
