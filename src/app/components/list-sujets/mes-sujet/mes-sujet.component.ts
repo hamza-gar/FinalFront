@@ -44,17 +44,15 @@ export class MesSujetComponent implements OnInit{
   }
 
   public addSujet(){
-    console.log(this.nomSujet)
-    console.log(this.tailleEquipe)
-    console.log(this.descriptionSujet)
     this.subjects.nomSujet=this.nomSujet;
     this.subjects.descriptionSujet=this.descriptionSujet;
     this.subjects.tailleEquipe=this.tailleEquipe
     this.sujetService.addSujet(this.subjects).subscribe(operation=>{
-      console.log(operation)
+      window.location.reload();
     }, error=>{
       console.log('error')
     })
+
   }
 
   public getMySujets(p:number){
@@ -81,7 +79,7 @@ export class MesSujetComponent implements OnInit{
     this.nomSujet=''
   }
   public getSujetPages(): void {
-    this.sujetService.getSujetPages().subscribe(
+    this.sujetService.getMySujetPages().subscribe(
       (response: number) => {
         this.pages = Array.from(Array(Math.ceil(response / 6)).keys());
         console.log(this.pages)
@@ -93,7 +91,7 @@ export class MesSujetComponent implements OnInit{
   }
 
   public getCount(): void {
-    this.sujetService.getSujetPages().subscribe(
+    this.sujetService.getMySujetPages().subscribe(
       (response: number) => {
         this.counter = response;
       },

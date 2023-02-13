@@ -24,6 +24,9 @@ export class SujetService{
     return this.http.get<number>(`${this.apiServiceUrl}/count`);
   }
 
+  public getMySujetPages(): Observable<number> {
+    return this.http.get<number>(`${this.apiServiceUrl}/countMysujets`);
+  }
   public addSujet(sujet:sujetRequirement):Observable<sujetRequirement>{
   return this.http.post<sujetRequirement>(`${this.apiServiceUrl}`,sujet);
   }

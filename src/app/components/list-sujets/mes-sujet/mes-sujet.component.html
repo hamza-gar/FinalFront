@@ -1,35 +1,72 @@
-<div class="container" >
-  <div class="panel">
-  <div style="float: right;margin-bottom:10px;">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">new sujet</button>
-  </div>
-  <h3>Mes Sujets:</h3>
-  <table class="table table-bordered">
-    <thead>
-    <tr style="text-align: center">
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Taille Equipe</th>
-      <th scope="col">Voir les equipes</th>
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let sujet of lisSubjects;index as i">
-      <tr style="text-align: center">
-        <td>{{sujet.nomSujet}}</td>
-        <td>{{sujet.descriptionSujet}}</td>
-        <td>{{sujet.tailleEquipe}}</td>
-        <td><button  type="button" class="btn btn-info" data-toggle="modal" data-target="#listGroupe" (click)="myIndex(i)">Voir Equipes</button></td>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
-  </div>
+<div class="example bg-1">
+  <section class="panel">
+    <header class="panel__header">
+
+      <div class="horizontalblock">
+        <div class="block1">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" (click)="changePage(-1)" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of pages">
+                <a class="page-link"  (click)="getMySujets(page)">{{page}}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="changePage(+1)" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <h1 class="panel__title">
+          Mes Sujets:
+        </h1>
+        <div class="block2">
+          <button type="button" class="customSubmitButton" data-toggle="modal" data-target="#exampleModal">Ajouter sujet
+          </button>
+        </div>
+
+      </div>
+    </header>
+    <div class="panel__content">
+      <table class="table">
+        <thead>
+        <tr style="text-align: center">
+          <th class="col">Name</th>
+          <th class="col-6">Description</th>
+          <th class="col">Taille Equipe</th>
+          <th class="col">Voir les equipes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let sujet of lisSubjects;index as i">
+          <tr class="ligne" style="text-align: center">
+            <td style="text-align: left">{{sujet.nomSujet}}</td>
+            <td style="text-align: left">{{sujet.descriptionSujet}}</td>
+            <td>{{sujet.tailleEquipe}}</td>
+            <td>
+              <button type="button" class="customButton" data-toggle="modal" data-target="#listGroupe"
+                      (click)="myIndex(i)">Voir Equipes
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+
+    </div>
+
+  </section>
 </div>
 
 
 <!--modal add sujet -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -39,7 +76,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form >
+        <form>
           <div class="form-group">
             <label for="nomSujet" class="col-form-label">nom sujet :</label>
             <input type="text" class="form-control" id="nomSujet" [(ngModel)]="nomSujet" name="nomSujet">
@@ -50,13 +87,14 @@
           </div>
           <div class="form-group">
             <label for="descriptionSujet" class="col-form-label">description:</label>
-            <textarea class="form-control" id="descriptionSujet" [(ngModel)]="descriptionSujet" name="descriptionSujet"></textarea>
+            <textarea class="form-control" id="descriptionSujet" [(ngModel)]="descriptionSujet"
+                      name="descriptionSujet"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" (click)="addSujet()">ajouter sujets</button>
+        <button type="submit" class="btn btn-primary" (click)="addSujet()" href="#">ajouter sujets</button>
       </div>
     </div>
   </div>
@@ -65,7 +103,8 @@
 
 
 <!--modal list des groups complet d'un sujet  -->
-<div class="modal fade" id="listGroupe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="listGroupe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -87,16 +126,17 @@
           <ng-container *ngFor="let group of fullEquipe;index as j">
             <tr style="text-align: center">
               <td>{{j}}</td>
-              <button type="button" class="btn btn-warning"  style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers"  (click)="getEquipeIndex(j); getMemebersOfEquipe();">Voir Etudiant</button>
-              <button class="btn btn-warning" (click)="getEquipeIndex(j);lockSujet()"> Accepter </button>
+              <button type="button" class="btn btn-warning" style="margin-right:2px;" data-toggle="modal"
+                      data-target="#groupMembers" (click)="getEquipeIndex(j); getMemebersOfEquipe();">Voir Etudiant
+              </button>
+              <button class="btn btn-warning" (click)="getEquipeIndex(j);lockSujet()"> Accepter</button>
             </tr>
           </ng-container>
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" >click</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
@@ -105,7 +145,8 @@
 
 
 <!--  modal for getting the element of the group -->
-<div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -115,7 +156,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Etudiant</th>
