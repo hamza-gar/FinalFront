@@ -129,7 +129,7 @@ button:active {
 
 .c .sec1{
   width: 35%;
-text-align: center;
+  text-align: center;
 }
 .c .sec2{
   width: 100%;
@@ -143,10 +143,10 @@ text-align: center;
   margin-top:50%;
 }
 table tfoot li{
-bottom: 0;
+  bottom: 0;
 }
 table tfoot{
-float: bottom;
+  float: bottom;
 
 }
 

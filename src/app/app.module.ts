@@ -34,6 +34,7 @@ import { JuryEspaceComponent } from './components/dashboard/dashboard/jury-espac
 import { WaitingforverificationComponent } from './components/signup/waitingforverification/waitingforverification.component';
 import { MonSujetComponent } from './components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component';
 import { VoirRemarqueComponent } from './components/dashboard/dashboard-etudiant/voir-remarque/voir-remarque.component';
+import { MesPostulationComponent } from './components/dashboard/dashboard-etudiant/mes-postulation/mes-postulation.component';
 
 
 
@@ -67,6 +68,7 @@ import { VoirRemarqueComponent } from './components/dashboard/dashboard-etudiant
     WaitingforverificationComponent,
     MonSujetComponent,
     VoirRemarqueComponent,
+    MesPostulationComponent,
   ],
   imports: [
     BrowserModule,
