@@ -51,6 +51,7 @@ const routes: Routes = [
       {path:'resetPassword',component: ResetPasswordComponent}
     ] },
   {path:'dashboard',children:[
+      {path:'admin',component: DashboardAdminComponent},
       {path: 'etudiant',children:[
           {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
           {path: 'monSujet',component: MonSujetComponent},
