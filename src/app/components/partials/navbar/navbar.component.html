@@ -52,14 +52,6 @@
             </button>
           </div>
         </li>
-        <li class="nav-item" style="margin-left: 1vw">
-          <div class="btn-group">
-            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/juryEspace">
-              Soutenances
-            </button>
-
-          </div>
-        </li>
         <li *ngIf="etudiant && estpostulant &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -79,6 +71,14 @@
           </div>
 
         </li>
+        <li *ngIf="!etudiant" class="nav-item" style="margin-left: 1vw">
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/juryEspace">
+              Soutenances
+            </button>
+
+          </div>
+        </li>
 
         <li *ngIf="etudiant && hasfinished &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
@@ -90,7 +90,6 @@
           </div>
 
         </li>
-
       </ul>
       <ul class="navbar-nav mll">
         <li *ngIf="!currentUser &&!Admin" class="nav-item account-container">
