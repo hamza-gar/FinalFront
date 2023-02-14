@@ -72,8 +72,13 @@ export class TokenService {
     const user = this.getUser()
     return user=='etudiant'
   }
+  isAdmin(){
+    const user = this.getUser()
+    return user=='admin'
+  }
 
   loggedIn(){
     return this.isValid()
   }
+
 }

@@ -35,6 +35,7 @@ import { WaitingforverificationComponent } from './components/signup/waitingforv
 import { MonSujetComponent } from './components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component';
 import { VoirRemarqueComponent } from './components/dashboard/dashboard-etudiant/voir-remarque/voir-remarque.component';
 import { MesPostulationComponent } from './components/dashboard/dashboard-etudiant/mes-postulation/mes-postulation.component';
+import { DomainesComponent } from './components/Admin/domaines/domaines.component';
 
 
 
@@ -69,6 +70,7 @@ import { MesPostulationComponent } from './components/dashboard/dashboard-etudia
     MonSujetComponent,
     VoirRemarqueComponent,
     MesPostulationComponent,
+    DomainesComponent,
   ],
   imports: [
     BrowserModule,

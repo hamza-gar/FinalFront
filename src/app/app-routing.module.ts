@@ -27,6 +27,7 @@ import {JuryEspaceComponent} from "./components/dashboard/dashboard/jury-espace/
 import {WaitingforverificationComponent} from "./components/signup/waitingforverification/waitingforverification.component";
 import {MonSujetComponent} from "./components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component";
 import {VoirRemarqueComponent} from "./components/dashboard/dashboard-etudiant/voir-remarque/voir-remarque.component";
+import {DomainesComponent} from "./components/Admin/domaines/domaines.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -73,6 +74,7 @@ const routes: Routes = [
     ]},
 
   {path:'verification',component:VerificationComponent},
+  {path:'domaines',component:DomainesComponent},
   {path:"**",component:PageNotFoundComponent},
 
 ];

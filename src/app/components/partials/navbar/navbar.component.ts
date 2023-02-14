@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit {
 
   currentUser = null;
   etudiant = false;
+
+  Admin = false;
+
   mail: any;
   isworking!:boolean;
   hasfinished!:boolean;
@@ -28,6 +31,7 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.accountService.authStatus.subscribe(res => {
+      this.Admin = this.tokenService.isAdmin();
       this.etudiant = this.tokenService.isEtudiant();
       if(this.etudiant){
         this.settingsLink="/settings/etudiantSettings";
@@ -35,6 +39,10 @@ export class NavbarComponent implements OnInit {
       }else{
         this.settingsLink="/settings/enseignantSettings"
         this.faString="fa-solid fa-chalkboard-user"
+      }
+      if(this.Admin){
+        this.settingsLink="/settings/adminSettings"
+        this.faString="fa-solid fa-user-crown"
       }
       this.isWorking();
       this.hasFinished();
@@ -49,11 +57,6 @@ export class NavbarComponent implements OnInit {
     this.accountService.changeStatus(false);
     this.route.navigateByUrl("/");
 
-  }
-  public getMyRemarque(){
-    this.etudiantService.voiRemarque().subscribe((res:RemarqueResponse[])=>{
-      this.remarqueResponse=res
-    },error=>{(console.log(error))})
   }
   public isWorking() {
     this.etudiantService.isWorking().subscribe((res: boolean) => {
@@ -83,4 +86,8 @@ export class NavbarComponent implements OnInit {
       (console.log(error))
     })
   }
+
+
+
+
 }

@@ -38,7 +38,6 @@ export class EtudiantComponentLog {
     this.accountService.changeStatus(true);
     this.router.navigateByUrl("/dashboard/dashboardEtudiant")
 
-
   }
 
 }
