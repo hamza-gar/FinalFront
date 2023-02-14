@@ -19,7 +19,9 @@ import {SignupService} from "../../services/signup.service";
 })
 export class ListSujetsComponent implements OnInit {
 
+  isFilterd=false;
   public subjects!: sujetRequirement[];
+  public Filterdsubjects!: sujetRequirement[];
   public equipeRequirement !: EquipeRequirement[];
 
   public  member!:Members[][];
@@ -289,7 +291,9 @@ export class ListSujetsComponent implements OnInit {
         .subscribe(data => {
           console.log(data);
           this.subjects = data
+          this.isFilterd=true;
         });
-
     }
+
+
 }

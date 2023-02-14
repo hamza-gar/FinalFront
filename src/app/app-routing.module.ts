@@ -26,6 +26,7 @@ import {RendesVousComponent} from "./components/dashboard/dashboard-eneignant/re
 import {JuryEspaceComponent} from "./components/dashboard/dashboard/jury-espace/jury-espace.component";
 import {WaitingforverificationComponent} from "./components/signup/waitingforverification/waitingforverification.component";
 import {MonSujetComponent} from "./components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component";
+import {VoirRemarqueComponent} from "./components/dashboard/dashboard-etudiant/voir-remarque/voir-remarque.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -52,7 +53,8 @@ const routes: Routes = [
   {path:'dashboard',children:[
       {path: 'etudiant',children:[
           {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
-          {path: 'monSujet',component: MonSujetComponent}
+          {path: 'monSujet',component: MonSujetComponent},
+          {path: 'voirRemarque',component: VoirRemarqueComponent}
         ]},
       {path: 'home',children:[
           {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
@@ -68,6 +70,7 @@ const routes: Routes = [
       {path:'enseignantSettings',component: EnseignantSettingsComponent},
       {path:'adminSettings',component: AdminSettingsComponent}
     ]},
+
   {path:'verification',component:VerificationComponent},
   {path:"**",component:PageNotFoundComponent},
 

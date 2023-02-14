@@ -52,12 +52,12 @@ export class DashboardEtudiantComponent implements OnInit{
     console.log(this.rendezvousResponse.idRendezvous)
     this.rendezvousResponse.vote=vote
     console.log(this.rendezvousResponse.vote)
-    // this.rendesVous.voteRendezvous(this.rendezvousResponse).subscribe(
-    //   (response: RendezvousResponse) => {
-    //     this.rendezvousResponse=response
-    //   },(error:HttpErrorResponse)=>{
-    //   alert(error.message)
-    // })
+    this.rendesVous.voteRendezvous(this.rendezvousResponse).subscribe(
+      (response: RendezvousResponse) => {
+        this.rendezvousResponse=response
+      },(error:HttpErrorResponse)=>{
+      alert(error.message)
+    })
   }
 
   public getRendezVousBySelf(){
@@ -108,12 +108,7 @@ export class DashboardEtudiantComponent implements OnInit{
         alert(error.error.message)
       })
   }
-  validateSujet(){
-    this.sujet.done=true;
-   // this.sujetService.validateSujet(this.sujet).subscribe((res:sujetRequirement)=>{
-   // },error=>{alert(error.error.message)});
-   //
-  }
+
   getEquipeByIdSujet(id:string){
     this.group.getEquipeByIdSujet(id).subscribe((res:EquipeRequirement)=>{
       this.equipeRequire=res;

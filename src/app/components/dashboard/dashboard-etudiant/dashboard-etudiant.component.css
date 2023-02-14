@@ -65,6 +65,10 @@ button:active {
 }
 
 
+/****************************************/
+
+
+/****************************************/
 
 /*body {*/
 /*  display: grid;*/
@@ -84,7 +88,7 @@ button:active {
 .collector {
   width: 100%;
   height: 80vh;
-  background: rgba(200,200,200,0.3);
+  background: rgba(89, 89, 89, 0.3);
   border: 2px solid rgba(0,0,0,0.2);
   border-radius: 10px;
 }
@@ -139,6 +143,10 @@ text-align: center;
 }
 table tfoot li{
 bottom: 0;
+}
+table tfoot{
+float: bottom;
+
 }
 
 .bg-1 {

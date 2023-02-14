@@ -1,14 +1,12 @@
 <div class="conteneur bg-1">
-  <nav class="collector">
-    <h1 style="margin-left: 45%">Espace Etudiant</h1>
-    <hr style="height: 2px; border: none; color: #333; background-color: #333; width: 30%; margin-left: 37%;">
+  <nav class="collector" >
 
     <section class="c">
-  <section class="sec1">
-    <table class="table">
+  <section class="sec1" >
+    <table class="table "style="width: 400px;height: 79.6vh; border-right:1px solid black">
 
-      <ul class="team">
-        <thead class="headStyle">
+      <ul class="team mt-5" >
+        <thead class="headStyle ">
         <li>{{sujet.nomEnseignant}}</li>
         <li>{{sujet.emailEnseignant}}</li>
         <tr></tr>
@@ -21,12 +19,14 @@
           </ng-container>
         </tr>
         </tbody>
-        <tfoot>
+        <tfoot >
 
           <li>rendez vous</li>
           <li>Prise Rendez Vous: <button class="btn  btn-warning" (click)="priseRendesVous()">Click</button></li>
-          <li>Vote Pour le Rendez vous:   <div class="buttons" >
-            <button (click)="voteRendezVous(1)">Yes</button>
+          <li>Date de rendez vous : {{rendezvousResponse.dateRendezvous|date:"Y-M-d HH:mm"}}</li>
+          <li>Date de rendez vous : {{rendezvousResponse.fixed}}</li>
+          <li *ngIf="rendezvousResponse.dateRendezvous!=null && !rendezvousResponse.fixed">Vote Pour le Rendez vous:   <div class="buttons" >
+            <button  (click)="voteRendezVous(1)">Yes</button>
             <button (click)="voteRendezVous(-1)">No</button>
           </div></li>
         </tfoot>
@@ -36,12 +36,17 @@
 
   </section>
 
-  <section class="sec2">
+  <section class="sec2 m-5">
 
-    <h3>{{sujet.nomSujet}}</h3>
-    <p>{{sujet.descriptionSujet}}</p>
+<!--    <h3>{{sujet.nomSujet}}</h3>-->
+    <div>
+      <h1>{{sujet.nomSujet}}</h1>
+      <h3>{{sujet.descriptionSujet}}</h3>
+    </div>
+    <div class="flap"></div>
+<!--    <p>{{sujet.descriptionSujet}}</p>-->
     <label>lien drive :</label>
-    <a href="{{equipeRequire.driveLink}}"> {{equipeRequire.driveLink}}</a>
+    <a href="{{equipeRequire.driveLink}}">Lien Drive</a>
     <button class="btn btn-success add" data-toggle="modal" data-target="#exampleModal" >+</button>
   </section>
 

@@ -33,6 +33,7 @@ import { RendesVousComponent } from './components/dashboard/dashboard-eneignant/
 import { JuryEspaceComponent } from './components/dashboard/dashboard/jury-espace/jury-espace.component';
 import { WaitingforverificationComponent } from './components/signup/waitingforverification/waitingforverification.component';
 import { MonSujetComponent } from './components/dashboard/dashboard-etudiant/mon-sujet/mon-sujet.component';
+import { VoirRemarqueComponent } from './components/dashboard/dashboard-etudiant/voir-remarque/voir-remarque.component';
 
 
 
@@ -65,6 +66,7 @@ import { MonSujetComponent } from './components/dashboard/dashboard-etudiant/mon
     JuryEspaceComponent,
     WaitingforverificationComponent,
     MonSujetComponent,
+    VoirRemarqueComponent,
   ],
   imports: [
     BrowserModule,
