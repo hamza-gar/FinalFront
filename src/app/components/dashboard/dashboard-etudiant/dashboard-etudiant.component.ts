@@ -10,6 +10,10 @@ import {RemarqueResponse} from "../../../classes/RemarqueResponse";
 import {Members} from "../../../classes/members";
 import {SujetService} from "../../../services/sujet.service";
 import {sujetRequirement} from "../../../classes/sujetRequirement";
+import {SoutenanceService} from "../../../services/soutenance.service";
+import {SoutenanceResponse} from "../../../classes/SoutenanceResponse";
+import {EnseignantService} from "../../../services/enseignant.service";
+import {JuryResponse} from "../../../classes/JuryResponse";
 
 @Component({
   selector: 'app-dashboard-etudiant',
@@ -30,12 +34,17 @@ export class DashboardEtudiantComponent implements OnInit{
   public equipeRequire:EquipeRequirement=new EquipeRequirement();
 
   public remarqueResponse!:RemarqueResponse[];
+  public juryResponse!:JuryResponse[];
+  soutenance:SoutenanceResponse=new SoutenanceResponse();
+  hasSout!:boolean;
 
 
   constructor(private rendesVous:RendesVousService,
               private etudiantService:EtudiantService,
               private group:GroupsServiceService,
-              private sujetService:SujetService) {
+              private sujetService:SujetService,
+              private enseignantService:EnseignantService,
+              private soutenanceService:SoutenanceService) {
   }
 
   public priseRendesVous(){
@@ -104,6 +113,8 @@ export class DashboardEtudiantComponent implements OnInit{
       this.sujetService.getSujetByIdSujet(id).subscribe((res:sujetRequirement)=>{
         this.sujet=res
         this.getEquipeByIdSujet(res.idSujet)
+        this.getSoutenance(res.idSujet)
+        this.getInvitedJury(res.idSujet)
       },(error:HttpErrorResponse)=>{
         alert(error.error.message)
       })
@@ -114,9 +125,36 @@ export class DashboardEtudiantComponent implements OnInit{
       this.equipeRequire=res;
     })
   }
+  public hasSoutenance(){
+    this.soutenanceService.hasSoutenance().subscribe(res=>{
+      this.hasSout=res;
+      console.log(this.hasSout)
+    },error=>{
+      alert(error.error.message)
+    })
+  }
+
+  public getSoutenance(id:string){
+    this.soutenanceService.getSoutenanceByIdSujet(id).subscribe((res:SoutenanceResponse)=>{
+      this.soutenance=res
+    },error=>{
+      alert(error.error.message)
+    }
+    )
+  }
+  public getInvitedJury(id:string){
+
+    this.enseignantService.getInvitedJurys(id,0,6).subscribe((res:JuryResponse[])=>{
+      this.juryResponse=res;
+    },error=>{
+      console.log("error");
+    });
+  }
   ngOnInit(): void {
     this.getEquipeBySelf();
     this.getRendezVousBySelf();
+    this.hasSoutenance()
   }
+
 
 }

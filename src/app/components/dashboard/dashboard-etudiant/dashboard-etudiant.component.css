@@ -109,9 +109,9 @@ button:active {
 }
 
 .c{
-
   display: flex;
   justify-content: space-between;
+
 }
 /*.c section{*/
 /*  width: 50%;*/
@@ -132,8 +132,9 @@ button:active {
 text-align: center;
 }
 .c .sec2{
-  width: 65%;
+  width: 100%;
   text-align: center;
+
 }
 
 .vali{

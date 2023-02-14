@@ -43,5 +43,8 @@ export class SoutenanceService {
   public updateSoutenance(soutenanceResponse:SoutenanceResponse):Observable<SoutenanceResponse>{
     return this.http.put<SoutenanceResponse>(`${this.apiServiceUrl}/date-update`,soutenanceResponse);
   }
+  public hasSoutenance():Observable<boolean>{
+    return this.http.get<boolean>(`http://localhost:8080/etudiants/hasSoutenance`);
+  }
 
 }
