@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AccountService} from "../../../services/account.service";
 import {TokenService} from "../../../services/token.service";
 import {Router} from "@angular/router";
+import {RemarqueResponse} from "../../../classes/RemarqueResponse";
+import {EtudiantService} from "../../../services/etudiant.service";
 
 
 
@@ -20,8 +22,9 @@ export class NavbarComponent implements OnInit {
   settingsLink!:string;
 
   faString!:string;
+  remarqueResponse!:RemarqueResponse[];
 
-  constructor(private accountService: AccountService, private tokenService: TokenService, private route: Router) {
+  constructor(private accountService: AccountService, private etudiantService:EtudiantService,private tokenService: TokenService, private route: Router) {
   }
 
   ngOnInit(): void {
@@ -45,5 +48,12 @@ export class NavbarComponent implements OnInit {
     this.route.navigateByUrl("/");
 
   }
+
+  public getMyRemarque(){
+    this.etudiantService.voiRemarque().subscribe((res:RemarqueResponse[])=>{
+      this.remarqueResponse=res
+    },error=>{(console.log(error))})
+  }
+
 
 }

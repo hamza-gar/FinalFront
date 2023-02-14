@@ -1,33 +1,86 @@
-<div class="container">
-  <button class="btn btn-info" (click)="priseRendesVous()">Rendes-vous</button>
-  <div>
-    <button class="btn btn-warning" (click)="getRendezVousBySelf()">hello click me</button>
-  </div>
+<div class="conteneur bg-1">
+  <nav class="collector">
+    <h1 style="margin-left: 45%">Espace Etudiant</h1>
+    <hr style="height: 2px; border: none; color: #333; background-color: #333; width: 30%; margin-left: 37%;">
 
-  <div>
-    <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">add lien drive</button>
-  </div>
+    <section class="c">
+  <section class="sec1">
+    <table class="table">
 
-  <div>
-    <button class="btn btn-info" (click)="getEquipeBySelf()">equipe</button>
-  </div>
+      <ul class="team">
+        <thead class="headStyle">
+        <li>{{sujet.nomEnseignant}}</li>
+        <li>{{sujet.emailEnseignant}}</li>
+        <tr></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <ng-container *ngFor="let meb of member;index as i">
+            <li class="etud">{{meb[0]}}</li>
+            <li class="mail">{{meb[1]}}</li>
+          </ng-container>
+        </tr>
+        </tbody>
+        <tfoot>
+
+          <li>rendez vous</li>
+          <li>Prise Rendez Vous: <button class="btn  btn-warning" (click)="priseRendesVous()">Click</button></li>
+          <li>Vote Pour le Rendez vous:   <div class="buttons" >
+            <button (click)="voteRendezVous(1)">Yes</button>
+            <button (click)="voteRendezVous(-1)">No</button>
+          </div></li>
+        </tfoot>
+      </ul>
+    </table>
 
 
-  <div>
-    <button class="btn btn-info" >Validate Sujet</button>
-  </div>
+  </section>
 
+  <section class="sec2">
 
-  <div class="buttons" >
-    <button (click)="voteRendezVous(1)">Yes</button>
-    <button (click)="voteRendezVous(-1)">No</button>
-  </div>
+    <h3>{{sujet.nomSujet}}</h3>
+    <p>{{sujet.descriptionSujet}}</p>
+    <label>lien drive :</label>
+    <a href="{{equipeRequire.driveLink}}"> {{equipeRequire.driveLink}}</a>
+    <button class="btn btn-success add" data-toggle="modal" data-target="#exampleModal" >+</button>
+  </section>
 
-  <div>
-    <button class="btn btn-warning" data-toggle="modal" data-target="#Remarque" (click)="getMyRemarque()">Voir Remarque</button>
-  </div>
+</section>
 
+  </nav>
 </div>
+
+
+<!--<div class="container">-->
+<!--  <button class="btn btn-info" (click)="priseRendesVous()">Rendes-vous</button>-->
+<!--  <div>-->
+<!--    <button class="btn btn-warning" (click)="getRendezVousBySelf()">Get my rendes vous</button>-->
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">add lien drive</button>-->
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <button class="btn btn-info" (click)="getEquipeBySelf()">equipe</button>-->
+<!--  </div>-->
+
+
+<!--  <div>-->
+<!--    <button class="btn btn-info" >Validate Sujet</button>-->
+<!--  </div>-->
+
+
+<!--  <div class="buttons" >-->
+<!--    <button (click)="voteRendezVous(1)">Yes</button>-->
+<!--    <button (click)="voteRendezVous(-1)">No</button>-->
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <button class="btn btn-warning" data-toggle="modal" data-target="#Remarque" (click)="getMyRemarque()">Voir Remarque</button>-->
+<!--  </div>-->
+
+<!--</div>-->
 
 
 <!--modal add sujet -->
@@ -59,42 +112,42 @@
 </div>
 <!--**********************************************************-->
 
-<!--modal Voir Remarque -->
-<div class="modal fade" id="Remarque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="RemarqueLabel">Les Remarque :</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <table class="table table-bordered">
-         <thead>
-         <th>~</th>
-         <th>Remarque</th>
-         <th>Note</th>
-         <th>Target</th>
-         <th>Enseignant</th>
-         </thead>
-         <tbody>
-        <ng-container *ngFor="let rem of remarqueResponse;index as j">
-          <tr>
-            <td>{{j+1}}</td>
-            <td>{{(rem.remarque).split('~')[1]}}</td>
-            <td>{{rem.note}}</td>
-            <td>{{rem.target}}</td>
-            <td>{{(rem.remarque).split('~')[0]}}</td>
-          </tr>
-        </ng-container>
-         </tbody>
-       </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--**********************************************************-->
+<!--&lt;!&ndash;modal Voir Remarque &ndash;&gt;-->
+<!--<div class="modal fade" id="Remarque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="RemarqueLabel">Les Remarque :</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--       <table class="table table-bordered">-->
+<!--         <thead>-->
+<!--         <th>~</th>-->
+<!--         <th>Remarque</th>-->
+<!--         <th>Note</th>-->
+<!--         <th>Target</th>-->
+<!--         <th>Enseignant</th>-->
+<!--         </thead>-->
+<!--         <tbody>-->
+<!--        <ng-container *ngFor="let rem of remarqueResponse;index as j">-->
+<!--          <tr>-->
+<!--            <td>{{j+1}}</td>-->
+<!--            <td>{{(rem.remarque).split('~')[1]}}</td>-->
+<!--            <td>{{rem.note}}</td>-->
+<!--            <td>{{rem.target}}</td>-->
+<!--            <td>{{(rem.remarque).split('~')[0]}}</td>-->
+<!--          </tr>-->
+<!--        </ng-container>-->
+<!--         </tbody>-->
+<!--       </table>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;**********************************************************&ndash;&gt;-->
