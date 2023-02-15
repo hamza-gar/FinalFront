@@ -165,13 +165,29 @@
         </button>
       </div>
       <div class="modal-body">
+        <nav aria-label="Page navigation example" style="right:50%;">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+              </a>
+            </li>
+            <li class="page-item">
+              <div class="page-link">{{p}}</div>
+            </li>
+            <li class="page-item">
+              <a class="page-link" aria-label="Next">
+                <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i> </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
         <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Enseignant</th>
             <th scope="col">Nom Complete</th>
             <th scope="col">Email</th>
-            <th scope="col">Etablissement</th>
             <th scope="col">Departement</th>
             <th scope="col">Action</th>
           </tr>
@@ -183,7 +199,6 @@
               <td>{{j}}</td>
               <td>{{ense.nom}}{{ense.prenom}}</td>
               <td>{{ense.email}}</td>
-              <td>{{ense.nomEtablissement}}</td>
               <td>{{ense.nomDepartement}}</td>
               <td>
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#TypeJury"
