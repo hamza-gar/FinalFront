@@ -5,7 +5,7 @@
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item">
-            <a class="page-link" aria-label="Previous">
+            <a class="page-link" (click)="changePage(-1)" aria-label="Previous">
               <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
             </a>
           </li>
@@ -13,7 +13,7 @@
             <div class="page-link">{{p}}</div>
           </li>
           <li class="page-item">
-            <a class="page-link" aria-label="Next">
+            <a class="page-link" (click)="changePage(+1)" aria-label="Next">
               <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i> </span>
             </a>
           </li>

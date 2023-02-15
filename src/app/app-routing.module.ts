@@ -79,7 +79,7 @@ const routes: Routes = [
 
   {path:'verification',component:VerificationComponent},
   {path:'domaines',component:DomainesComponent, canActivate: [AdminGuard]},
-  {path:"**",component:PageNotFoundComponent},
+  {path:"**",component:PageNotFoundComponent}
 
 ];
 

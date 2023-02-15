@@ -22,6 +22,10 @@ export class RendesVousService {
     return this.httpClient.get<RendezvousResponse[]>(`${this.rendesVousUrl}?page=${page}&limit=${limit}`);
   }
 
+  public getallRendezVousCount():Observable<number>{
+    return this.httpClient.get<number>(`${this.rendesVousUrl}/count`);
+  }
+
   public voteRendezvous(id:any):Observable<RendezvousResponse>{
     return this.httpClient.put<RendezvousResponse>(`${this.rendesVousUrl}/vote`,id);
   }

@@ -1,36 +1,62 @@
 <div class="example bg-1">
   <section class="panel">
-    <header class="panel__header">
-  <h3>Liste Des Rendez vous:</h3>
+    <div class="horizontalblock">
+      <header class="panel__header">
+        <h3>Liste Des Rendez vous:</h3>
       </header>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(-1)" aria-label="Previous">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+            </a>
+          </li>
+          <li class="page-item">
+            <div class="page-link">{{p}}</div>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(+1)" aria-label="Next">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i> </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <div class="panel__content">
-  <table class="table table-bordered">
-    <thead>
-    <tr style="text-align: center">
-      <th scope="col">Rendez vous</th>
-      <th scope="col">nomSujet</th>
-      <th scope="col">fix date</th>
-    </tr>
-    </thead>
-    <tbody>
+      <table class="table table-bordered">
+        <thead>
+        <tr style="text-align: center">
+          <th scope="col">Rendez vous</th>
+          <th scope="col">nomSujet</th>
+          <th scope="col">fix date</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    <ng-container *ngFor="let rend of renedsVous; index as i">
-      <tr style="text-align: center">
-        <td>{{i}}</td>
-        <td>{{rend.nomSujet}}</td>
-        <td><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="getMemebersOfEquipe(i)" style="margin-right: 6px;">Etudiant Info</button>
-        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" style="margin-left: 6px;">Fix date</button></td>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
-      </div>
+        <ng-container *ngFor="let rend of renedsVous; index as i">
+          <tr style="text-align: center">
+            <td>{{i}}</td>
+            <td>{{rend.nomSujet}}</td>
+            <td>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#etudiantDuGroup"
+                      (click)="getMemebersOfEquipe(i)" style="margin-right: 6px;">Etudiant Info
+              </button>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+                      (click)="myIndex(i)" style="margin-left: 6px;">Fix date
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
   </section>
 </div>
 
 
 <!--modal fix date -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -40,15 +66,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <form >
-            <label>
-              <input type="datetime-local" name="party" value="timeRendesVous" [(ngModel)]="renedsVousDate.dateRendezvous"/>
-            </label>
-          </form>
+        <form>
+          <label>
+            <input type="datetime-local" name="party" value="timeRendesVous"
+                   [(ngModel)]="renedsVousDate.dateRendezvous"/>
+          </label>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" (click)="fixRendesVous()" >fix date</button>
+        <button type="button" class="btn btn-warning" (click)="fixRendesVous()">fix date</button>
       </div>
     </div>
   </div>
@@ -56,7 +83,8 @@
 <!--**********************************************************-->
 
 <!--Etudiant Du Group -->
-<div class="modal fade" id="etudiantDuGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade" id="etudiantDuGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,7 +94,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Etudiant</th>

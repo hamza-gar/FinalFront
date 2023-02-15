@@ -11,69 +11,102 @@ import {Members} from "../../../../classes/members";
   templateUrl: './rendes-vous.component.html',
   styleUrls: ['./rendes-vous.component.css']
 })
-export class RendesVousComponent implements OnInit{
+export class RendesVousComponent implements OnInit {
 
-  public renedsVous!:RendezvousResponse[];
-  public renedsVousDate:RendezvousResponse = new RendezvousResponse();
+  public renedsVous!: RendezvousResponse[];
+  public renedsVousDate: RendezvousResponse = new RendezvousResponse();
 
-  public equipe:EquipeRequirement= new EquipeRequirement();
+  public equipe: EquipeRequirement = new EquipeRequirement();
   public p: number = 0;
 
-  public  member!:Members[][];
-  public selectedGroup:EquipeRequirement = new EquipeRequirement();
-  constructor(private rendesVousService:RendesVousService,private groupService:GroupsServiceService) {
+  public counter: number = 0;
+
+  public member!: Members[][];
+  public selectedGroup: EquipeRequirement = new EquipeRequirement();
+
+  constructor(private rendesVousService: RendesVousService, private groupService: GroupsServiceService) {
   }
+
   ngOnInit() {
     this.getRendesVous(this.p)
 
   }
-  public getRendesVous(p:number):void{
+
+  public getRendesVous(p: number): void {
     this.p = p;
-    this.rendesVousService.getAllRendesVous(p,6).subscribe((operation:RendezvousResponse[])=>{
+    this.getCount();
+    this.rendesVousService.getAllRendesVous(p, 6).subscribe((operation: RendezvousResponse[]) => {
       console.log(operation)
-      this.renedsVous=operation;
+      this.renedsVous = operation;
 
-    },(error:HttpErrorResponse)=>{
-      alert(error.message)
-    })
-  }
-  public fixRendesVous(){
-    console.log("date time :",this.renedsVousDate.dateRendezvous);
-    this.renedsVousDate.dateRendezvous= new Date(this.renedsVousDate.dateRendezvous)
-    this.rendesVousService.fixRendezvous(this.renedsVousDate).subscribe((response:RendezvousResponse)=>{
-      this.renedsVousDate=response;
-      console.log("id equipe :",this.renedsVousDate.idEquipe)
-    },(error:HttpErrorResponse)=>{
+    }, (error: HttpErrorResponse) => {
       alert(error.message)
     })
   }
 
+  public getCount(): void {
+    this.rendesVousService.getallRendezVousCount().subscribe((operation: number) => {
+      console.log(operation)
+      this.counter = operation;
+    }, (error: HttpErrorResponse) => {
+      alert(error.message)
+    })
+  }
 
-  myIndex(index:number){
+  public fixRendesVous() {
+    console.log("date time :", this.renedsVousDate.dateRendezvous);
+    this.renedsVousDate.dateRendezvous = new Date(this.renedsVousDate.dateRendezvous)
+    this.rendesVousService.fixRendezvous(this.renedsVousDate).subscribe((response: RendezvousResponse) => {
+      this.renedsVousDate = response;
+      console.log("id equipe :", this.renedsVousDate.idEquipe)
+    }, (error: HttpErrorResponse) => {
+      alert(error.message)
+    })
+  }
+
+
+  myIndex(index: number) {
     this.renedsVousDate = this.renedsVous[index];
 
   }
 
-  public getEquipeById(id:string){
+  public getEquipeById(id: string) {
     this.groupService.getEquipeById(id).subscribe(
-      (res:EquipeRequirement)=>{
-        this.equipe=res
+      (res: EquipeRequirement) => {
+        this.equipe = res
         this.selectedGroup = res
         console.log(res)
-      },error => {alert(error.message)}
+      }, error => {
+        alert(error.message)
+      }
     )
   }
-  getMemebersOfEquipe(index:number){
+
+  getMemebersOfEquipe(index: number) {
     this.renedsVousDate = this.renedsVous[index];
-    console.log("id from rendes vous :",this.renedsVousDate.idEquipe)
+    console.log("id from rendes vous :", this.renedsVousDate.idEquipe)
     this.getEquipeById(this.renedsVousDate.idEquipe)
-    console.log("this equipe id :" ,this.selectedGroup.idEquipe)
-    this.groupService.getMembersOfEquipe(this.renedsVousDate.idEquipe,this.member).subscribe(
-      (operation:Members[][])=>{
-        this.member=operation
-      },error => {
+    console.log("this equipe id :", this.selectedGroup.idEquipe)
+    this.groupService.getMembersOfEquipe(this.renedsVousDate.idEquipe, this.member).subscribe(
+      (operation: Members[][]) => {
+        this.member = operation
+      }, error => {
         console.log(error);
       })
   }
 
+  changePage(page: number) {
+    this.getCount();
+    console.log(Math.ceil(this.counter / 6))
+    if (page > 0) {
+      this.p++;
+    } else {
+      this.p--;
+    }
+    if (this.p >= 0 && this.p <= (Math.ceil(this.counter / 6) - 1)) {
+      this.getRendesVous(this.p);
+    } else {
+      this.p = 0;
+    }
+  }
 }

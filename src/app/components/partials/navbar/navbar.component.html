@@ -19,8 +19,6 @@
       </ul>
 
 
-
-
       <ul *ngIf="currentUser &&!Admin" class="navbar-nav mr-auto">
         <li class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
@@ -41,13 +39,14 @@
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false" style="margin-top: 2px;" routerLink="/dashboard/home/dashboardEnseignant">
-              DashBoard
+              Encadrement
             </button>
           </div>
         </li>
         <li class="nav-item" style="margin-left: 1vw">
           <div class="btn-group" *ngIf="!etudiant &&!Admin">
-            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/rendesVous">
+            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;"
+                    routerLink="/dashboard/home/rendesVous">
               Rendez-vous
             </button>
           </div>
@@ -61,19 +60,20 @@
 
           </div>
         </li>
-        <li  *ngIf="etudiant && isworking &&!Admin" class="nav-item" style="margin-left: 1vw">
+        <li *ngIf="etudiant && isworking &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
-          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false" style="margin-top: 2px;" routerLink="/dashboard/etudiant/dashboardEtudiant" >
-            Espace Mon Equipe
-          </button>
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" style="margin-top: 2px;" routerLink="/dashboard/etudiant/dashboardEtudiant">
+              Espace Mon Equipe
+            </button>
 
           </div>
 
         </li>
         <li *ngIf="!etudiant &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
-            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/juryEspace">
+            <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;"
+                    routerLink="/dashboard/home/juryEspace">
               Soutenances
             </button>
 
@@ -83,7 +83,7 @@
         <li *ngIf="etudiant && hasfinished &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" style="margin-top: 2px;"  routerLink="/dashboard/etudiant/voirRemarque">
+                    aria-expanded="false" style="margin-top: 2px;" routerLink="/dashboard/etudiant/voirRemarque">
               Voir Remarque
             </button>
 
@@ -108,8 +108,10 @@
               <span class="buttonAcc">Account</span>
             </button>
             <div class="dropdown-menu">
-              <div *ngIf="!Admin" class="dropdown-item noncliquable"><i class="{{faString}}"></i> <span>{{mail}}</span></div>
-              <a *ngIf="!Admin" class="dropdown-item" routerLink="{{settingsLink}}"><i class="fa fa-cog" aria-hidden="true"></i><span>settings</span></a>
+              <div *ngIf="!Admin" class="dropdown-item noncliquable"><i class="{{faString}}"></i> <span>{{mail}}</span>
+              </div>
+              <a *ngIf="!Admin" class="dropdown-item" routerLink="{{settingsLink}}"><i class="fa fa-cog"
+                                                                                       aria-hidden="true"></i><span>settings</span></a>
               <button (click)="logout()" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i><span>LogOut</span>
               </button>
             </div>
