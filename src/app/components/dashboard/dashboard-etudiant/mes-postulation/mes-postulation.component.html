@@ -1,4 +1,24 @@
-<div class="conteneur bg-1">
-  <nav class="collector" >
-  </nav>
+<div class="container" style="margin-top: 150px">
+  <h2>Mes Postulations :</h2>
+  <table class="table table-bordered" >
+    <thead>
+    <tr style="text-align: center">
+      <th scope="col">Nom Sujet</th>
+      <th scope="col">Description du Sujet</th>
+      <th scope="col">Taille Equipe</th>
+      <th scope="col">Nom Enseignant</th>
+      <th scope="col">Email Enseignant</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let membe of sujet;index as j">
+      <tr style="text-align: center">
+        <td>{{membe.nomSujet}}</td>
+        <td>{{membe.descriptionSujet}}</td>
+        <td>{{membe.tailleEquipe}}</td>
+        <td>{{membe.nomEnseignant}}</td>
+        <td>{{membe.emailEnseignant}}</td>
+    </ng-container>
+    </tbody>
+  </table>
 </div>

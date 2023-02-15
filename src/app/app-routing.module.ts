@@ -29,13 +29,14 @@ import {MonSujetComponent} from "./components/dashboard/dashboard-etudiant/mon-s
 import {VoirRemarqueComponent} from "./components/dashboard/dashboard-etudiant/voir-remarque/voir-remarque.component";
 import {MesPostulationComponent} from "./components/dashboard/dashboard-etudiant/mes-postulation/mes-postulation.component";
 import {DomainesComponent} from "./components/Admin/domaines/domaines.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
   {path:'sujets',children:
       [
         {path: 'ListSujets',component: ListSujetsComponent},
-    ]
+    ],
   },
 
   {path:'login',component:LoginSignUpPageComponent},

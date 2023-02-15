@@ -74,4 +74,8 @@ export class SujetService{
     return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/filtered`, { params });
   }
 
+  getMyPostulatedSujet(page: number, limit: number): Observable<sujetRequirement[]> {
+    return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/myPostulated?page=${page}&limit=${limit}`);
+  }
+
 }

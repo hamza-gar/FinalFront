@@ -55,7 +55,7 @@
         <li *ngIf="etudiant && estpostulant &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" style="margin-top: 2px;">
+                    aria-expanded="false" style="margin-top: 2px;" routerLink="/dashboard/etudiant/postulation">
               Mes postulations
             </button>
 
@@ -71,7 +71,7 @@
           </div>
 
         </li>
-        <li *ngIf="!etudiant" class="nav-item" style="margin-left: 1vw">
+        <li *ngIf="!etudiant &&!Admin" class="nav-item" style="margin-left: 1vw">
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" style="margin-top: 2px;" routerLink="/dashboard/home/juryEspace">
               Soutenances
