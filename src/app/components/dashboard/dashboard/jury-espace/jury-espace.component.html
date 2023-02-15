@@ -1,37 +1,61 @@
 <div class="example bg-1">
   <section class="panel">
-    <header class="panel__header">
-  <h3>Mes Soutenance :</h3>
-    </header>
+    <div class="horizontalblock">
+      <header class="panel__header">
+        <h3>Mes Soutenance :</h3>
+      </header>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(-1)" aria-label="Previous">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+            </a>
+          </li>
+          <li class="page-item">
+            <div class="page-link">{{p}}</div>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(+1)" aria-label="Next">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i> </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <table class="table table-bordered">
-  <thead>
-  <tr style="text-align: center">
-  <th scope="col">Soutenance</th>
-  <th scope="col">Date Soutenance</th>
-  <th scope="col">Sujet</th>
-  <th scope="col">Etudiant</th>
-  </tr>
+      <thead>
+      <tr style="text-align: center">
+        <th scope="col">Soutenance</th>
+        <th scope="col">Date Soutenance</th>
+        <th scope="col">Sujet</th>
+        <th scope="col">Etudiant</th>
+      </tr>
 
-  </thead>
-    <tbody>
-<ng-container *ngFor="let sout of soutenance;index as i" >
-  <tr style="text-align: center">
-      <td>{{i+1}}</td>
-      <td>{{sout.dateSoutenance}}</td>
-      <td>{{sout.nomSujet}}</td>
-      <td><button class="btn btn-success" style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers" (click)="getMemebersOfEquipe(sout.idEquipe)">Click</button></td>
-    </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let sout of soutenance;index as i">
+        <tr style="text-align: center">
+          <td>{{i + 1}}</td>
+          <td>{{sout.dateSoutenance}}</td>
+          <td>{{sout.nomSujet}}</td>
+          <td>
+            <button class="btn btn-success" style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers"
+                    (click)="getMemebersOfEquipe(sout.idEquipe)">Click
+            </button>
+          </td>
+        </tr>
 
 
-</ng-container>
-    </tbody>
-  </table>
-</section>
+      </ng-container>
+      </tbody>
+    </table>
+  </section>
 </div>
 
 
 <!--  modal for getting the element of the group -->
-<div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -41,7 +65,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Etudiant</th>
@@ -54,10 +78,14 @@
 
           <ng-container *ngFor="let membe of member;index as j">
             <tr style="text-align: center">
-              <td>{{j+1}}</td>
+              <td>{{j + 1}}</td>
               <td>{{membe[0]}}</td>
               <td>{{membe[1]}}</td>
-              <td><button class="btn btn-success" style="margin-right:2px;" data-toggle="modal" data-target="#remarqueEtudiants" (click)="myIndex(j)">Ajouter Remarque</button></td>
+              <td>
+                <button class="btn btn-success" style="margin-right:2px;" data-toggle="modal"
+                        data-target="#remarqueEtudiants" (click)="myIndex(j)">Ajouter Remarque
+                </button>
+              </td>
           </ng-container>
           </tbody>
         </table>
@@ -70,7 +98,8 @@
 </div>
 <!--  *********************************************** -->
 <!--  modal for add group to subject-->
-<div class="modal fade" id="remarqueEtudiants" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade" id="remarqueEtudiants" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,37 +113,43 @@
 
           <div class="form-group">
             <label for="notePresentation">Note de présentation :</label>
-            <input type="text" class="form-control" id="notePresentation" placeholder="note de présentation"  name="note" [(ngModel)]="note1">
+            <input type="text" class="form-control" id="notePresentation" placeholder="note de présentation" name="note"
+                   [(ngModel)]="note1">
           </div>
           <div class="form-group">
             <label for="remarquePresentation">remarque de présentation :</label>
-            <input type="text" class="form-control" id="remarquePresentation" placeholder="remarque de présentation"  name="remarque" [(ngModel)]="remarque1">
+            <input type="text" class="form-control" id="remarquePresentation" placeholder="remarque de présentation"
+                   name="remarque" [(ngModel)]="remarque1">
           </div>
 
           <div class="form-group">
             <label for="noteRapport">Note de rapport :</label>
-            <input type="text" class="form-control" id="noteRapport" placeholder="note de rapport"  name="note" [(ngModel)]="note2">
+            <input type="text" class="form-control" id="noteRapport" placeholder="note de rapport" name="note"
+                   [(ngModel)]="note2">
           </div>
 
           <div class="form-group">
             <label for="remarqueRapport">remarque de rapport :</label>
-            <input type="text" class="form-control" id="remarqueRapport" placeholder="remarque de rapport"  name="remarque" [(ngModel)]="remarque2">
+            <input type="text" class="form-control" id="remarqueRapport" placeholder="remarque de rapport"
+                   name="remarque" [(ngModel)]="remarque2">
           </div>
           <div class="form-group">
             <label for="noteRapport">Note de rapport :</label>
-            <input type="text" class="form-control" id="noteApplication" placeholder="note de rapport"  name="note" [(ngModel)]="note3">
+            <input type="text" class="form-control" id="noteApplication" placeholder="note de rapport" name="note"
+                   [(ngModel)]="note3">
           </div>
 
           <div class="form-group">
             <label for="remarqueRapport">remarque de rapport :</label>
-            <input type="text" class="form-control" id="remarqueApplication" placeholder="remarque de rapport"  name="remarque" [(ngModel)]="remarque3">
+            <input type="text" class="form-control" id="remarqueApplication" placeholder="remarque de rapport"
+                   name="remarque" [(ngModel)]="remarque3">
           </div>
         </form>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary" (click)="addReamarque()">Add remarque </button>
+        <button type="button" class="btn btn-secondary" (click)="addReamarque()">Add remarque</button>
       </div>
     </div>
   </div>

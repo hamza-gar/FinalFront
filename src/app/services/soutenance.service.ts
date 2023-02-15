@@ -36,6 +36,10 @@ export class SoutenanceService {
     return this.http.get<SoutenanceResponse[]>(`${this.apiServiceUrl}/mine?page=${page}&limit=${limit}`);
   }
 
+  public getAllMySoutenanceCount():Observable<number>{
+    return this.http.get<number>(`${this.apiServiceUrl}/minecount`);
+  }
+
   public addRemarque(remarqueResponse:RemarqueResponse):Observable<boolean>{
     return this.http.post<boolean>(`http://localhost:8080/jurys/add-remarque`,remarqueResponse);
   }

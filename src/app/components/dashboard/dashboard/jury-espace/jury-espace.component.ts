@@ -69,7 +69,7 @@ export class JuryEspaceComponent {
 
 
   public getCount(): void {
-    this.sujetService.getSujetPages().subscribe(
+    this.soutenanceService.getAllMySoutenanceCount().subscribe(
       (response: number) => {
         this.counter = response;
       },
