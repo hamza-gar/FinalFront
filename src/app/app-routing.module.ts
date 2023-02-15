@@ -30,6 +30,10 @@ import {VoirRemarqueComponent} from "./components/dashboard/dashboard-etudiant/v
 import {MesPostulationComponent} from "./components/dashboard/dashboard-etudiant/mes-postulation/mes-postulation.component";
 import {DomainesComponent} from "./components/Admin/domaines/domaines.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {AfterAuthGuard} from "./guards/after-auth.guard";
+import {EnseignantGuardGuard} from "./guards/enseignant-guard.guard";
+import {EtudiantGuardGuard} from "./guards/etudiant-guard.guard";
+import {AdminGuard} from "./guards/admin.guard";
 
 const routes: Routes = [
   {path:'',redirectTo:'/sujets/ListSujets',pathMatch:'full'},
@@ -39,7 +43,7 @@ const routes: Routes = [
     ],
   },
 
-  {path:'login',component:LoginSignUpPageComponent},
+  {path:'login',component:LoginSignUpPageComponent,canActivate:[AfterAuthGuard]},
   {path:'login',children:[
       {path:'enseignantLog',component:EnseignantComponentLog},
       {path:'enseignantSignUp',component: EnseignantComponent},
@@ -47,37 +51,34 @@ const routes: Routes = [
       {path:'etudiantSignUp',component:EtudiantComponent},
       {path:'admin',component:AdminComponent},
       {path:'pleaseVerify',component:WaitingforverificationComponent}
-    ]},
+    ],canActivate:[AfterAuthGuard]},
   {path:'forgetPassword',children:[
       {path:'emailVerification',component: EmailVerificationComponent},
       {path:'keyVerification',component: KeyVerificationComponent},
       {path:'resetPassword',component: ResetPasswordComponent}
     ] },
   {path:'dashboard',children:[
-      {path:'admin',component: DashboardAdminComponent},
       {path: 'etudiant',children:[
-          {path: 'dashboardEtudiant',component: DashboardEtudiantComponent},
-          {path: 'monSujet',component: MonSujetComponent},
-          {path: 'voirRemarque',component: VoirRemarqueComponent},
-          {path: 'postulation',component: MesPostulationComponent}
+          {path: 'dashboardEtudiant',component: DashboardEtudiantComponent, canActivate: [EtudiantGuardGuard]},
+          {path: 'monSujet',component: MonSujetComponent, canActivate: [EtudiantGuardGuard]},
+          {path: 'voirRemarque',component: VoirRemarqueComponent, canActivate: [EtudiantGuardGuard]},
+          {path: 'postulation',component: MesPostulationComponent, canActivate: [EtudiantGuardGuard]}
         ]},
       {path: 'home',children:[
-          {path: 'dashboardEnseignant',component: DashboardEneignantComponent},
-          {path:'mesSujets',component:MesSujetComponent},
-          {path:'rendesVous',component:RendesVousComponent},
-          {path:'juryEspace',component:JuryEspaceComponent}
+          {path: 'dashboardEnseignant',component: DashboardEneignantComponent, canActivate: [EnseignantGuardGuard]},
+          {path:'mesSujets',component:MesSujetComponent, canActivate: [EnseignantGuardGuard]},
+          {path:'rendesVous',component:RendesVousComponent, canActivate: [EnseignantGuardGuard]},
+          {path:'juryEspace',component:JuryEspaceComponent, canActivate: [EnseignantGuardGuard]}
         ]
       },
-      {path: 'dashboardAdmin',component: DashboardAdminComponent},
     ]},
   {path:'settings',children:[
-      {path:'etudiantSettings',component: EtudiantSettingsComponent},
-      {path:'enseignantSettings',component: EnseignantSettingsComponent},
-      {path:'adminSettings',component: AdminSettingsComponent}
+      {path:'etudiantSettings',component: EtudiantSettingsComponent, canActivate: [EtudiantGuardGuard]},
+      {path:'enseignantSettings',component: EnseignantSettingsComponent, canActivate: [EnseignantGuardGuard]}
     ]},
 
   {path:'verification',component:VerificationComponent},
-  {path:'domaines',component:DomainesComponent},
+  {path:'domaines',component:DomainesComponent, canActivate: [AdminGuard]},
   {path:"**",component:PageNotFoundComponent},
 
 ];
