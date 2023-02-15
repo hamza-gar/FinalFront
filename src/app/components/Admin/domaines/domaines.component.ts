@@ -15,6 +15,8 @@ export class DomainesComponent implements OnInit{
   domaine:AddDomaineResponse=new AddDomaineResponse();
   universe:UniversityResponse=new UniversityResponse();
 
+  type!:string;
+
   public domaines!:AddDomaineResponse[];
   public university:UniversityResponse=new UniversityResponse();
   public universityList!:UniversityResponse[];

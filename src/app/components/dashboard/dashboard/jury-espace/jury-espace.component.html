@@ -1,16 +1,21 @@
-<div class="container">
+<div class="example bg-1">
+  <section class="panel">
+    <header class="panel__header">
   <h3>Mes Soutenance :</h3>
-  <table class="table table-bordered">
+    </header>
+    <table class="table table-bordered">
   <thead>
-  <th>Soutenance</th>
-  <th>Date Soutenance</th>
-  <th>Sujet</th>
-  <th>Etudiant</th>
+  <tr style="text-align: center">
+  <th scope="col">Soutenance</th>
+  <th scope="col">Date Soutenance</th>
+  <th scope="col">Sujet</th>
+  <th scope="col">Etudiant</th>
+  </tr>
 
   </thead>
     <tbody>
 <ng-container *ngFor="let sout of soutenance;index as i" >
-    <tr>
+  <tr style="text-align: center">
       <td>{{i+1}}</td>
       <td>{{sout.dateSoutenance}}</td>
       <td>{{sout.nomSujet}}</td>
@@ -21,6 +26,7 @@
 </ng-container>
     </tbody>
   </table>
+</section>
 </div>
 
 

@@ -1,4 +1,8 @@
-<div class="container" style="margin-top: 150px">
+<div class="example bg-1">
+  <section class="panel">
+    <header class="panel__header">
+      <h1 class="panel__title">Domaines :</h1>
+    </header>
   <button class="btn btn-info" style="float:right; margin-bottom: 10px;" data-toggle="modal" data-target="#addDomaine" >Add Domaine</button>
   <table class="table table-bordered" >
     <thead>
@@ -15,13 +19,15 @@
       <tr style="text-align: center">
         <td>{{membe.nomDomaine}}</td>
         <td>{{membe.nomUniversite}}</td>
-        <td>{{membe.etudiant}}</td>
+        <td *ngIf="membe.etudiant">Etudiant</td>
+        <td *ngIf="!membe.etudiant">Enseignant</td>
         <td>
           <button class="btn btn-danger" style="margin-right:2px;" (click)="myDomaine(j)">Delete</button>
         </td>
     </ng-container>
     </tbody>
   </table>
+  </section>
 </div>
 
 <div class="modal fade" id="addDomaine" tabindex="-1" role="dialog" aria-labelledby="addDomaine" aria-hidden="true">

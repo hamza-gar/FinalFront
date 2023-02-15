@@ -1,0 +1,141 @@
+.header nav {
+  background-color: lightgray;
+  padding: 1em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn{
+  margin-top:10px;
+  border-radius:15px ;
+}
+.modal-content{
+  width: 60vw;
+}
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+#bounds{
+  word-wrap: break-word;
+}
+
+#btnLeft {
+  position: absolute;
+  left: 15px;
+}
+:root {
+  --panel-color: rgba(0, 0, 0, 0.135);
+  --panel-border-width: 0.1em;
+  --panel-padding: 0.75em;
+}
+
+.horizontalblock {
+  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  float: bottom;
+}
+
+.block1 {
+  float: left;
+  text-align: center;
+}
+.block2 {
+  float: right;
+  text-align: center;
+}
+
+.panel {
+  width: 70vw;
+  height: 60vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background: rgba(200,200,200,0.3);
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.panel__header,
+.panel__content {
+  padding: var(--panel-padding);
+}
+
+.panel__title {
+  line-height: 1;
+  float: top;
+}
+
+.panel__content {
+  background: #fff;
+}
+
+.table{
+  width: 55vw;
+  border: #1e2530 1px solid;
+  border-bottom-left-radius: 20px;
+}
+
+.ligne{
+  height: 6vh;
+}
+
+.ligne:hover{
+  background: radial-gradient( circle farthest-corner at 1.5% 1.4%,  rgba(159,227,255,1) 0%, rgba(255,177,219,1) 100.2% );
+  color: white;
+}
+
+.customButton{
+  background: #1e2530;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid white;
+}
+
+.customButton:hover{
+  background: rgba(200,200,200,0.4);
+  border-radius: 10px;
+  color: #1e2530;
+  border: 2px solid #1e2530;
+}
+
+.customSubmitButton{
+  width: fit-content;
+  height: 30px;
+  background: rgba(53, 100, 54, 0.78);
+  border-radius: 10px;
+  color: white;
+  border: 1px solid white;
+}
+
+.customSubmitButton:hover{
+  background: rgba(200,200,200,0.4);
+  border-radius: 10px;
+  color: #1e2530;
+  border: 2px solid #1e2530;
+}
+
+/**
+ * The styles below are unrelated to this demo and are just for scaffolding purposes.
+ */
+
+
+.example {
+  height: 90vh;
+  display: flex;
+  flex-grow: 1;
+  padding: 1em max(1em, calc(40vw - 35ch));
+  place-items: center;
+}
+
+.example > * {
+  flex-grow: 1;
+}
+
+.bg-1 {
+  background-image: radial-gradient( circle farthest-corner at 1.5% 1.4%,  rgba(86, 153, 182, 1) 0%, rgba(89, 7, 81, 0.5) 100.2% );
+}
