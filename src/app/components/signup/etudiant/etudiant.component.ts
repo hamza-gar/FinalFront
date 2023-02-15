@@ -31,14 +31,13 @@ export class EtudiantComponent  implements OnInit{
   }
 
   SignUpRegister(){
-    console.log(this.signup);
     this.showDots=false;
     this.locked=false;
     this.signupEtudiant.signupEtudiant(this.signup).subscribe(data=>{
 
       this.route.navigate(['/login']);
     },error=>{
-      alert("sorry User not register")
+      alert(error.error.message);
       this.locked=true;
       this.showDots=true;
     });
@@ -51,7 +50,7 @@ export class EtudiantComponent  implements OnInit{
         console.log(this.filieres);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       })
   }
 

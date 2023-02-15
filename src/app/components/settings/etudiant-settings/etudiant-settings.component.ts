@@ -41,7 +41,7 @@ getEtudiant(){
         this.etudiantResponse =response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);}
+        alert(error.error.message);}
     );
 }
 
@@ -57,9 +57,8 @@ updateEtudiant(){
   }
   this.etudiantService.updateEtudiant(this.etudiantResponse,this.tokenService.getId()).subscribe(
     operation=>{
-      alert("done");
-      this.router.navigateByUrl("/sujets/ListSujets");
-    },error => {alert("there is a error")}
+      window.location.reload();
+    },error => {alert(error.error.message);}
   )
 }
 

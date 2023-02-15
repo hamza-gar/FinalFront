@@ -53,11 +53,9 @@ export class MonSujetComponent implements OnInit{
     this.sujetService.getSujets(p, 6).subscribe(
       (response: sujetRequirement[]) => {
         this.subjects = response;
-        console.log("enseignant :",this.subjects[p].nomEnseignant)
-        console.log(this.p)
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
@@ -67,12 +65,10 @@ export class MonSujetComponent implements OnInit{
   myIndex(index:number){
 
     this.selectedItem = this.subjects[index];
-    console.log(this.selectedItem.idSujet);
     this.getEquipes();
     this.getCountEtudiant();
   }
 
-  /*todo:fix the number of element in team*/
   getCountEtudiant(){
     this.groupeService.getMembersOfEquipe(this.selectedGroup.idEquipe,this.member).subscribe(
       (operation:Members[][])=>{
@@ -82,7 +78,7 @@ export class MonSujetComponent implements OnInit{
         this.countEtudiantInGroup=operation.length
 
       },error => {
-        console.log(error);
+        alert(error.error.message);
       });
   }
   public getEquipes() {
@@ -109,19 +105,18 @@ export class MonSujetComponent implements OnInit{
     this.equipe.sujetId=this.selectedItem.idSujet;
     this.groupeService.createGroup(this.equipe).subscribe(
       (response:EquipeRequirement)=>{
-        console.log(response)
+        window.location.reload();
       },(error:HttpErrorResponse)=>
-      {alert(error);}
+      {alert(error.error.message);}
     );
   }
 
   getMemebersOfEquipe(){
-    console.log("this equipe id :" ,this.selectedGroup.idEquipe)
     this.groupeService.getMembersOfEquipe(this.selectedGroup.idEquipe,this.member).subscribe(
       (operation:Members[][])=>{
         this.member=operation
       },error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
 
@@ -134,7 +129,6 @@ export class MonSujetComponent implements OnInit{
     else {
       this.selectedGroup.cryptedPassword=''
     }
-    console.log(this.selectedGroup.cryptedPassword)
     this.joinGroupe(this.selectedGroup.idEquipe);
   }
   public joinGroupe(idEquipe:any){
@@ -143,25 +137,22 @@ export class MonSujetComponent implements OnInit{
       (response:EquipeRequirement)=>{
         console.log(response);
       },(error:HttpErrorResponse)=>
-      {alert(error);});
+      {alert(error.error.message);});
   }
   isGroupPrive(index:any){
     this.selectedGroup = this.equipeRequirement[index]
     if(this.selectedGroup.isPrivate){
-      console.log(this.selectedGroup.isPrivate)
       return true
     }
-    console.log(this.selectedGroup.isPrivate)
     return false
   }
   public getSujetPages(): void {
     this.sujetService.getSujetPages().subscribe(
       (response: number) => {
         this.pages = Array.from(Array(Math.ceil(response / 6)).keys());
-        console.log(this.pages)
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
@@ -172,7 +163,7 @@ export class MonSujetComponent implements OnInit{
         this.counter = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
 
@@ -180,7 +171,6 @@ export class MonSujetComponent implements OnInit{
 
   changePage(page: number) {
     this.getCount();
-    console.log(Math.ceil( this.counter/ 6))
     if (page > 0) {
       this.p++;
     } else {

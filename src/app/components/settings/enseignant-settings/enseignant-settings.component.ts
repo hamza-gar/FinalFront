@@ -38,7 +38,7 @@ export class EnseignantSettingsComponent implements OnInit{
         this.enseignantResponse =response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);}
+        alert(error.error.message);}
     );
   }
 
@@ -54,9 +54,9 @@ export class EnseignantSettingsComponent implements OnInit{
     }
     this.enseignantService.updateEnseignant(this.enseignantResponse,this.tokenService.getId()).subscribe(
       operation=>{
-        alert("done");
-        this.router.navigateByUrl("/sujets/ListSujets");
-      },error => {alert("there is a error")}
+        window.location.reload();
+        
+      },error => {alert(error.error.message);}
     )
   }
 

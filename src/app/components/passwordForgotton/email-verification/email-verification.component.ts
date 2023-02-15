@@ -23,7 +23,6 @@ export class EmailVerificationComponent implements OnInit {
   }
 
   onClick() {
-    console.log(this.mail1)
     this.mailHanlder.setMail(this.mail1);
     this.showDots=false;
     this.locked=false;
@@ -31,7 +30,7 @@ export class EmailVerificationComponent implements OnInit {
     this.resetPasswordService.VerifyEmail(this.mail).subscribe(data=>{
       this.router.navigate(['/forgetPassword/keyVerification']);
     },error=>{
-      alert("there is no email like this in data base")
+      alert(error.error.message);
       this.locked=true;
       this.showDots=true;
     });

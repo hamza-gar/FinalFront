@@ -51,7 +51,7 @@ export class DashboardEtudiantComponent implements OnInit{
     this.rendesVous.priseRendesVous(0).subscribe(operation=>{
     },
       error => {
-      alert("error");
+        alert(error.error.message);
       })
   }
 
@@ -65,7 +65,7 @@ export class DashboardEtudiantComponent implements OnInit{
       (response: RendezvousResponse) => {
         this.rendezvousResponse=response
       },(error:HttpErrorResponse)=>{
-      alert(error.message)
+        alert(error.error.message);
     })
   }
 
@@ -74,19 +74,16 @@ export class DashboardEtudiantComponent implements OnInit{
       this.rendezvousResponse=res
       this.rendezVouId=res.idRendezvous
 
-      console.log(this.equipeId)
     },error=>{
-      console.log(error.message)
+      alert(error.error.message);
     })
   }
   public addDriveLink(){
 
-    console.log("called :",this.equipeRequire.idEquipe)
     this.equipeRequire.driveLink =this.driveLink
-    console.log(this.equipeRequire.driveLink)
 
     this.group.addDriveLink(this.equipeRequire).subscribe((res:EquipeRequirement)=>{
-
+      window.location.reload();
     },error=>{alert(error.error.message)})
   }
 
@@ -96,9 +93,8 @@ export class DashboardEtudiantComponent implements OnInit{
       this.getSujetById(res.sujetId)
       this.getMemebersOfEquipe(res.idEquipe)
       this.equipeRequire.idEquipe=res.idEquipe
-      console.log("begin :",this.equipeRequire.idEquipe);
     },error=>{
-      alert(error.error.message)
+      alert(error.error.message);
     })
   }
   getMemebersOfEquipe(id:string){
@@ -106,7 +102,7 @@ export class DashboardEtudiantComponent implements OnInit{
       (operation:Members[][])=>{
         this.member=operation
       },error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
   getSujetById(id:string){
@@ -128,7 +124,6 @@ export class DashboardEtudiantComponent implements OnInit{
   public hasSoutenance(){
     this.soutenanceService.hasSoutenance().subscribe(res=>{
       this.hasSout=res;
-      console.log(this.hasSout)
     },error=>{
       alert(error.error.message)
     })
@@ -146,8 +141,9 @@ export class DashboardEtudiantComponent implements OnInit{
 
     this.enseignantService.getInvitedJurys(id,0,6).subscribe((res:JuryResponse[])=>{
       this.juryResponse=res;
+
     },error=>{
-      console.log("error");
+      alert(error.error.message);
     });
   }
   ngOnInit(): void {

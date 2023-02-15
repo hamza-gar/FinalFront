@@ -137,7 +137,7 @@
 
           <ng-container *ngFor="let membe of member;index as j">
             <tr style="text-align: center">
-              <td>{{j}}</td>
+              <td>{{j+1}}</td>
               <td>{{membe[0]}}</td>
               <td>{{membe[1]}}</td>
           </ng-container>
@@ -196,7 +196,7 @@
 
           <ng-container *ngFor="let ense of enseignant;index as j">
             <tr style="text-align: center">
-              <td>{{j}}</td>
+              <td>{{j+1}}</td>
               <td>{{ense.nom}}{{ense.prenom}}</td>
               <td>{{ense.email}}</td>
               <td>{{ense.nomDepartement}}</td>
@@ -267,7 +267,7 @@
 
           <ng-container *ngFor="let jur of Jury;index as j">
             <tr style="text-align: center">
-              <td>{{j}}</td>
+              <td>{{j+1}}</td>
               <td>{{jur.nomJury}}</td>
               <td>{{jur.mailJury}}</td>
               <td>{{jur.typeJury}}</td>

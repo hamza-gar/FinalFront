@@ -35,7 +35,7 @@ constructor(private adminService:AdminService,private sujetService:SujetService)
   }
   deleteDomaine(id:number){
     this.adminService.deleteDomaine(id).subscribe((res)=>{
-      alert("Domaine deleted successfully");
+      window.location.reload();
     },(error:HttpErrorResponse)=>{
       alert(error.error.message)
     })
@@ -43,9 +43,8 @@ constructor(private adminService:AdminService,private sujetService:SujetService)
 
   myDomaine(index:number){
     this.domaine=this.domaines[index];
-    console.log(this.domaine.id);
     this.deleteDomaine(this.domaine.id);
-    this.Update();
+
   }
   public getUniversity(){
     this.sujetService.getUniversity().subscribe((res:UniversityResponse[])=>{
@@ -72,24 +71,9 @@ constructor(private adminService:AdminService,private sujetService:SujetService)
     console.log(this.domaine.idUniversite);
     this.addDomaine(this.domaine);
   }
-  Update(){
-    const selectedOption = (document.querySelector('input[name="Upoptradio"]:checked') as HTMLInputElement)?.value;
-    if(selectedOption=="etudiant"){
-      this.domaine.etudiant=true
-    }else{
-      this.domaine.etudiant=false
-    }
-    this.domaine.nomDomaine=this.domaineName;
-    console.log(this.domaine.nomDomaine);
-    this.adminService.updateDomaine(this.domaine.id,this.domaine).subscribe((res:AddDomaineResponse)=>{
-      alert("Domaine updated successfully");
-    },(error:HttpErrorResponse)=>{
-      alert(error.error.message)
-    })
-  }
   public addDomaine(domaine:AddDomaineResponse){
     this.adminService.addDomaine(domaine).subscribe((res:AddDomaineResponse)=>{
-      console.log("domaine",res)
+      window.location.reload();
     },(error:HttpErrorResponse)=>{
       alert(error.error.message)
     })

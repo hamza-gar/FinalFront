@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {sujetRequirement} from "../../../../classes/sujetRequirement";
-import {EquipeRequirement} from "../../../../classes/EquipeRequirement";
-import {Members} from "../../../../classes/members";
 import {SujetService} from "../../../../services/sujet.service";
 import {TokenService} from "../../../../services/token.service";
 import {GroupsServiceService} from "../../../../services/groups-service.service";
 import {Router} from "@angular/router";
-import {HttpErrorResponse} from "@angular/common/http";
 import {RemarqueResponse} from "../../../../classes/RemarqueResponse";
 import {EtudiantService} from "../../../../services/etudiant.service";
 
@@ -33,7 +29,7 @@ export class VoirRemarqueComponent implements OnInit {
     this.etudiantService.voiRemarque(this.p, 6).subscribe((res: RemarqueResponse[]) => {
       this.remarqueResponse = res
     }, error => {
-      (console.log(error))
+      alert(error.error.message);
     })
   }
 
@@ -41,7 +37,7 @@ export class VoirRemarqueComponent implements OnInit {
     this.etudiantService.getRemarqueCount().subscribe((res: number) => {
       this.limit = res
     }, error => {
-      (console.log(error))
+      alert(error.error.message);
     })
   }
 
@@ -56,7 +52,7 @@ export class VoirRemarqueComponent implements OnInit {
         this.p = Math.ceil(this.limit / 6) - 1;
       }
     }
-    console.log(this.p);
+
   }
 
   ngOnInit(): void {

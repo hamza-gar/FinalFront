@@ -35,7 +35,7 @@
 
         <ng-container *ngFor="let rend of renedsVous; index as i">
           <tr style="text-align: center">
-            <td>{{i}}</td>
+            <td>{{i+1}}</td>
             <td>{{rend.nomSujet}}</td>
             <td>
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#etudiantDuGroup"
@@ -106,7 +106,7 @@
 
           <ng-container *ngFor="let membe of member;index as j">
             <tr style="text-align: center">
-              <td>{{j}}</td>
+              <td>{{j+1}}</td>
               <td>{{membe[0]}}</td>
               <td>{{membe[1]}}</td>
           </ng-container>

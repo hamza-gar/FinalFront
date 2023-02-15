@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SujetService} from "../../../services/sujet.service";
-
 import {GroupsServiceService} from "../../../services/groups-service.service";
 import {sujetRequirement} from "../../../classes/sujetRequirement";
 import {EquipeRequirement} from "../../../classes/EquipeRequirement";
@@ -8,7 +7,6 @@ import {SoutenanceService} from "../../../services/soutenance.service";
 import {SoutenanceResponse} from "../../../classes/SoutenanceResponse";
 import {Members} from "../../../classes/members";
 import {EnseignantService} from "../../../services/enseignant.service";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 import {enseignantSignUp} from "../../../classes/enseignantSignUp";
 import {JuryResponse} from "../../../classes/JuryResponse";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -55,7 +53,7 @@ export class DashboardEneignantComponent implements OnInit {
     this.sujet.getMyLockedSujets(this.p, 6).subscribe((response: sujetRequirement[]) => {
         this.lisSubjects = response;
       }, error => {
-        alert(error);
+      alert(error.error.message);
       }
     )
   }
@@ -64,9 +62,9 @@ export class DashboardEneignantComponent implements OnInit {
   public validateSujet() {
     this.subjects.done = true;
     this.sujet.validateSujet(this.subjects).subscribe(res => {
-      console.log("done")
+      window.location.reload();
     }, error => {
-      console.log(error);
+      alert(error.error.message);
     })
   }
 
@@ -77,9 +75,9 @@ export class DashboardEneignantComponent implements OnInit {
 
   public addSoutenance() {
     this.soutenanceService.addSoutenance(this.soutenanceResponse, this.subjects.idSujet).subscribe((response: SoutenanceResponse) => {
-      console.log("success")
+      window.location.reload();
     }, error => {
-      console.log("error")
+      alert(error.error.message);
     })
   }
 
@@ -89,17 +87,16 @@ export class DashboardEneignantComponent implements OnInit {
       (operation: Members[][]) => {
         this.member = operation
       }, error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
 
   public getAllEnseignant() {
-    console.log("hello")
+
     this.enseignantService.getAllEnseignantToInvite(0, 6).subscribe((res: enseignantSignUp[]) => {
       this.enseignant = res
-      console.log("enseignants :", res)
     }, error => {
-      console.error(error)
+      alert(error.error.message);
     })
   }
 
@@ -108,12 +105,12 @@ export class DashboardEneignantComponent implements OnInit {
   }
 
   invite() {
-    console.log("soutenance :", this.soutenanceResponse)
-    console.log("this is soutenance ID :", this.soutenanceResponse.idSoutenance)
     this.soutenanceResponse.dateSoutenance = new Date(this.soutenanceResponse.dateSoutenance)
     this.soutenanceService.inviteJury(this.soutenanceResponse, this.enseignantSelected.email, this.typeJury).subscribe(
       res => {
-        console.log("hello")
+        window.location.reload();
+      },error => {
+        alert(error.error.message);
       }
     );
   }
@@ -122,22 +119,17 @@ export class DashboardEneignantComponent implements OnInit {
     this.soutenanceService.getSoutenanceByIdSujet(this.subjects.idSujet).subscribe((response: SoutenanceResponse) => {
       this.soutenanceResponse = response;
       this.invite()
-      console.log("this is the soutenance id :", response.idSoutenance);
     }, error => {
-      console.log(error)
+      alert(error.error.message);
     })
   }
 
   public getInvitedJury() {
-    console.log("hello")
-    console.log(this.subjects.idSujet)
     this.enseignantService.getInvitedJurys(this.subjects.idSujet, 0, 6).subscribe((res: JuryResponse[]) => {
-      console.log(res)
-
       this.getEquipeOfSujet();
       this.Jury = res;
     }, error => {
-      console.log("error");
+      alert(error.error.message);
     });
   }
 
@@ -153,7 +145,7 @@ export class DashboardEneignantComponent implements OnInit {
 
       this.getMemebersOfEquipe()
     }, error => {
-      alert(error);
+      alert(error.error.message);
     })
   }
 
@@ -161,9 +153,9 @@ export class DashboardEneignantComponent implements OnInit {
     this.soutenanceService.getSoutenanceByIdSujet(this.subjects.idSujet).subscribe((response: SoutenanceResponse) => {
       this.soutenanceResponse = response;
       this.UpdateDateSoutenance()
-      console.log("this is the soutenance id :", response.idSoutenance);
+
     }, error => {
-      console.log(error)
+      alert(error.error.message);
     })
   }
 
@@ -172,19 +164,19 @@ export class DashboardEneignantComponent implements OnInit {
     console.log(this.soutenanceResponse.idSoutenance)
     console.log(this.soutenanceResponse.dateSoutenance)
     this.soutenanceService.updateSoutenance(this.soutenanceResponse).subscribe((res) => {
-        console.log("it okey")
+        window.location.reload();
       },
       error => {
-        console.log(error)
+        alert(error.error.message);
       })
   }
 
   shareDriveLink() {
 
     this.groupService.shareDriveLink(this.fullEquipe[0]).subscribe((res: Boolean) => {
-      console.log(res);
+
     }, error => {
-      console.log(error)
+      alert(error.error.message);
     })
   }
 
@@ -194,7 +186,7 @@ export class DashboardEneignantComponent implements OnInit {
         this.counter = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }

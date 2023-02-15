@@ -39,7 +39,6 @@ export class MesSujetComponent implements OnInit{
 
   myIndex(index:number){
     this.selectedItem = this.lisSubjects[index];
-    console.log(this.selectedItem.idSujet);
     this.getFullEquipes();
   }
 
@@ -50,7 +49,7 @@ export class MesSujetComponent implements OnInit{
     this.sujetService.addSujet(this.subjects).subscribe(operation=>{
       window.location.reload();
     }, error=>{
-      console.log('error')
+      alert(error.error.message);
     })
 
   }
@@ -59,9 +58,8 @@ export class MesSujetComponent implements OnInit{
     this.p=p;
     this.sujetService.getMeSujet(this.p,6).subscribe((response:sujetRequirement[])=>{
       this.lisSubjects = response;
-      console.log("id :",response);
     },error => {
-      alert(error)
+      alert(error.error.message);
     })
   }
   ngOnInit(): void {
@@ -85,7 +83,7 @@ export class MesSujetComponent implements OnInit{
         console.log(this.pages)
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
@@ -96,7 +94,7 @@ export class MesSujetComponent implements OnInit{
         this.counter = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
 
@@ -125,32 +123,27 @@ export class MesSujetComponent implements OnInit{
     this.groupService.getAllFullEquipes(this.selectedItem.idSujet,this.p,6).subscribe(
       (response:EquipeRequirement[])=>{
         this.fullEquipe=response;
-        console.log('hello :',this.fullEquipe)
-      }, error => {console.log(error);});
+      }, error => {alert(error.error.message);});
   }
 
   getMemebersOfEquipe(){
-    console.log("this equipe id :" ,this.selectedGroup.idEquipe)
     this.groupService.getMembersOfEquipe(this.selectedGroup.idEquipe,this.member).subscribe(
       (operation:Members[][])=>{
         this.member=operation
       },error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
 
   getEquipeIndex(index:any){
     this.selectedGroup = this.fullEquipe[index]
-    console.log(this.selectedGroup.idEquipe);
-    console.log(this.fullEquipe[index].idEquipe);
   }
 
   lockSujet(){
     this.sujetService.lockSujet(0,this.selectedItem.idSujet,this.selectedGroup.idEquipe).subscribe(respone=>{
-
-      console.log(respone);
+    window.location.reload();
     },error=>{
-      console.log("error");
+      alert(error.error.message);
     })
   }
 

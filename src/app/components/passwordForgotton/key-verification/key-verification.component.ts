@@ -38,14 +38,12 @@ export class KeyVerificationComponent implements OnInit{
   checkKey(mail: string, key: string) {
     this.resetPasswordService.checkKey(mail, key)
       .subscribe(operation => {
-          console.log(operation)
           const {key} = operation
           this.headerResetPasswordHandlerService.setHeaders(key);
-          console.log(key);
           this.router.navigate(['/forgetPassword/resetPassword']);
         },
         error =>  {
-          console.log("false");
+          alert(error.error.message);
         });
   }
 

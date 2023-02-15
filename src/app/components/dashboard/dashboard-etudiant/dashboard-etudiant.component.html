@@ -2,10 +2,10 @@
   <nav class="collector" >
 
     <section class="c">
-    <section class="sec1" >
+    <section class="sec1 " >
       <table class="table "style="width: 400px;height: 79.6vh; border-right:1px solid black">
 
-      <ul class="team mt-5" >
+      <ul class="team mt-5 "style="margin-left:70px; " >
         <thead class="headStyle ">
         <li>{{sujet.nomEnseignant}}</li>
         <li>{{sujet.emailEnseignant}}</li>
@@ -22,9 +22,9 @@
         <tfoot >
 
           <li>rendez vous</li>
-          <li>Prise Rendez Vous: <button class="btn  btn-warning" (click)="priseRendesVous()">Click</button></li>
-          <li>Date de rendez vous : {{rendezvousResponse.dateRendezvous|date:"Y-M-d HH:mm"}}</li>
-          <li>Date de rendez vous : {{rendezvousResponse.fixed}}</li>
+          <li *ngIf="rendezvousResponse.dateRendezvous == null">Prise Rendez Vous: <button class="btn  btn-warning" (click)="priseRendesVous()">Click</button></li>
+          <li *ngIf="rendezvousResponse.fixed">rendez vous : fixee</li>
+          <li *ngIf="rendezvousResponse.dateRendezvous != null">Date de rendez vous : {{rendezvousResponse.dateRendezvous|date:"Y-M-d HH:mm"}}</li>
           <li *ngIf="rendezvousResponse.dateRendezvous!=null && !rendezvousResponse.fixed">Vote Pour le Rendez vous:   <div class="buttons" >
             <button  (click)="voteRendezVous(1)">Yes</button>
             <button (click)="voteRendezVous(-1)">No</button>
@@ -63,7 +63,7 @@
 
           <ng-container *ngFor="let jur of juryResponse;index as j">
             <tr style="text-align: center">
-              <td>{{j}}</td>
+              <td>{{j+1}}</td>
               <td>{{jur.nomJury}}</td>
               <td>{{jur.mailJury}}</td>
               <td>{{jur.typeJury}}</td>
@@ -113,74 +113,3 @@
 <!--**********************************************************-->
 
 
-<!--<div class="container">-->
-<!--  <button class="btn btn-info" (click)="priseRendesVous()">Rendes-vous</button>-->
-<!--  <div>-->
-<!--    <button class="btn btn-warning" (click)="getRendezVousBySelf()">Get my rendes vous</button>-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">add lien drive</button>-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <button class="btn btn-info" (click)="getEquipeBySelf()">equipe</button>-->
-<!--  </div>-->
-
-
-<!--  <div>-->
-<!--    <button class="btn btn-info" >Validate Sujet</button>-->
-<!--  </div>-->
-
-
-<!--  <div class="buttons" >-->
-<!--    <button (click)="voteRendezVous(1)">Yes</button>-->
-<!--    <button (click)="voteRendezVous(-1)">No</button>-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <button class="btn btn-warning" data-toggle="modal" data-target="#Remarque" (click)="getMyRemarque()">Voir Remarque</button>-->
-<!--  </div>-->
-
-<!--</div>-->
-
-
-<!--&lt;!&ndash;modal Voir Remarque &ndash;&gt;-->
-<!--<div class="modal fade" id="Remarque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog" role="document">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="RemarqueLabel">Les Remarque :</h5>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--       <table class="table table-bordered">-->
-<!--         <thead>-->
-<!--         <th>~</th>-->
-<!--         <th>Remarque</th>-->
-<!--         <th>Note</th>-->
-<!--         <th>Target</th>-->
-<!--         <th>Enseignant</th>-->
-<!--         </thead>-->
-<!--         <tbody>-->
-<!--        <ng-container *ngFor="let rem of remarqueResponse;index as j">-->
-<!--          <tr>-->
-<!--            <td>{{j+1}}</td>-->
-<!--            <td>{{(rem.remarque).split('~')[1]}}</td>-->
-<!--            <td>{{rem.note}}</td>-->
-<!--            <td>{{rem.target}}</td>-->
-<!--            <td>{{(rem.remarque).split('~')[0]}}</td>-->
-<!--          </tr>-->
-<!--        </ng-container>-->
-<!--         </tbody>-->
-<!--       </table>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;**********************************************************&ndash;&gt;-->

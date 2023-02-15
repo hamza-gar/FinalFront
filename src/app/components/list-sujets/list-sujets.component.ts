@@ -65,16 +65,13 @@ export class ListSujetsComponent implements OnInit {
   }
 
   public getSujets(p: number): void {
-    console.log(this.subjects)
     this.p = p;
     this.sujetService.getSujets(p, 6).subscribe(
       (response: sujetRequirement[]) => {
         this.subjects = response;
-        console.log("enseignant :", this.subjects[p].nomEnseignant)
-        console.log(this.p)
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
@@ -86,7 +83,6 @@ export class ListSujetsComponent implements OnInit {
   myIndex(index: number) {
 
     this.selectedItem = this.subjects[index];
-    console.log(this.selectedItem.idSujet);
     this.getEquipes();
     this.getCountEtudiant();
   }
@@ -101,7 +97,7 @@ export class ListSujetsComponent implements OnInit {
         this.countEtudiantInGroup = operation.length
 
       }, error => {
-        console.log(error);
+        alert(error.error.message);
       });
   }
 
@@ -127,20 +123,19 @@ export class ListSujetsComponent implements OnInit {
     this.equipe.sujetId = this.selectedItem.idSujet;
     this.groupeService.createGroup(this.equipe).subscribe(
       (response: EquipeRequirement) => {
-        console.log(response)
+        window.location.reload();
       }, (error: HttpErrorResponse) => {
-        alert(error);
+        alert(error.error.message);
       }
     );
   }
 
   getMemebersOfEquipe() {
-    console.log("this equipe id :", this.selectedGroup.idEquipe)
     this.groupeService.getMembersOfEquipe(this.selectedGroup.idEquipe, this.member).subscribe(
       (operation: Members[][]) => {
         this.member = operation
       }, error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
 
@@ -151,7 +146,6 @@ export class ListSujetsComponent implements OnInit {
     } else {
       this.selectedGroup.cryptedPassword = ''
     }
-    console.log(this.selectedGroup.cryptedPassword)
     this.joinGroupe(this.selectedGroup.idEquipe);
   }
 
@@ -159,19 +153,17 @@ export class ListSujetsComponent implements OnInit {
     this.equipe.idEquipe = idEquipe
     this.groupeService.joinEquipe(this.selectedGroup).subscribe(
       (response: EquipeRequirement) => {
-        console.log(response);
+
       }, (error: HttpErrorResponse) => {
-        alert(error);
+        alert(error.error.message);
       });
   }
 
   isGroupPrive(index: any) {
     this.selectedGroup = this.equipeRequirement[index]
     if (this.selectedGroup.isPrivate) {
-      console.log(this.selectedGroup.isPrivate)
       return true
     }
-    console.log(this.selectedGroup.isPrivate)
     return false
   }
 
@@ -179,10 +171,10 @@ export class ListSujetsComponent implements OnInit {
     this.sujetService.getSujetPages().subscribe(
       (response: number) => {
         this.pages = Array.from(Array(Math.ceil(response / 6)).keys());
-        console.log(this.pages)
+
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
@@ -193,14 +185,13 @@ export class ListSujetsComponent implements OnInit {
         this.counter = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
 
   changePage(page: number) {
     this.getCount();
-    console.log(Math.ceil(this.counter / 6))
     if (page > 0) {
       this.p++;
     } else {
@@ -237,7 +228,6 @@ export class ListSujetsComponent implements OnInit {
   public getUniversity() {
     this.sujetService.getUniversity().subscribe((res: UniversityResponse[]) => {
       this.university = res
-      console.log("university :", res)
     }, (error: HttpErrorResponse) => {
       alert(error.error.message)
     })
@@ -259,8 +249,6 @@ export class ListSujetsComponent implements OnInit {
     this.selectedEtablissement = {} as EtablissementResponse;
     this.selecetedDepartement = {} as DepartementResponse;
     this.departements = [];
-    console.log(this.selectedUniverSity.toString().replaceAll(" ", "~"))
-    console.log(u);
 
 
     this.getEtablissementByIdUniversity(u)
@@ -268,29 +256,21 @@ export class ListSujetsComponent implements OnInit {
   }
 
   onEtablissementSelected(etablissement: EtablissementResponse) {
-    console.log(etablissement)
-    console.log(etablissement.toString())
-
 
     this.selecetedDepartement = new DepartementResponse();
-    console.log(this.selectedEtablissement.toString().replaceAll(" ", "~"))
     this.getDepartement(etablissement.toString())
   }
 
   onDepartementSelected(departement: DepartementResponse) {
-    console.log(this.selecetedDepartement.toString().replaceAll(" ", "~"))
-
 
   }
 
   getDepartement(nomEtablissement: string) {
-    console.log("this is the :", nomEtablissement);
     this.signup.getDepartementsByEtablissement(nomEtablissement).subscribe(
       (response: DepartementResponse[]) => {
         this.departements = response;
-        console.log("this is the departement :", this.departements);
       }, error => {
-        console.log(error)
+        alert(error.error.message);
       }
     )
   }
@@ -299,7 +279,6 @@ export class ListSujetsComponent implements OnInit {
     this.getCountFiltered();
     this.sujetService.getAllSujetsFiltered(page, 6, this.selectedUniverSity.toString().replaceAll(" ", "~"), this.selectedEtablissement.toString().replaceAll(" ", "~"), this.selecetedDepartement.toString().replaceAll(" ", "~"))
       .subscribe(data => {
-        console.log(data);
         this.subjects = data
       });
   }
@@ -307,23 +286,14 @@ export class ListSujetsComponent implements OnInit {
   getCountFiltered() {
     this.sujetService.getCountAllSujetsFiltered(this.selectedUniverSity.toString().replaceAll(" ", "~"), this.selectedEtablissement.toString().replaceAll(" ", "~"), this.selecetedDepartement.toString().replaceAll(" ", "~")).subscribe(
       (response: number) => {
-        console.log(response)
         this.counter = response;
         this.pages = Array.from(Array(Math.ceil(response / 6)).keys());
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
-
-  // search() {
-  //   this.sujetService.getAllSujetsFiltered(0, 6, this.selectedUniverSity.toString().replaceAll(" ", "~"), this.selectedEtablissement.toString().replaceAll(" ", "~"), this.selecetedDepartement.toString().replaceAll(" ", "~"))
-  //     .subscribe(data => {
-  //       console.log(data);
-  //       this.subjects = data
-  //     });
-  // }
 
 
 }

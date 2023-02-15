@@ -119,7 +119,7 @@
 
             <ng-container *ngFor="let group of equipeRequirement;index as j">
               <tr style="text-align: center">
-                <td>{{j}}</td>
+                <td>{{j+1}}</td>
                 <!-- todo : nombre des etudiant dans l'equipe -->
                 <td>{{countEtudiantInGroup}}/{{group.tailleEquipe}}</td>
                 <td>
@@ -240,7 +240,7 @@
 
             <ng-container *ngFor="let membe of member;index as j">
               <tr style="text-align: center">
-                <td>{{j}}</td>
+                <td>{{j+1}}</td>
                 <td>{{membe[0]}}</td>
                 <td>{{membe[1]}}</td>
             </ng-container>

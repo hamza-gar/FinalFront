@@ -3,6 +3,7 @@ import {MailHandler} from "../../../services/mailHandler";
 import {HeaderResetPasswordHandlerService} from "../../../services/header-reset-password-handler.service";
 import {ResetPasswordService} from "../../../services/reset-password.service";
 import {HttpHeaders} from "@angular/common/http";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-reset-password',
@@ -37,7 +38,7 @@ export class ResetPasswordComponent {
 
   constructor(private mailHandler:MailHandler,
               private headerResetPasswordHandlerService:HeaderResetPasswordHandlerService,
-              private resetPasswordService:ResetPasswordService) {}
+              private resetPasswordService:ResetPasswordService,private router:Router) {}
   ngOnInit(): void {
     this.email=this.mailHandler.getMail()
     this.header=this.headerResetPasswordHandlerService.getHeader()
@@ -57,10 +58,10 @@ export class ResetPasswordComponent {
   updatePass(mail: string, password: string,token:string) {
     this.resetPasswordService.changePassword(mail, password,token)
       .subscribe(operation => {
-          console.log("good");
+          this.router.navigate(['/login']);
         },
         error =>  {
-          console.log("not good");
+          alert(error.error.message);
         });
   }
 

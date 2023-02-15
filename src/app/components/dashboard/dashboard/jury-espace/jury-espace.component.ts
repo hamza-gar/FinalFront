@@ -64,7 +64,7 @@ export class JuryEspaceComponent {
 
       this.soutenance=response;
 
-    },error=>{console.log(error)})
+    },error=>{alert(error.error.message)})
   }
 
 
@@ -74,7 +74,7 @@ export class JuryEspaceComponent {
         this.counter = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }
@@ -85,7 +85,6 @@ export class JuryEspaceComponent {
     this.remarqueResponse.idEtudiant=this.etudiantResponse.idEtudiant;
     this.remarqueResponse.target="rapport"
     this.soutenanceService.addRemarque(this.remarqueResponse).subscribe((response:boolean)=>{
-      console.log(response);
     })
 
     this.remarqueResponse.note=this.note2;
@@ -93,7 +92,6 @@ export class JuryEspaceComponent {
     this.remarqueResponse.idEtudiant=this.etudiantResponse.idEtudiant;
     this.remarqueResponse.target="projet"
     this.soutenanceService.addRemarque(this.remarqueResponse).subscribe((response:boolean)=>{
-      console.log(response);
     })
 
     this.remarqueResponse.note=this.note3;
@@ -101,19 +99,18 @@ export class JuryEspaceComponent {
     this.remarqueResponse.idEtudiant=this.etudiantResponse.idEtudiant;
     this.remarqueResponse.target="presentation"
     this.soutenanceService.addRemarque(this.remarqueResponse).subscribe((response:boolean)=>{
-      console.log(response);
     })
+    window.location.reload();
   }
   myIndex(index:number){
     this.etudiant=this.member[index];
-    console.log(this.etudiant[1])
     this.email=(this.etudiant[1]).toString()
     this.getEtudiantByEmail(this.email)
   }
   getEtudiantByEmail(email:string){
     this.etudiantService.getEtudiantByEmail(email).subscribe((res:EtudiantResponse)=>{
       this.etudiantResponse=res;
-      console.log(this.etudiantResponse.idEtudiant ," :", this.etudiantResponse.email);
+
     })
   }
   getMemebersOfEquipe(id:string){
@@ -121,12 +118,11 @@ export class JuryEspaceComponent {
       (operation:Members[][])=>{
         this.member=operation
       },error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
   changePage(page: number) {
     this.getCount();
-    console.log(Math.ceil( this.counter/ 6))
     if (page > 0) {
       this.p++;
     } else {
@@ -146,10 +142,10 @@ export class JuryEspaceComponent {
     this.sujetService.getSujetPages().subscribe(
       (response: number) => {
         this.pages = Array.from(Array(Math.ceil(response / 6)).keys());
-        console.log(this.pages)
+
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       }
     );
   }

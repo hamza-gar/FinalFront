@@ -34,13 +34,11 @@ export class EnseignantComponentLog {
     this.loginService.loginEnseignant(this.login).subscribe(data=>{
       this.handleResponse(data)
       this.router.navigate(['/dashboard/home/mesSujets'])
-    },error=>alert("you should sign up"));
+    },error=>alert(error.error.message));
   }
     handleResponse(res:any){
     this.tokenService.handle(res)
     this.accountService.changeStatus(true);
-    // this.router.navigateByUrl("/dashboardEtudiant")
-      console.log(res);
     this.router.navigateByUrl("/dashboard/dashboardEnseignant")
   }
 }

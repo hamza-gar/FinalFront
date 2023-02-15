@@ -28,7 +28,6 @@ export class AdminComponent {
   LoginRegister(){
 
     this.loginService.loginAdmin(this.login).subscribe(data=>{
-      console.log(data)
       this.handleResponse(data)
     },error=>alert(error.error.message))
   }
@@ -36,7 +35,7 @@ export class AdminComponent {
   handleResponse(res:any){
     this.tokenService.handle(res)
     this.accountService.changeStatus(true);
-    this.router.navigateByUrl("/dashboard/admin")
+    this.router.navigateByUrl("/domaines")
 
 
   }

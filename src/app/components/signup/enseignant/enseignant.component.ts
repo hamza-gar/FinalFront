@@ -56,7 +56,7 @@ export class EnseignantComponent implements OnInit {
         this.etablissements = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error.error.message);
       })
   }
 
@@ -65,9 +65,8 @@ export class EnseignantComponent implements OnInit {
     this.signupEnseignant.getDepartementsByEtablissement(nomEtablissement).subscribe(
       (response: DepartementResponse[]) => {
         this.departements = response;
-        console.log("this is the departement :", this.departements);
       }, error => {
-        console.log(error)
+        alert(error.error.message);
       }
     )
   }
@@ -79,8 +78,6 @@ export class EnseignantComponent implements OnInit {
   }
 
   onEtablissementSelected(etablissement: EtablissementResponse) {
-    console.log(etablissement)
-    console.log(etablissement.toString())
     this.getDepartement(etablissement.toString())
   }
 

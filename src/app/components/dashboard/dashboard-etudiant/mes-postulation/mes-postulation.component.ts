@@ -21,7 +21,6 @@ export class MesPostulationComponent implements OnInit{
     this.sujetService.getMyPostulatedSujet(0, 6).subscribe(
       (response: sujetRequirement[]) => {
         this.sujet = response;
-        console.log(response);
       },
       error => {
         alert(error.error.message);

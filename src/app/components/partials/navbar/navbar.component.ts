@@ -62,28 +62,24 @@ export class NavbarComponent implements OnInit {
     this.etudiantService.isWorking().subscribe((res: boolean) => {
       this.isworking = res;
     }, error => {
-      (console.log(error))
     })
   }
   public hasFinished() {
     this.etudiantService.hasFinished().subscribe((res: boolean) => {
       this.hasfinished = res;
     }, error => {
-      (console.log(error))
     })
   }
   public hasSoutenance() {
     this.etudiantService.hasSoutenance().subscribe((res: boolean) => {
       this.hassoutenance = res;
     }, error => {
-      (console.log(error))
     })
   }
   public estPostulant() {
     this.etudiantService.estPostulant().subscribe((res: boolean) => {
       this.estpostulant = res;
     }, error => {
-      (console.log(error))
     })
   }
 

@@ -30,7 +30,7 @@ export class EtudiantComponentLog {
 
     this.loginService.loginEtudiant(this.login).subscribe(data=>{
       this.handleResponse(data)
-    },error=>alert("you should sign up"));
+    },error=>alert(error.error.message));
   }
 
   handleResponse(res:any){

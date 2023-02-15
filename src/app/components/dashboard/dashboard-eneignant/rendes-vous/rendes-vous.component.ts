@@ -36,31 +36,28 @@ export class RendesVousComponent implements OnInit {
     this.p = p;
     this.getCount();
     this.rendesVousService.getAllRendesVous(p, 6).subscribe((operation: RendezvousResponse[]) => {
-      console.log(operation)
       this.renedsVous = operation;
 
     }, (error: HttpErrorResponse) => {
-      alert(error.message)
+      alert(error.error.message);
     })
   }
 
   public getCount(): void {
     this.rendesVousService.getallRendezVousCount().subscribe((operation: number) => {
-      console.log(operation)
       this.counter = operation;
     }, (error: HttpErrorResponse) => {
-      alert(error.message)
+      alert(error.error.message);
     })
   }
 
   public fixRendesVous() {
-    console.log("date time :", this.renedsVousDate.dateRendezvous);
     this.renedsVousDate.dateRendezvous = new Date(this.renedsVousDate.dateRendezvous)
     this.rendesVousService.fixRendezvous(this.renedsVousDate).subscribe((response: RendezvousResponse) => {
       this.renedsVousDate = response;
-      console.log("id equipe :", this.renedsVousDate.idEquipe)
+      window.location.reload();
     }, (error: HttpErrorResponse) => {
-      alert(error.message)
+      alert(error.error.message);
     })
   }
 
@@ -75,23 +72,20 @@ export class RendesVousComponent implements OnInit {
       (res: EquipeRequirement) => {
         this.equipe = res
         this.selectedGroup = res
-        console.log(res)
       }, error => {
-        alert(error.message)
+        alert(error.error.message);
       }
     )
   }
 
   getMemebersOfEquipe(index: number) {
     this.renedsVousDate = this.renedsVous[index];
-    console.log("id from rendes vous :", this.renedsVousDate.idEquipe)
     this.getEquipeById(this.renedsVousDate.idEquipe)
-    console.log("this equipe id :", this.selectedGroup.idEquipe)
     this.groupService.getMembersOfEquipe(this.renedsVousDate.idEquipe, this.member).subscribe(
       (operation: Members[][]) => {
         this.member = operation
       }, error => {
-        console.log(error);
+        alert(error.error.message);
       })
   }
 
