@@ -74,6 +74,24 @@ export class SujetService{
     return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/filtered`, { params });
   }
 
+  getCountAllSujetsFiltered(universite?: string, etablissement?: string, departement?: string) {
+    let params = new HttpParams();
+
+    if (universite) {
+      params = params.set('universite', universite);
+    }
+
+    if (etablissement) {
+      params = params.set('etablissement', etablissement);
+    }
+
+    if (departement) {
+      params = params.set('departement', departement);
+    }
+
+    return this.http.get<number>(`${this.apiServiceUrl}/countFiltered`, { params });
+  }
+
   getMyPostulatedSujet(page: number, limit: number): Observable<sujetRequirement[]> {
     return this.http.get<sujetRequirement[]>(`${this.apiServiceUrl}/myPostulated?page=${page}&limit=${limit}`);
   }

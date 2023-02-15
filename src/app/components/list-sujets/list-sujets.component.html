@@ -1,77 +1,103 @@
-<div class="container" style="margin-top: 100px; border-radius:5px; " >
+<div class="example bg-1">
+  <div class="panel">
+    <div class="horizontalblock">
+      <div>
+        <h3>Liste Des Sujets:</h3>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(-1)" aria-label="Previous">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+            </a>
+          </li>
+          <li class="page-item">
+            <div class="page-link">{{p}}</div>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(+1)" aria-label="Next">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i> </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-  <div style="display: inline-block;">
-    <h3>Liste Des Sujets:</h3>
-  </div>
-
-
-  <div style="display: inline-block; margin-left: 10px;">
-    <label for="Universite" class="form-label" style="display: inline-block; margin-right: 10px;">Universite filter:</label>
-    <div class="input-field" style="display: inline-block;">
-      <select class="form-select" id="Universite" name="Universite" [(ngModel)]="selectedUniverSity" (change)="onUniversitySelected(selectedUniverSity)">
-        <option value="" >selectionne Universite :</option>
-        <option *ngFor="let uni of university" value="{{uni.nomUniversite}}" >{{uni.nomUniversite}}</option>
-      </select>
     </div>
-  </div>
-
-  <div style="display: inline-block; margin-left: 10px;" >
-    <label for="Etablissement" class="form-label" style="display: inline-block; margin-right: 10px;">Etablissement filter:</label>
-    <div class="input-field" style="display: inline-block;">
-      <select class="form-select" id="Etablissement" name="Etablissement" [(ngModel)]="selectedEtablissement" (change)="onEtablissementSelected(selectedEtablissement)">
-        <option value="">selectionne etablissement :</option>
-        <option *ngFor="let eta of etablissement" value="{{eta.nomEtablissement}}" >{{eta.nomEtablissement}}</option>
-      </select>
-    </div>
-  </div>
-
-
-  <div style="display: inline-block; margin-left: 10px;">
-    <label for="Departement" class="form-label" style="display: inline-block; margin-right: 10px;">Departement filter:</label>
-    <div class="input-field" style="display: inline-block;">
-      <select class="form-select" id="Departement" name="Departement" [(ngModel)]="selecetedDepartement" (change)="onDepartementSelected(selecetedDepartement)">
-        <option value="">selectionne departement :</option>
-        <option *ngFor="let fil of departements" value="{{fil.nomDepartement}}">{{fil.nomDepartement}}</option>
-      </select>
-    </div>
-  </div>
-
-
-  <div style="display: inline-block; margin-left: 26vw; margin-bottom: 5px">
-  <button href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" (click)="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
-
-
-  <table class="table table-bordered">
-    <thead>
-    <tr style="text-align: center">
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Taille Equipe</th>
-      <th scope="col">Enseignant</th>
-      <th scope="col">Voir les equipes</th>
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let sujet of subjects;index as i">
+    <table class="table table-bordered">
+      <thead>
       <tr style="text-align: center">
-        <td>{{sujet.nomSujet}}</td>
-        <td>{{sujet.descriptionSujet}}</td>
-        <td>{{sujet.tailleEquipe}}</td>
-        <td>{{sujet.nomEnseignant}}<br/>
-          <span style="color: #0057e7">{{sujet.emailEnseignant}}</span>
-
-        </td>
-
-        <td><button  *ngIf="isConnected()" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" >Voir Equipes</button>
-          <button  *ngIf="!isConnected()" type="button" class="btn btn-info" routerLink="/login" >Voir Equipes</button>
-        </td>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Taille Equipe</th>
+        <th scope="col">Enseignant</th>
+        <th scope="col">Voir les equipes</th>
       </tr>
-    </ng-container>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let sujet of subjects;index as i">
+        <tr style="text-align: center">
+          <td>{{sujet.nomSujet}}</td>
+          <td>{{sujet.descriptionSujet}}</td>
+          <td>{{sujet.tailleEquipe}}</td>
+          <td>{{sujet.nomEnseignant}}<br/>
+            <span style="color: #0057e7">{{sujet.emailEnseignant}}</span>
+          </td>
+          <td>
+            <button *ngIf="isConnected()" type="button" class="btn btn-info" data-toggle="modal"
+                    data-target="#exampleModal" (click)="myIndex(i)">Voir Equipes
+            </button>
+            <button *ngIf="!isConnected()" type="button" class="btn btn-info" routerLink="/login">Voir Equipes</button>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    <div class="horizontalblock">
+      <div class="searchbox">
+        <span class="seachBlock">
+          <label for="Universite" class="form-label" style="display: inline-block; margin-right: 10px;">Universite
+            filter:</label>
+          <div class="input-field" style="display: inline-block;">
+            <select class="form-select mtt" id="Universite" name="Universite" [(ngModel)]="selectedUniverSity"
+                    (change)="onUniversitySelected(selectedUniverSity)">
+              <option value="">selectionne Universite :</option>
+              <option *ngFor="let uni of university" value="{{uni.nomUniversite}}">{{uni.nomUniversite}}</option>
+            </select>
+          </div>
+        </span>
+        <span class="seachBlock">
+          <label for="Etablissement" class="form-label" style="display: inline-block; margin-right: 10px;">Etablissement
+            filter:</label>
+          <div class="input-field" style="display: inline-block;">
+            <select class="form-select mtt" id="Etablissement" name="Etablissement" [(ngModel)]="selectedEtablissement"
+                    (change)="onEtablissementSelected(selectedEtablissement)">
+              <option value="">selectionne etablissement :</option>
+              <option *ngFor="let eta of etablissement"
+                      value="{{eta.nomEtablissement}}">{{eta.nomEtablissement}}</option>
+            </select>
+          </div>
+        </span>
+        <span class="seachBlock" style="margin-right: 10vw;">
+          <label for="Departement" class="form-label" style="display: inline-block; margin-right: 10px;">Departement
+            filter:</label>
+          <div class="input-field" style="display: inline-block;">
+            <select class="form-select mtt" id="Departement" name="Departement" [(ngModel)]="selecetedDepartement"
+                    (change)="onDepartementSelected(selecetedDepartement)">
+              <option value="">selectionne departement :</option>
+              <option *ngFor="let fil of departements" value="{{fil.nomDepartement}}">{{fil.nomDepartement}}</option>
+            </select>
+          </div>
+        </span>
+        <button role="button" class="customButton" aria-pressed="true" (click)="search()"><i
+          class="fa-solid fa-magnifying-glass"></i></button>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      </div>
+    </div>
+  </div>
+  <!--  modal for add group to subject-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -96,9 +122,17 @@
                 <td>{{j}}</td>
                 <!-- todo : nombre des etudiant dans l'equipe -->
                 <td>{{countEtudiantInGroup}}/{{group.tailleEquipe}}</td>
-                <td><button type="button" class="btn btn-warning"  style="margin-right:2px;" data-toggle="modal" data-target="#groupMembers"  (click)="getMemebersOfEquipe();">Voir Etudiant</button>
-                  <button type="button" class="btn btn-info" *ngIf="isGroupPrive(j)" data-toggle="modal" data-target="#joinGroup"  style="margin-left:2px;">Join Equipe</button>
-                  <button type="button" class="btn btn-info" *ngIf="!isGroupPrive(j)" (click)="getEquipeIndex(j)" style="margin-left:2px;">Join Equipe</button></td>
+                <td>
+                  <button type="button" class="btn btn-warning" style="margin-right:2px;" data-toggle="modal"
+                          data-target="#groupMembers" (click)="getMemebersOfEquipe();">Voir Etudiant
+                  </button>
+                  <button type="button" class="btn btn-info" *ngIf="isGroupPrive(j)" data-toggle="modal"
+                          data-target="#joinGroup" style="margin-left:2px;">Join Equipe
+                  </button>
+                  <button type="button" class="btn btn-info" *ngIf="!isGroupPrive(j)" (click)="getEquipeIndex(j)"
+                          style="margin-left:2px;">Join Equipe
+                  </button>
+                </td>
               </tr>
             </ng-container>
             </tbody>
@@ -106,14 +140,18 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createModal" style="margin-left:2px;">create Equipe</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createModal"
+                  style="margin-left:2px;">create Equipe
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-<!--  modal for add group to subject-->
-  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+
+  <!--  modal for add group to subject-->
+  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -125,13 +163,14 @@
         <div class="modal-body">
           <form>
 
-            <div class="form-check" (click)="checkButton()" >
+            <div class="form-check" (click)="checkButton()">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">groue Prive ?</label>
             </div>
             <div *ngIf="isChecked" class="form-group">
               <label for="exampleInputPassword1">Mot De Passe du Groupe :</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" *ngIf="isChecked" [(ngModel)]="GroupPassword" name="password">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                     *ngIf="isChecked" [(ngModel)]="GroupPassword" name="password">
             </div>
           </form>
 
@@ -144,10 +183,11 @@
     </div>
   </div>
 
-<!-- ***************************************** -->
+  <!-- ***************************************** -->
 
   <!--  modal for join group if there is a password -->
-  <div class="modal fade" id="joinGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal fade" id="joinGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -160,13 +200,14 @@
           <form>
             <div class="form-group">
               <label for="passwordJoining">Mot De Passe du Groupe :</label>
-              <input type="password" class="form-control" id="passwordJoining" placeholder="Password" [(ngModel)]="JoinGroupPassword" name="password" >
+              <input type="password" class="form-control" id="passwordJoining" placeholder="Password"
+                     [(ngModel)]="JoinGroupPassword" name="password">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success"  (click)="joinGroupe(selectedGroup.idEquipe)" >Join</button>
+          <button type="button" class="btn btn-success" (click)="joinGroupe(selectedGroup.idEquipe)">Join</button>
         </div>
       </div>
     </div>
@@ -175,8 +216,9 @@
   <!-- ***************************************** -->
 
 
-<!--  modal for getting the element of the group -->
-  <div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <!--  modal for getting the element of the group -->
+  <div class="modal fade" id="groupMembers" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -186,7 +228,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <table class="table table-bordered" >
+          <table class="table table-bordered">
             <thead>
             <tr style="text-align: center">
               <th scope="col">Etudiant</th>
@@ -211,26 +253,4 @@
       </div>
     </div>
   </div>
-<!--  *********************************************** -->
-
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" (click)="changePage(-1)" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item" *ngFor="let page of pages">
-        <a class="page-link" (click)="getSujets(page)">{{page}}</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" (click)="changePage(+1)" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-
-
 </div>

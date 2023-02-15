@@ -20,22 +20,14 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class MonSujetComponent implements OnInit{
   public subjects!: sujetRequirement[];
   public equipeRequirement !: EquipeRequirement[];
-
   public  member!:Members[][];
-
   public equipe:EquipeRequirement=new EquipeRequirement();
-
   departements!: DepartementResponse[];
   public pages!: number[];
-
   public counter: number = 0;
-
   public isChecked=false;
-
   public GroupPassword!:string;
-
   selectedEtablissement!: EtablissementResponse;
-
   public countEtudiantInGroup=0;
   constructor(private sujetService: SujetService ,
               private groupeService:GroupsServiceService,
@@ -44,7 +36,6 @@ export class MonSujetComponent implements OnInit{
 
               private router:Router) {
   }
-
   public selectedItem!:sujetRequirement ;
   public selectedGroup!:EquipeRequirement;
   public p: number = 0;

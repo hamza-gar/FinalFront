@@ -26,8 +26,12 @@ export class EtudiantService {
     return this.httpClient.get<EtudiantResponse>(`${this.etudiantUrl}/byEmail/${email}`);
   }
 
-  public voiRemarque(): Observable<RemarqueResponse[]> {
-    return this.httpClient.get<RemarqueResponse[]>(`${this.etudiantUrl}/voirremarque`);
+  public voiRemarque(page: number, limit: number): Observable<RemarqueResponse[]> {
+    return this.httpClient.get<RemarqueResponse[]>(`${this.etudiantUrl}/voirremarque?page=${page}&limit=${limit}`);
+  }
+
+  public getRemarqueCount(): Observable<number> {
+    return this.httpClient.get<number>(`${this.etudiantUrl}/countremarque`);
   }
 
   public isWorking(): Observable<boolean> {

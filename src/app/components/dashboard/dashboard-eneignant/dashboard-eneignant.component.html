@@ -1,31 +1,66 @@
-<div class="container" style="margin-top: 100px; border-radius:5px; ">
-  <h3>Mes Sujets:</h3>
-  <table class="table table-bordered">
-    <thead>
-    <tr style="text-align: center">
-      <th scope="col">Name</th>
-      <th scope="col">Equipe</th>
-      <th scope="col">Action</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let sujet of lisSubjects;index as i ">
+<div class="example bg-1">
+  <div class="panel">
+    <div class="horizontalblock">
+      <h3>Mes sujets encadré:</h3>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+            </a>
+          </li>
+          <li class="page-item">
+            <div class="page-link">{{p}}</div>
+          </li>
+          <li class="page-item">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i> </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <table class="table table-bordered">
+      <thead>
       <tr style="text-align: center">
-        <td>{{sujet.nomSujet}}</td>
-        <td><button  type="button" class="btn btn-info"  data-toggle="modal" data-target="#etudiantDuGroup" (click)="myIndex(i);getEquipeOfSujet()" style="margin-right: 3px;">Voir Equipe</button></td>
-        <td><button  type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="myIndex(i)" style="margin-right: 3px;">Validate Sujet</button>
-          <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListJury" (click)="myIndex(i);getAllEnseignant()" style="margin-left: 3px;">Invite Membres Jury</button>
-          <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ListInvitedJury" (click)="myIndex(i);getInvitedJury()" style="margin-left: 3px;">Invited Jury</button>
-          <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#ChangerDateSoutenance" (click)="myIndex(i);" style="margin-left: 3px;">Changer Date Soutenance</button>
+        <th scope="col">Name</th>
+        <th scope="col">Equipe</th>
+        <th scope="col">Action</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let sujet of lisSubjects;index as i ">
+        <tr style="text-align: center">
+          <td>{{sujet.nomSujet}}</td>
+          <td>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#etudiantDuGroup"
+                    (click)="myIndex(i);getEquipeOfSujet()" style="margin-right: 3px;">Voir Equipe
+            </button>
           </td>
-    </ng-container>
-    </tbody>
-  </table>
+          <td>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+                    (click)="myIndex(i)" style="margin-right: 3px;">Validate Sujet
+            </button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ListJury"
+                    (click)="myIndex(i);getAllEnseignant()" style="margin-left: 3px;">Invite Membres Jury
+            </button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ListInvitedJury"
+                    (click)="myIndex(i);getInvitedJury()" style="margin-left: 3px;">Invited Jury
+            </button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ChangerDateSoutenance"
+                    (click)="myIndex(i);" style="margin-left: 3px;">Changer Date Soutenance
+            </button>
+          </td>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!--modal fix date -->
-<div class="modal fade" id="ChangerDateSoutenance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ChangerDateSoutenance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,7 +70,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form >
+        <form>
           <label>
             <input type="datetime-local" name="party" value="timeRendesVous" [(ngModel)]="UpdateDate"/>
           </label>
@@ -51,7 +86,8 @@
 <!--**********************************************************-->
 
 <!--modal fix date -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,9 +97,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <form >
+        <form>
           <label>
-            <input type="datetime-local" name="party" value="timeRendesVous" [(ngModel)]="soutenanceResponse.dateSoutenance"/>
+            <input type="datetime-local" name="party" value="timeRendesVous"
+                   [(ngModel)]="soutenanceResponse.dateSoutenance"/>
           </label>
         </form>
       </div>
@@ -77,7 +114,8 @@
 <!--**********************************************************-->
 
 <!--Etudiant Du Group -->
-<div class="modal fade" id="etudiantDuGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade" id="etudiantDuGroup" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -87,7 +125,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Etudiant</th>
@@ -116,7 +154,8 @@
 
 
 <!--List Jury  -->
-<div class="modal fade " id="ListJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" >
+<div class="modal fade " id="ListJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog pos" role="document">
     <div class="modal-content sizeModale">
       <div class="modal-header">
@@ -126,7 +165,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Enseignant</th>
@@ -146,7 +185,11 @@
               <td>{{ense.email}}</td>
               <td>{{ense.nomEtablissement}}</td>
               <td>{{ense.nomDepartement}}</td>
-              <td><button  type="button" class="btn btn-warning" data-toggle="modal" data-target="#TypeJury" style="margin-left: 3px;"(click)="enseignantIndex(j)">Invite</button></td>
+              <td>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#TypeJury"
+                        style="margin-left: 3px;" (click)="enseignantIndex(j)">Invite
+                </button>
+              </td>
           </ng-container>
           </tbody>
         </table>
@@ -161,7 +204,8 @@
 
 
 <!--List Jury  -->
-<div class="modal fade " id="TypeJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" >
+<div class="modal fade " id="TypeJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog pos" role="document">
     <div class="modal-content ">
       <div class="modal-header">
@@ -184,7 +228,8 @@
 
 
 <!--List Jury  -->
-<div class="modal fade " id="ListInvitedJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" >
+<div class="modal fade " id="ListInvitedJury" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog pos" role="document">
     <div class="modal-content sizeModale">
       <div class="modal-header">
@@ -194,7 +239,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
           <thead>
           <tr style="text-align: center">
             <th scope="col">Enseignant</th>
